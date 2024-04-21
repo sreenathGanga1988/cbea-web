@@ -28,7 +28,7 @@ export class CircleListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/categories-create']);
+    this.router.navigate(['/circles-create']);
   }
   ngOnInit(): void {
 

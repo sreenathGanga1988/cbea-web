@@ -16,7 +16,7 @@ import { CategoryService } from '../../../Services/category.service';
 export class StateListComponent {
 
 
-  constructor(private router: Router,private categoryService: CategoryService ) {
+  constructor(private router: Router,private categoryService: StateService ) {
 
 
   }
