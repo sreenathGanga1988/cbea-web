@@ -24,11 +24,12 @@ export class CategoryListComponent {
 
   }
   tableColumns: Array<Column> = [
-    {columnDef:'id',header:'Serial#',colType:CellType.Text}
-    ,{columnDef:'abbreviation',header:'Code',colType:CellType.Text},
-    {columnDef:'name',header:'Name',colType:CellType.Text}
-    ,{columnDef:'isActive',header:'Status',colType:CellType.Status}
-    ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} ];
+    {columnDef:'ID',header:'Serial#',colType:CellType.Text}
+    ,{columnDef:'Abbreviation',header:'Code',colType:CellType.Text},
+    {columnDef:'Name',header:'Name',colType:CellType.Text}
+    ,{columnDef:'IsActive',header:'Status',colType:CellType.Status}
+   // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} 
+  ];
     handleCreateNewItem() {
 
       this.router.navigate(['/categories-create']);
@@ -44,15 +45,22 @@ export class CategoryListComponent {
 
       this.categoryService.getCategories("",0,0).subscribe({
         next: (res) => {
-          this.response = res;
-          if (this.response.isSucess == true) {
-            this.Items=this.response.value;
-            console.log(res);
 
+          if(res){
+            this.Items=res.rowData;
           }
-          else {
-            alert(this.response.error);
-          }
+          console.log(this.Items)
+          // this.response = res;
+          // alert("Hi")
+          // if (this.response.isSucess === true) {
+           
+           
+          //   console.log(res);
+
+          // }
+          // else {
+          //   alert(this.response.error);
+          // }
 
         },
         error: (res) => {

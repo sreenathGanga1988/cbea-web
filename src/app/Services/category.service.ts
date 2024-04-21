@@ -19,20 +19,17 @@ export class CategoryService {
     this._listRequest= new ListRequest();
     this._listRequest.ReportType="CATEGORY";
     this._listRequest.SearchText="";
-    this._listRequest.PageSize=50;
+    this._listRequest.PageSize=25;
     this._listRequest.PageNumber=0;
 
   }
 
     getCategories(searchtext:string,pageNumber:number=0,pageSize:number=0) {
 
-      this.url="/api_category"
-      this._listRequest.SearchText="sree";
-
-      this._listRequest.PageNumber=0;
-      this._listRequest.PageSize=30;
-      return this.httphelper.GetData(this.url)
-     // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
+      this.url="/api_datatable/GetPageinatedDataAsync"
+      
+    //  return this.httphelper.GetData(this.url)
+      return this.httphelper.GetDataWithObject(this.url,this._listRequest.ReportType,this._listRequest.SearchText,this._listRequest.PageSize,this._listRequest.PageNumber).pipe(map((val) => val.isSucess ? val.value : []));
        }
       postCategories(obj :any) {
          return this.httphelper.POST(this.url,obj);
