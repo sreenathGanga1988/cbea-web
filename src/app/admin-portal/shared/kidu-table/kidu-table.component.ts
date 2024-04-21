@@ -15,6 +15,10 @@ export class KiduTableComponent {
   @Input()
   rows: any[]| undefined;
   displayedColumns: Array<string> = [];
+  @Input()
+  isEditButton :boolean= false
+  @Input()
+  isDeleteButton :boolean= false
   ngOnInit(): void {
 
     this.displayedColumns = this.tableColumns.map((c) => c.columnDef);
