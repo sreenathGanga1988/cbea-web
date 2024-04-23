@@ -11,14 +11,19 @@ import {
   __spreadArray,
   __spreadProps,
   __spreadValues,
+  argsArgArrayOrObject,
+  createObject,
+  createOperatorSubscriber,
   first,
   innerFrom,
   isFunction,
   map,
-  noop
-} from "./chunk-LH3ACF5G.js";
+  mapOneOrManyArgs,
+  noop,
+  popResultSelector
+} from "./chunk-N5HJOAWA.js";
 
-// node_modules/@angular/core/fesm2022/primitives/signals.mjs
+// ../../node_modules/@angular/core/fesm2022/primitives/signals.mjs
 function defaultEquals(a, b) {
   return Object.is(a, b);
 }
@@ -382,7 +387,7 @@ var WATCH_NODE = (() => {
   });
 })();
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/performanceTimestampProvider.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/performanceTimestampProvider.js
 var performanceTimestampProvider = {
   now: function() {
     return (performanceTimestampProvider.delegate || performance).now();
@@ -390,7 +395,7 @@ var performanceTimestampProvider = {
   delegate: void 0
 };
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/animationFrameProvider.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/animationFrameProvider.js
 var animationFrameProvider = {
   schedule: function(callback) {
     var request = requestAnimationFrame;
@@ -427,7 +432,7 @@ var animationFrameProvider = {
   delegate: void 0
 };
 
-// node_modules/rxjs/dist/esm5/internal/observable/dom/animationFrames.js
+// ../../node_modules/rxjs/dist/esm5/internal/observable/dom/animationFrames.js
 function animationFramesFactory(timestampProvider) {
   return new Observable(function(subscriber) {
     var provider = timestampProvider || performanceTimestampProvider;
@@ -456,7 +461,7 @@ function animationFramesFactory(timestampProvider) {
 }
 var DEFAULT_ANIMATION_FRAMES = animationFramesFactory();
 
-// node_modules/rxjs/dist/esm5/internal/util/Immediate.js
+// ../../node_modules/rxjs/dist/esm5/internal/util/Immediate.js
 var nextHandle = 1;
 var resolved;
 var activeHandles = {};
@@ -484,7 +489,7 @@ var Immediate = {
   }
 };
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/immediateProvider.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/immediateProvider.js
 var setImmediate = Immediate.setImmediate;
 var clearImmediate = Immediate.clearImmediate;
 var immediateProvider = {
@@ -503,7 +508,7 @@ var immediateProvider = {
   delegate: void 0
 };
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/AsapAction.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/AsapAction.js
 var AsapAction = function(_super) {
   __extends(AsapAction2, _super);
   function AsapAction2(scheduler, work) {
@@ -542,7 +547,7 @@ var AsapAction = function(_super) {
   return AsapAction2;
 }(AsyncAction);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/AsapScheduler.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/AsapScheduler.js
 var AsapScheduler = function(_super) {
   __extends(AsapScheduler2, _super);
   function AsapScheduler2() {
@@ -571,10 +576,10 @@ var AsapScheduler = function(_super) {
   return AsapScheduler2;
 }(AsyncScheduler);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/asap.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/asap.js
 var asapScheduler = new AsapScheduler(AsapAction);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/QueueAction.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/QueueAction.js
 var QueueAction = function(_super) {
   __extends(QueueAction2, _super);
   function QueueAction2(scheduler, work) {
@@ -611,7 +616,7 @@ var QueueAction = function(_super) {
   return QueueAction2;
 }(AsyncAction);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/QueueScheduler.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/QueueScheduler.js
 var QueueScheduler = function(_super) {
   __extends(QueueScheduler2, _super);
   function QueueScheduler2() {
@@ -620,10 +625,10 @@ var QueueScheduler = function(_super) {
   return QueueScheduler2;
 }(AsyncScheduler);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/queue.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/queue.js
 var queueScheduler = new QueueScheduler(QueueAction);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/AnimationFrameAction.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/AnimationFrameAction.js
 var AnimationFrameAction = function(_super) {
   __extends(AnimationFrameAction2, _super);
   function AnimationFrameAction2(scheduler, work) {
@@ -662,7 +667,7 @@ var AnimationFrameAction = function(_super) {
   return AnimationFrameAction2;
 }(AsyncAction);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/AnimationFrameScheduler.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/AnimationFrameScheduler.js
 var AnimationFrameScheduler = function(_super) {
   __extends(AnimationFrameScheduler2, _super);
   function AnimationFrameScheduler2() {
@@ -691,10 +696,10 @@ var AnimationFrameScheduler = function(_super) {
   return AnimationFrameScheduler2;
 }(AsyncScheduler);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/animationFrame.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/animationFrame.js
 var animationFrameScheduler = new AnimationFrameScheduler(AnimationFrameAction);
 
-// node_modules/rxjs/dist/esm5/internal/scheduler/VirtualTimeScheduler.js
+// ../../node_modules/rxjs/dist/esm5/internal/scheduler/VirtualTimeScheduler.js
 var VirtualTimeScheduler = function(_super) {
   __extends(VirtualTimeScheduler2, _super);
   function VirtualTimeScheduler2(schedulerActionCtor, maxFrames) {
@@ -802,22 +807,65 @@ var VirtualAction = function(_super) {
   return VirtualAction2;
 }(AsyncAction);
 
-// node_modules/rxjs/dist/esm5/internal/util/isObservable.js
+// ../../node_modules/rxjs/dist/esm5/internal/util/isObservable.js
 function isObservable(obj) {
   return !!obj && (obj instanceof Observable || isFunction(obj.lift) && isFunction(obj.subscribe));
 }
 
-// node_modules/rxjs/dist/esm5/internal/observable/defer.js
+// ../../node_modules/rxjs/dist/esm5/internal/observable/defer.js
 function defer(observableFactory) {
   return new Observable(function(subscriber) {
     innerFrom(observableFactory()).subscribe(subscriber);
   });
 }
 
-// node_modules/rxjs/dist/esm5/internal/observable/never.js
+// ../../node_modules/rxjs/dist/esm5/internal/observable/forkJoin.js
+function forkJoin() {
+  var args = [];
+  for (var _i = 0; _i < arguments.length; _i++) {
+    args[_i] = arguments[_i];
+  }
+  var resultSelector = popResultSelector(args);
+  var _a = argsArgArrayOrObject(args), sources = _a.args, keys = _a.keys;
+  var result = new Observable(function(subscriber) {
+    var length = sources.length;
+    if (!length) {
+      subscriber.complete();
+      return;
+    }
+    var values = new Array(length);
+    var remainingCompletions = length;
+    var remainingEmissions = length;
+    var _loop_1 = function(sourceIndex2) {
+      var hasValue = false;
+      innerFrom(sources[sourceIndex2]).subscribe(createOperatorSubscriber(subscriber, function(value) {
+        if (!hasValue) {
+          hasValue = true;
+          remainingEmissions--;
+        }
+        values[sourceIndex2] = value;
+      }, function() {
+        return remainingCompletions--;
+      }, void 0, function() {
+        if (!remainingCompletions || !hasValue) {
+          if (!remainingEmissions) {
+            subscriber.next(keys ? createObject(keys, values) : values);
+          }
+          subscriber.complete();
+        }
+      }));
+    };
+    for (var sourceIndex = 0; sourceIndex < length; sourceIndex++) {
+      _loop_1(sourceIndex);
+    }
+  });
+  return resultSelector ? result.pipe(mapOneOrManyArgs(resultSelector)) : result;
+}
+
+// ../../node_modules/rxjs/dist/esm5/internal/observable/never.js
 var NEVER = new Observable(noop);
 
-// node_modules/@angular/core/fesm2022/core.mjs
+// ../../node_modules/@angular/core/fesm2022/core.mjs
 var ERROR_DETAILS_PAGE_BASE_URL = "https://angular.io/errors";
 var XSS_SECURITY_URL = "https://g.co/ng/security#xss";
 var RuntimeError = class extends Error {
@@ -21219,6 +21267,7 @@ if (typeof ngDevMode !== "undefined" && ngDevMode) {
 export {
   isObservable,
   defer,
+  forkJoin,
   XSS_SECURITY_URL,
   RuntimeError,
   formatRuntimeError,
@@ -21700,4 +21749,4 @@ export {
    * found in the LICENSE file at https://angular.io/license
    *)
 */
-//# sourceMappingURL=chunk-7T2ORMA5.js.map
+//# sourceMappingURL=chunk-2IDNO2JH.js.map

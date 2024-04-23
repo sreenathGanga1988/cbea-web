@@ -8,8 +8,8 @@ import { CustomApiResponse } from '../../models/Common/custom-api-responseo.mode
   providedIn: 'root'
 })
 export class HttpHelperService {
-   //BaseUrl: String = "https://www.cbeugjfws.co.in/api";
-  BaseUrl: String = "  https://localhost:7157/api";
+ //  BaseUrl: String = "https://www.cbeugjfws.co.in/api";
+ BaseUrl: String = "  https://localhost:7157/api";
   //https://localhost:7157/
 
   header: HttpHeaders;

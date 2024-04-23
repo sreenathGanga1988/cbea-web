@@ -6,66 +6,70 @@ import { Router } from '@angular/router';
 import { CategoryService } from '../../../Services/category.service';
 import { CustomApiResponse } from '../../../models/Common/custom-api-responseo.model';
 import { ListRequest } from '../../../models/Common/listrequest.model';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent],
+  imports: [TitleBarComponent, KiduTableComponent,FormsModule],
   templateUrl: './category-list.component.html',
   styleUrl: './category-list.component.css'
 })
 export class CategoryListComponent {
-  headingText="Categories";
+  headingText = "Categories";
   response!: CustomApiResponse;
-  Items!:any[];
+  Items!: any[];
 
-  constructor(private router: Router,private categoryService: CategoryService ) {
+  constructor(private router: Router, private categoryService: CategoryService) {
 
 
   }
   tableColumns: Array<Column> = [
-    {columnDef:'ID',header:'Serial#',colType:CellType.Text}
-    ,{columnDef:'Abbreviation',header:'Code',colType:CellType.Text},
-    {columnDef:'Name',header:'Name',colType:CellType.Text}
-    ,{columnDef:'IsActive',header:'Status',colType:CellType.Status}
-   // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} 
+    { columnDef: 'ID', header: 'Serial#', colType: CellType.Text }
+    , { columnDef: 'Abbreviation', header: 'Code', colType: CellType.Text },
+    { columnDef: 'Name', header: 'Name', colType: CellType.Text }
+    , { columnDef: 'IsActive', header: 'Status', colType: CellType.Status }
+    // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} 
   ];
-    handleCreateNewItem() {
+  handleCreateNewItem() {
 
-      this.router.navigate(['/categories-create']);
-    }
-    ngOnInit(): void {
-
-
-      this.GetItems();
-    }
-
-    GetItems() {
+    this.router.navigate(['/categories-create']);
+  };
+  GlobalSearch(sarchtxt:string) {
+    this.GlobalSearch(sarchtxt)
+  }
+  ngOnInit(): void {
 
 
-      this.categoryService.getCategories("",0,0).subscribe({
-        next: (res) => {
+    this.GetItems("");
+  }
 
-          if(res){
-            this.Items=res.rowData;
-          }
-          console.log(this.Items)
-          // this.response = res;
-          // alert("Hi")
-          // if (this.response.isSucess === true) {
-           
-           
-          //   console.log(res);
+  GetItems(searchtext: string) {
 
-          // }
-          // else {
-          //   alert(this.response.error);
-          // }
 
-        },
-        error: (res) => {
-          alert("Erro while Adding")
+    this.categoryService.getCategoriesAsync(searchtext, 0, 0).subscribe({
+      next: (res) => {
+
+        if (res) {
+          this.Items = res.rowData;
         }
-      })
-    }
+        console.log(this.Items)
+        // this.response = res;
+        // alert("Hi")
+        // if (this.response.isSucess === true) {
+
+
+        //   console.log(res);
+
+        // }
+        // else {
+        //   alert(this.response.error);
+        // }
+
+      },
+      error: (res) => {
+        alert("Erro while Adding")
+      }
+    })
+  }
 }

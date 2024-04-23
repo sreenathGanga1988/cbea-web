@@ -12,36 +12,44 @@ import { ListRequest } from '../models/Common/listrequest.model';
   providedIn: 'root'
 })
 export class CategoryService {
-  url:string="/api_category";
+  url: string = "/api_category";
 
-  _listRequest!:ListRequest ;
-  constructor( private httphelper :HttpHelperService) {
-    this._listRequest= new ListRequest();
-    this._listRequest.ReportType="CATEGORY";
-    this._listRequest.SearchText="";
-    this._listRequest.PageSize=25;
-    this._listRequest.PageNumber=0;
+  _listRequest!: ListRequest;
+  constructor(private httphelper: HttpHelperService) {
+    this._listRequest = new ListRequest();
+    this._listRequest.ReportType = "CATEGORY";
+    this._listRequest.SearchText = "";
+    this._listRequest.PageSize = 25;
+    this._listRequest.PageNumber = 0;
 
   }
 
-    getCategories(searchtext:string,pageNumber:number=0,pageSize:number=0) {
+  getCategoriesAsync(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
 
-      this.url="/api_datatable/GetPageinatedDataAsync"
-      
-    //  return this.httphelper.GetData(this.url)
-      return this.httphelper.GetDataWithObject(this.url,this._listRequest.ReportType,this._listRequest.SearchText,this._listRequest.PageSize,this._listRequest.PageNumber).pipe(map((val) => val.isSucess ? val.value : []));
-       }
-      postCategories(obj :any) {
-         return this.httphelper.POST(this.url,obj);
-       }
-       putCategories(id:number,obj :any) {
-        return this.httphelper.PUT(this.url+"/"+id,obj);
-      }
-      deleteItem(id:number) {
-        return this.httphelper.Delete(this.url+"/"+id);
-      }
-      getCategoriesById(Id :number) {
-        return this.httphelper.GetData(this.url+"/"+Id);
-       // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
-         }
+    this.url = "/api_datatable/GetPageinatedDataAsync"
+
+      return this.httphelper.GetDataWithObject(this.url, this._listRequest.ReportType, searchtext, pageSize, pageNumber).pipe(map((val) => val.isSucess ? val.value : []));
+  }
+
+  getCategories(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
+
+
+
+    return this.httphelper.GetData(this.url)
+
+  }
+
+  postCategories(obj: any) {
+    return this.httphelper.POST(this.url, obj);
+  }
+  putCategories(id: number, obj: any) {
+    return this.httphelper.PUT(this.url + "/" + id, obj);
+  }
+  deleteItem(id: number) {
+    return this.httphelper.Delete(this.url + "/" + id);
+  }
+  getCategoriesById(Id: number) {
+    return this.httphelper.GetData(this.url + "/" + Id);
+    // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
+  }
 }
