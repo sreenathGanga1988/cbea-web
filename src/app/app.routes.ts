@@ -30,6 +30,8 @@ import { MainpageCreateComponent } from './admin-portal/cms/mainpage/mainpage-cr
 import { ManagingcommiteeCreateComponent } from './admin-portal/cms/managingcommitee/managingcommitee-create/managingcommitee-create.component';
 import { RefundCreateComponent } from './admin-portal/claims/refund/refund-create/refund-create.component';
 import { DeathclaimCreateComponent } from './admin-portal/claims/deathclaim/deathclaim-create/deathclaim-create.component';
+import { DirectpaysCreateComponent } from './directpays/directpays-create/directpays-create.component';
+import { DirectpaysListComponent } from './directpays/directpays-list/directpays-list.component';
 
 export const routes: Routes = [
 
@@ -50,7 +52,7 @@ export const routes: Routes = [
    { path: 'managingcomitee',    component: ManagingcommiteeListComponent,},
    { path: 'refunds',    component: RefundListComponent,},
    { path: 'deathclaims',    component: DeathclaimListComponent,},
-   { path: 'directpays',    component:DeathclaimListComponent,},
+   { path: 'directpays',    component:DirectpaysListComponent,},
    { path: 'refunds',    component: CircleListComponent,},
 
    { path: 'categories-create',    component: CategoryCreateComponent,},

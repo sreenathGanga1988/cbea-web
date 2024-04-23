@@ -22,14 +22,37 @@ export class DesignationListComponent {
 
   }
   tableColumns: Array<Column> = [
-    {columnDef:'id',header:'Serial#',colType:CellType.Text}
-    ,{columnDef:'abbreviation',header:'Code',colType:CellType.Text},
-    {columnDef:'name',header:'Name',colType:CellType.Text}
-    ,{columnDef:'isActive',header:'Status',colType:CellType.Status}
+    {columnDef:'id',header:'Serial#',colType:CellType.Text},
+    {columnDef:'name',header:'Name',colType:CellType.Text},
+    {columnDef:'description',header:'Description',colType:CellType.Text}
     ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} ];
     handleCreateNewItem() {
 
       this.router.navigate(['/designation-create']);
     }
+    ngOnInit(): void {
+
+
+      this.GetItems();
+    }
+  GetItems() {
+    this.categoryService.getDesignations().subscribe({
+      next: (res) => {
+        this.response = res;
+        if (this.response.isSucess == true) {
+          this.Items=this.response.value;
+          console.log(res);
+
+        }
+        else {
+          alert(this.response.error);
+        }
+
+      },
+      error: (res) => {
+        alert("Erro while Adding")
+      }
+    })
+  }
 
 }
