@@ -1,6 +1,6 @@
 import {
   withHttpTransferCache
-} from "./chunk-QLEVDSA3.js";
+} from "./chunk-TDR5KW34.js";
 import {
   CommonModule,
   DOCUMENT,
@@ -11,7 +11,7 @@ import {
   isPlatformServer,
   parseCookieValue,
   setRootDomAdapter
-} from "./chunk-3NS7MGVT.js";
+} from "./chunk-VI3XMRPQ.js";
 import {
   APP_ID,
   ApplicationModule,
@@ -67,13 +67,13 @@ import {
   ɵɵdefineInjector,
   ɵɵdefineNgModule,
   ɵɵinject
-} from "./chunk-2IDNO2JH.js";
+} from "./chunk-57K6SPWU.js";
 import {
   __spreadProps,
   __spreadValues
-} from "./chunk-N5HJOAWA.js";
+} from "./chunk-IPLFCT6M.js";
 
-// ../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
+// node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs
 var GenericBrowserDomAdapter = class extends DomAdapter {
   constructor() {
     super(...arguments);
@@ -1843,7 +1843,7 @@ function provideClientHydration(...features) {
   }
   return makeEnvironmentProviders([typeof ngDevMode !== "undefined" && ngDevMode ? provideZoneJsCompatibilityDetector() : [], withDomHydration(), featuresKind.has(HydrationFeatureKind.NoHttpTransferCache) || hasHttpTransferCacheOptions ? [] : withHttpTransferCache({}), providers]);
 }
-var VERSION = new Version("17.2.2");
+var VERSION = new Version("17.3.3");
 var makeStateKey2 = makeStateKey;
 var TransferState2 = TransferState;
 
@@ -1889,9 +1889,9 @@ export {
 
 @angular/platform-browser/fesm2022/platform-browser.mjs:
   (**
-   * @license Angular v17.2.2
+   * @license Angular v17.3.3
    * (c) 2010-2022 Google LLC. https://angular.io/
    * License: MIT
    *)
 */
-//# sourceMappingURL=chunk-5IL5ONCI.js.map
+//# sourceMappingURL=chunk-HCTHBBZY.js.map
