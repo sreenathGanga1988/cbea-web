@@ -1,7 +1,7 @@
 import {
   Title
-} from "./chunk-5IL5ONCI.js";
-import "./chunk-QLEVDSA3.js";
+} from "./chunk-HCTHBBZY.js";
+import "./chunk-TDR5KW34.js";
 import {
   DOCUMENT,
   HashLocationStrategy,
@@ -10,7 +10,7 @@ import {
   LocationStrategy,
   PathLocationStrategy,
   ViewportScroller
-} from "./chunk-3NS7MGVT.js";
+} from "./chunk-VI3XMRPQ.js";
 import {
   APP_BOOTSTRAP_LISTENER,
   APP_INITIALIZER,
@@ -80,7 +80,7 @@ import {
   ɵɵloadQuery,
   ɵɵqueryRefresh,
   ɵɵsanitizeUrlOrResourceUrl
-} from "./chunk-2IDNO2JH.js";
+} from "./chunk-57K6SPWU.js";
 import {
   BehaviorSubject,
   ConnectableObservable,
@@ -115,9 +115,9 @@ import {
   takeUntil,
   tap,
   throwError
-} from "./chunk-N5HJOAWA.js";
+} from "./chunk-IPLFCT6M.js";
 
-// ../../node_modules/@angular/router/fesm2022/router.mjs
+// node_modules/@angular/router/fesm2022/router.mjs
 var PRIMARY_OUTLET = "primary";
 var RouteTitleKey = Symbol("RouteTitle");
 var ParamsAsMap = class {
@@ -1815,6 +1815,7 @@ var OutletInjector = class {
     this.route = route;
     this.childContexts = childContexts;
     this.parent = parent;
+    this.__ngOutletInjector = true;
   }
   get(token, notFoundValue) {
     if (token === ActivatedRoute) {
@@ -1957,7 +1958,7 @@ _ɵEmptyOutletComponent.ɵcmp = ɵɵdefineComponent({
   features: [ɵɵStandaloneFeature],
   decls: 1,
   vars: 0,
-  template: function ɵEmptyOutletComponent_Template(rf, ctx) {
+  template: function _EmptyOutletComponent_Template(rf, ctx) {
     if (rf & 1) {
       ɵɵelement(0, "router-outlet");
     }
@@ -3458,12 +3459,16 @@ var _NavigationTransitions = class _NavigationTransitions {
       })),
       // Using switchMap so we cancel executing navigations when a new one comes in
       switchMap((overallTransitionState) => {
-        this.currentTransition = overallTransitionState;
         let completed = false;
         let errored = false;
         return of(overallTransitionState).pipe(
-          // Store the Navigation object
-          tap((t) => {
+          switchMap((t) => {
+            if (this.navigationId > overallTransitionState.id) {
+              const cancellationReason = typeof ngDevMode === "undefined" || ngDevMode ? `Navigation ID ${overallTransitionState.id} is not equal to the current navigation id ${this.navigationId}` : "";
+              this.cancelNavigationTransition(overallTransitionState, cancellationReason, NavigationCancellationCode.SupersededByNewNavigation);
+              return EMPTY;
+            }
+            this.currentTransition = overallTransitionState;
             this.currentNavigation = {
               id: t.id,
               initialUrl: t.rawUrl,
@@ -3474,8 +3479,6 @@ var _NavigationTransitions = class _NavigationTransitions {
                 previousNavigation: null
               })
             };
-          }),
-          switchMap((t) => {
             const urlTransition = !router.navigated || this.isUpdatingInternalState() || this.isUpdatedBrowserUrl();
             const onSameUrlNavigation = t.extras.onSameUrlNavigation ?? router.onSameUrlNavigation;
             if (!urlTransition && onSameUrlNavigation !== "reload") {
@@ -4755,21 +4758,21 @@ var _RouterLinkActive = class _RouterLinkActive {
       return;
     queueMicrotask(() => {
       const hasActiveLinks = this.hasActiveLinks();
+      this.classes.forEach((c) => {
+        if (hasActiveLinks) {
+          this.renderer.addClass(this.element.nativeElement, c);
+        } else {
+          this.renderer.removeClass(this.element.nativeElement, c);
+        }
+      });
+      if (hasActiveLinks && this.ariaCurrentWhenActive !== void 0) {
+        this.renderer.setAttribute(this.element.nativeElement, "aria-current", this.ariaCurrentWhenActive.toString());
+      } else {
+        this.renderer.removeAttribute(this.element.nativeElement, "aria-current");
+      }
       if (this._isActive !== hasActiveLinks) {
         this._isActive = hasActiveLinks;
         this.cdr.markForCheck();
-        this.classes.forEach((c) => {
-          if (hasActiveLinks) {
-            this.renderer.addClass(this.element.nativeElement, c);
-          } else {
-            this.renderer.removeClass(this.element.nativeElement, c);
-          }
-        });
-        if (hasActiveLinks && this.ariaCurrentWhenActive !== void 0) {
-          this.renderer.setAttribute(this.element.nativeElement, "aria-current", this.ariaCurrentWhenActive.toString());
-        } else {
-          this.renderer.removeAttribute(this.element.nativeElement, "aria-current");
-        }
         this.isActiveChange.emit(hasActiveLinks);
       }
     });
@@ -5498,7 +5501,7 @@ function mapToCanDeactivate(providers) {
 function mapToResolve(provider) {
   return (...params) => inject(provider).resolve(...params);
 }
-var VERSION = new Version("17.2.2");
+var VERSION = new Version("17.3.3");
 export {
   ActivatedRoute,
   ActivatedRouteSnapshot,
@@ -5581,7 +5584,7 @@ export {
 
 @angular/router/fesm2022/router.mjs:
   (**
-   * @license Angular v17.2.2
+   * @license Angular v17.3.3
    * (c) 2010-2022 Google LLC. https://angular.io/
    * License: MIT
    *)
