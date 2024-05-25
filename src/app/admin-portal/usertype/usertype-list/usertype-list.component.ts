@@ -24,10 +24,11 @@ export class UsertypeListComponent {
   tableColumns: Array<Column> = [
     {columnDef:'id',header:'Serial#',colType:CellType.Text}
     ,{columnDef:'abbreviation',header:'Abbreviation',colType:CellType.Text}
-    
-    ,{columnDef:'description',header:'Description',colType:CellType.Button} 
+
+    ,{columnDef:'description',header:'Description',colType:CellType.Button}
     ,{columnDef:'isActive',header:'Status',colType:CellType.Status}
-    ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} ];
+    // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button}
+  ];
     handleCreateNewItem() {
 
       this.router.navigate(['/usertypes-create']);
@@ -55,7 +56,7 @@ export class UsertypeListComponent {
         alert("Error while Adding")
       }
     })
-      
+
   }
 
 }

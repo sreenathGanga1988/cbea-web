@@ -20,7 +20,8 @@ export class CircleListComponent {
     ,{columnDef:'dpCode',header:'DpCode',colType:CellType.Text},
     {columnDef:'name',header:'Name',colType:CellType.Text}
     ,{columnDef:'isActive',header:'Status',colType:CellType.Status}
-    ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} ];
+    // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button}
+  ];
 
   constructor(private router: Router) {}
 

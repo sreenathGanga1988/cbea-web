@@ -27,7 +27,8 @@ export class StateListComponent {
     {columnDef:'name',header:'Name',colType:CellType.Text}
     ,{columnDef:'isActive',header:'Status',colType:CellType.Status}
     ,{columnDef:'createdDate',header:'Date',colType:CellType.Text}
-   ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} ];
+  //  ,{columnDef:'btnString',header:'Actions',colType:CellType.Button}
+  ];
 
     handleCreateNewItem() {
 
