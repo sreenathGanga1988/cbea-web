@@ -1,53 +1,90 @@
 <br>
-<div class="row">
-  <div class="col-12 mx-auto">
+<div class=" m-3">
+  <div class="row">
+    <div class="col-12 mx-auto">
 
       <div class="input-group">
-          <input class="form-control border" type="text"  value="**" [(ngModel)]="sarchtxt"    (change)="GlobalSearchfun()" id="example-search-input">
+        <input class="form-control border" type="text" placeholder="Type here and press enter for searching" value="**"
+          [(ngModel)]="sarchtxt" (change)="GlobalSearchfun()" id="example-search-input">
       </div>
+    </div>
+  </div>
+
+  <br>
+  <div *ngIf="_kiduTableModel.rows">
+
+    <table id="dtTable" class="table-striped table-responsive table-bordered  table mat-elevation-z8">
+      <thead>
+        <tr>
+          <th *ngFor="let disCol of _kiduTableModel.tableColumns let colIndex = index;">{{ disCol.header }}</th>
+          @if(_kiduTableModel.isDeleteButton || _kiduTableModel.isEditButton){
+
+          <th>Actions</th>
+          }
+        </tr>
+
+      </thead>
+      <tbody>
+
+
+
+        <tr *ngFor="let item of  _kiduTableModel.rows  ;">
+          <td *ngFor="let  disCol of _kiduTableModel.tableColumns let colIndex = index;">
+            <div [ngSwitch]="disCol.colType">
+              <div *ngSwitchCase="1">
+                <span [innerHTML]="item[disCol.columnDef]"></span>
+
+              </div>
+              <div *ngSwitchCase="2">
+                <span class="rounded-pill " style="background-color: green;"
+                  [innerHTML]="item[disCol.columnDef]"></span>
+
+              </div>
+              <div *ngSwitchCase="3">
+
+
+                <span [ngClass]="item[disCol.columnDef] ==true ? 'activemeployeeclass' : 'inactiveemployeeclass'" class="rounded-pill"  [innerHTML]="item[disCol.columnDef]"></span>
+
+
+              </div>
+
+
+            </div>
+
+
+
+          </td>
+
+          @if(_kiduTableModel.isDeleteButton || _kiduTableModel.isEditButton){
+
+          <td>
+            <div style="max-width: 100px;">
+              @if(_kiduTableModel.isEditButton){
+              <a (click)="EditClicked(item)">
+                <img src="/assets/img/edit-pencil-line-01-svgrepo-com.svg" aria-hidden="true">
+              </a>}
+              @if(_kiduTableModel.isDeleteButton){
+              <a (click)="openModal()">
+                <img src="/assets/img/icons8-delete.svg" aria-hidden="true">
+              </a>
+              }
+            </div>
+          </td>
+
+
+          }
+
+        </tr>
+
+
+
+
+
+
+      </tbody>
+
+    </table>
+
   </div>
 </div>
-
-<br>
-<div *ngIf="rows">
-
-  <table   id="dtTable"  class="table-striped table-responsive table-bordered  table mat-elevation-z8">
-    <thead>
-      <tr>
-        <th *ngFor="let disCol of tableColumns let colIndex = index;">{{ disCol.header }}</th>
-  <th >Actions</th>
-      </tr>
-
-    </thead>
-    <tbody>
-
-
-
-<tr  *ngFor="let item of  rows  ;">
-    <td *ngFor="let  disCol of tableColumns let colIndex = index;">
-
-      <span   [innerHTML] ="item[disCol.columnDef]"  ></span>
-
-
-    </td>
-  <td>
-    <a>
-      <img src="/assets/img/edit-pencil-line-01-svgrepo-com.svg" aria-hidden="true">      
-    </a>
-    <a>
-      <img src="/assets/img/delete-svgrepo-com.svg" aria-hidden="true">      
-    </a>
-    
-  </td>
-</tr>
-
-
-
-
-
-
-    </tbody>
-
-</table>
-
-</div>
+<app-kidu-confirm-modal></app-kidu-confirm-modal>

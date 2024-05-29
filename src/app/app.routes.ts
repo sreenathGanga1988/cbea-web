@@ -32,6 +32,7 @@ import { RefundCreateComponent } from './admin-portal/claims/refund/refund-creat
 import { DeathclaimCreateComponent } from './admin-portal/claims/deathclaim/deathclaim-create/deathclaim-create.component';
 import { DirectpaysCreateComponent } from './directpays/directpays-create/directpays-create.component';
 import { DirectpaysListComponent } from './directpays/directpays-list/directpays-list.component';
+import { CategoryEditComponent } from './admin-portal/category/category-edit/category-edit.component';
 
 export const routes: Routes = [
 
@@ -73,4 +74,6 @@ export const routes: Routes = [
    { path: 'directpays-create',    component:DeathclaimCreateComponent,},
    { path: 'refunds-create',    component: CircleCreateComponent,},
 
+
+   { path: 'categories-edit/:id',    component: CategoryEditComponent,},
   ];

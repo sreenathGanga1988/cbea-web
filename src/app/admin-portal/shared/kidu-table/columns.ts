@@ -11,3 +11,11 @@ export class Column {
     Link=4,
     Right=5,
   }
+export class KiduTableModel{
+  tableColumns!: Array<Column>
+  isDeleteButton: boolean=true;
+  isEditButton: boolean=true;
+  rows: any[]| undefined;
+  StatusColumns?: Array<string>=[]
+
+}

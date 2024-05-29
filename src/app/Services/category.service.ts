@@ -6,6 +6,7 @@ import { observable, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpHelperService } from './Common/http-helper.service';
 import { ListRequest } from '../models/Common/listrequest.model';
+import { Category } from '../models/Common/category.model';
 
 
 @Injectable({
@@ -26,9 +27,8 @@ export class CategoryService {
 
   getCategoriesAsync(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
 
-    this.url = "/api_datatable/GetPageinatedDataAsync"
 
-      return this.httphelper.GetDataWithObject(this.url, this._listRequest.ReportType, searchtext, pageSize, pageNumber).pipe(map((val) => val.isSucess ? val.value : []));
+      return this.httphelper.GetDataWithObject("/api_datatable/GetPageinatedDataAsync", this._listRequest.ReportType, searchtext, pageSize, pageNumber).pipe(map((val) => val.isSucess ? val.value : []));
   }
 
   getCategories(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
@@ -39,7 +39,8 @@ export class CategoryService {
 
   }
 
-  postCategories(obj: any) {
+  postCategories(obj: Category) {
+    obj.createdByUserId=1;
     return this.httphelper.POST(this.url, obj);
   }
   putCategories(id: number, obj: any) {

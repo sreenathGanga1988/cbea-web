@@ -5,21 +5,21 @@ import { Injectable } from '@angular/core';
 })
 export class NotificationService {
 
-  // constructor(private toastr: ToastrService) { }
-   
-  // showSuccess(message, title){
-  //     this.toastr.success(message, title)
-  // }
-   
-  // showError(message, title){
-  //     this.toastr.error(message, title)
-  // }
-   
-  // showInfo(message, title){
-  //     this.toastr.info(message, title)
-  // }
-   
-  // showWarning(message, title){
-  //     this.toastr.warning(message, title)
-  // }
+  constructor() { }
+
+  showSuccess(message :string, title: string){
+      alert(message)
+  }
+
+  showError(message :string, title: string){
+    alert(message)
+}
+
+  showInfo(message :string, title: string){
+    alert(message)
+}
+
+  showWarning(message :string, title: string){
+      alert(message)
+  }
 }

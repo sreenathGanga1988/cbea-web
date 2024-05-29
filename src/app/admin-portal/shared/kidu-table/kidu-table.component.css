@@ -1,0 +1,15 @@
+a{
+  cursor: pointer;
+}
+
+.inactiveemployeeclass{
+
+  background-color: red;
+  text-align: center;
+
+}
+
+.activemeployeeclass{
+background-color: green;
+text-align: center;
+}
