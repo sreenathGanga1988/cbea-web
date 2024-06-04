@@ -33,6 +33,7 @@ import { DeathclaimCreateComponent } from './admin-portal/claims/deathclaim/deat
 import { DirectpaysCreateComponent } from './directpays/directpays-create/directpays-create.component';
 import { DirectpaysListComponent } from './directpays/directpays-list/directpays-list.component';
 import { CategoryEditComponent } from './admin-portal/category/category-edit/category-edit.component';
+import { BranchselectorComponent } from './admin-portal/branch/branchselector/branchselector.component';
 
 export const routes: Routes = [
 
@@ -76,4 +77,9 @@ export const routes: Routes = [
 
 
    { path: 'categories-edit/:id',    component: CategoryEditComponent,},
+
+   { path: 'branch-select',    component: BranchselectorComponent,},
+
+
+
   ];

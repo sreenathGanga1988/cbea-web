@@ -7,13 +7,16 @@ import { CategoryService } from '../../../Services/category.service';
 import { CustomApiResponse } from '../../../models/Common/custom-api-responseo.model';
 import { ListRequest } from '../../../models/Common/listrequest.model';
 import { FormsModule } from '@angular/forms';
-import { KiduConfirmModalComponent } from '../../shared/kidu-confirm-modal/kidu-confirm-modal.component';
+import { CommonModule } from '@angular/common';
+import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
+import { NotificationService } from '../../../Services/Common/notification.service';
+
 
 
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [TitleBarComponent,  KiduTableComponent, FormsModule],
+  imports: [TitleBarComponent, CommonModule, KiduTableComponent, KiduConfirmModalComponent,FormsModule],
   templateUrl: './category-list.component.html',
   styleUrl: './category-list.component.css'
 })
@@ -22,12 +25,13 @@ export class CategoryListComponent {
   response!: CustomApiResponse;
   Items!: any[];
 
-  constructor(private router: Router, private categoryService: CategoryService) {
+  constructor(private router: Router, private categoryService: CategoryService, private notificationService: NotificationService) {
 
 
   }
 
-
+  data = 'Are you sure you want to proceed?';
+  show = false; // Flag to control modal visibility
   _kiduTableModel: KiduTableModel = {
     tableColumns: [
       { columnDef: 'ID', header: 'Serial#', colType: CellType.Text },
@@ -37,7 +41,9 @@ export class CategoryListComponent {
     isDeleteButton: true,
     isEditButton: true,
     rows: [{}],
-    StatusColumns:["IsActive"]
+    StatusColumns:["IsActive"],
+    deleteconfirmationmessage: 'Are you sure you want to delete this category?'
+
 
   };
   ngOnInit(): void {
@@ -69,8 +75,6 @@ export class CategoryListComponent {
   }
 
   GetItems(searchtext: string) {
-
-
     this.categoryService.getCategoriesAsync(searchtext, 0, 0).subscribe({
       next: (res) => {
 
@@ -78,17 +82,6 @@ export class CategoryListComponent {
           this._kiduTableModel.rows = res.rowData;
         }
         console.log(this.Items)
-        // this.response = res;
-        // alert("Hi")
-        // if (this.response.isSucess === true) {
-
-
-        //   console.log(res);
-
-        // }
-        // else {
-        //   alert(this.response.error);
-        // }
 
       },
       error: (res) => {
@@ -96,4 +89,48 @@ export class CategoryListComponent {
       }
     })
   }
+
+  DeleteItem(id: number) {
+
+    this.categoryService.deleteItem(id).subscribe({
+      next: (res) => {
+        if (res.isSucess) {
+          this.notificationService.showSuccess('Successfully deleted Category!!',"Deleted");
+          this.GetItems("");
+        }
+        else {
+
+          this.notificationService.showError('Failed to Delete Category :' + res.error,"Error")
+
+        }
+
+      },
+      error: (res) => {
+
+      }
+    })
+  }
+
+
+  openModal() {
+    this.show = true;
+  }
+
+  closeModal() {
+    this.show = false;
+  }
+
+  handleConfirmation(obj: any) {
+
+    if (obj[0]==true) {
+
+      this. DeleteItem(obj[1].ID)
+      // Handle confirmation logic here
+    } else {
+      console.log('Cancelled!');
+      // Handle cancellation logic here
+    }
+  }
+
+
 }

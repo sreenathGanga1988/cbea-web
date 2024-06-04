@@ -16,6 +16,7 @@ export class KiduTableModel{
   isDeleteButton: boolean=true;
   isEditButton: boolean=true;
   rows: any[]| undefined;
-  StatusColumns?: Array<string>=[]
+  StatusColumns?: Array<string>=[];
+   deleteconfirmationmessage:string="";
 
 }

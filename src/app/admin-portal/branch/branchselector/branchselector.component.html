@@ -1,0 +1,10 @@
+<!--
+<app-kidu-confirm-modal #confirmModal [data]="data" (confirmed)="handleConfirmation($event)"></app-kidu-confirm-modal>
+
+<button type="button" class="btn btn-primary" (click)="openConfirmBox()">Confirm Action</button> -->
+
+
+
+
+<app-kidu-confirm-modal #confirmBox [data]="data" (confirmed)="handleConfirmation($event)" (visibilityChange)="handleVisibilityChange($event)"></app-kidu-confirm-modal>
+<button type="button" class="btn btn-primary" (click)="openConfirmBox()">Confirm Action</button>

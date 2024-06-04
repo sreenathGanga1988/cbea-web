@@ -1,4 +1,6 @@
+
 <br>
+<app-kidu-confirm-modal #confirmBox [data]="_kiduTableModel.deleteconfirmationmessage" (confirmed)="handleConfirmation($event)" (visibilityChange)="handleVisibilityChange($event)"></app-kidu-confirm-modal>
 <div class=" m-3">
   <div class="row">
     <div class="col-12 mx-auto">
@@ -60,11 +62,11 @@
           <td>
             <div style="max-width: 100px;">
               @if(_kiduTableModel.isEditButton){
-              <a (click)="EditClicked(item)">
+              <a class="kidueditbtn" (click)="EditClicked(item)">
                 <img src="/assets/img/edit-pencil-line-01-svgrepo-com.svg" aria-hidden="true">
               </a>}
               @if(_kiduTableModel.isDeleteButton){
-              <a (click)="openModal()">
+              <a (click)="openConfirmBox(item)">
                 <img src="/assets/img/icons8-delete.svg" aria-hidden="true">
               </a>
               }
@@ -87,4 +89,6 @@
 
   </div>
 </div>
-<app-kidu-confirm-modal></app-kidu-confirm-modal>
+
+
+
