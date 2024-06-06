@@ -1,4 +1,4 @@
-<app-top-nav></app-top-nav>
+<!-- <app-top-nav></app-top-nav> -->
 
 
 <div class="container-fluid">
@@ -17,7 +17,7 @@
           <li>
             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Settings</span> </a>
-            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+            <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
               <li class="w-100">
                 <a [routerLink]="['/categories']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">Category</span></a>
@@ -49,52 +49,86 @@
                 <a [routerLink]="['/User']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">User</span></a>
               </li>
-              <li>
-                <a [routerLink]="['/Member']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Member</span></a>
+
+
+
+             <li>
+
               </li>
 
+            </ul>
+          </li>
+
+          <li>
+            <a href="#subcontribute" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-wallet-fill"></i> <span class="ms-1 d-none d-sm-inline">Contributions</span></a>
+            <ul class="collapse nav flex-column ms-1" id="subcontribute" data-bs-parent="#menu">
+              <li class="w-100">
+                <a [routerLink]="['/Member']" class="nav-link px-0"> <span
+                  class="d-none d-sm-inline">Member</span></a>
+
+              </li>
               <li>
-                <a [routerLink]="['/DailyNews']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Daily News</span></a>
+                <a [routerLink]="['/directpays']" class="nav-link px-0"> <span
+                  class="d-none d-sm-inline">Monthly Contributions</span></a>
+              </li>
+              <li>
+                <a [routerLink]="['/directpays']" class="nav-link px-0"> <span
+                  class="d-none d-sm-inline">Direct Pays</span></a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#submenuclaim" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Claims</span></a>
+            <ul class="collapse nav flex-column ms-1" id="submenuclaim" data-bs-parent="#menu">
+              <li class="w-100">
+                <a [routerLink]="['/refunds']" class="nav-link px-0"> <span
+                  class="d-none d-sm-inline">Refunds</span></a>
+              </li>
+              <li>
+                <a [routerLink]="['/deathclaims']" class="nav-link px-0"> <span
+                  class="d-none d-sm-inline">Death Claims</span></a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="#submenucms" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-file-image red"></i> <span class="ms-1 d-none d-sm-inline">CMS</span></a>
+            <ul class="collapse nav flex-column ms-1" id="submenucms" data-bs-parent="#menu">
+              <li class="w-100">
+
+
+                  <a [routerLink]="['/MainPage']" class="nav-link px-0"> <span
+                      class="d-none d-sm-inline">Main Page</span></a>
+
+
               </li>
               <li>
                 <a [routerLink]="['/Quotes']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Quotes</span></a>
+                  class="d-none d-sm-inline">Quotes</span></a>
+              </li>
+              <li>
+                <a [routerLink]="['/DailyNews']" class="nav-link px-0"> <span
+                  class="d-none d-sm-inline">Daily News</span></a>
               </li>
               <li>
                 <a [routerLink]="['/managingcomitee']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">Managing Comitee</span></a>
               </li>
+
               <li>
-                <a [routerLink]="['/MainPage']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Main Page</span></a>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
               </li>
               <li>
-                <a [routerLink]="['/refunds']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Refunds</span></a>
-              </li>
-              <li>
-                <a [routerLink]="['/deathclaims']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Death Claims</span></a>
-              </li>
-              <li>
-                <a [routerLink]="['/directpays']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Direct Pays</span></a>
-              </li>
-              <li>
-                <a [routerLink]="['/MainPage']" class="nav-link px-0"> <span
-                    class="d-none d-sm-inline">Main Page</span></a>
+                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 2</a>
               </li>
             </ul>
           </li>
           <li>
-            <a href="#" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Orders</span></a>
-          </li>
-          <li>
-            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-              <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Bootstrap</span></a>
+            <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+              <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Reports</span></a>
             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
               <li class="w-100">
                 <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Item</span> 1</a>
@@ -104,6 +138,9 @@
               </li>
             </ul>
           </li>
+
+
+
           <li>
             <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
               <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
@@ -132,7 +169,7 @@
           <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
             id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
             <img src="https://github.com/mdo.png" alt="hugenerd" width="30" height="30" class="rounded-circle">
-            <span class="d-none d-sm-inline mx-1">loser</span>
+            <span class="d-none d-sm-inline mx-1">Sree</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
             <li><a class="dropdown-item" href="#">New project...</a></li>

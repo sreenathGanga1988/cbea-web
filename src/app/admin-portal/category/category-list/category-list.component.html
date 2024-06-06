@@ -3,22 +3,3 @@
 
 <app-kidu-table  [_kiduTableModel]="_kiduTableModel" (SearchTextfun)="GlobalSearch($event)"    (EditButtonClickfun)="EditButtonClicked($event)"  (ConfirmActionFun)="handleConfirmation($event)"
 ></app-kidu-table>
-<button type="button" class="btn btn-primary" (click)="openModal()">Confirm Action</button>
-
-<div class="modal fade" *ngIf="show" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="myModalLabel">Confirmation</h5>
-        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
-      </div>
-      <div class="modal-body">
-        <p>{{ data }}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-outline-secondary" (click)="closeModal()">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="handleConfirmation(true)">Confirm</button>
-      </div>
-    </div>
-  </div>
-</div>
