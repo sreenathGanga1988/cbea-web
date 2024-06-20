@@ -34,6 +34,9 @@ import { DirectpaysCreateComponent } from './directpays/directpays-create/direct
 import { DirectpaysListComponent } from './directpays/directpays-list/directpays-list.component';
 import { CategoryEditComponent } from './admin-portal/category/category-edit/category-edit.component';
 import { BranchselectorComponent } from './admin-portal/branch/branchselector/branchselector.component';
+import { Component } from '@angular/core';
+import { StateEditComponent } from './admin-portal/state/state-edit/state-edit.component';
+import { DesignationEditComponent } from './admin-portal/designation/designation-edit/designation-edit.component';
 
 export const routes: Routes = [
 
@@ -77,8 +80,10 @@ export const routes: Routes = [
 
 
    { path: 'categories-edit/:id',    component: CategoryEditComponent,},
+   { path: 'states-edit/:id',    component: StateEditComponent,},
 
    { path: 'branch-select',    component: BranchselectorComponent,},
+   { path: 'designations-edit/:id',   component:DesignationEditComponent,},
 
 
 

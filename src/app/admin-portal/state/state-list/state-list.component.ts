@@ -23,7 +23,7 @@ export class StateListComponent {
   headingText="State";
   Items!:any[];
 
-  constructor(private router: Router, private categoryService:StateService, private notificationService: NotificationService) {
+  constructor(private router: Router, private stateService:StateService, private notificationService: NotificationService) {
 
 
   }
@@ -54,10 +54,10 @@ export class StateListComponent {
 
   }
 
-    handleCreateNewItem() {
+  handleCreateNewItem() {
 
-      this.router.navigate(['/states-create']);
-    };
+    this.router.navigate(['/states-create']);
+  };
     EditButtonClicked(item: any) {
 
       this.router.navigate(['/states-edit', item.ID]);
@@ -69,7 +69,7 @@ export class StateListComponent {
 
    
     GetItems(searchtext: string) {
-      this.categoryService.getCategoriesAsync(searchtext, 0, 0).subscribe({
+      this.stateService.getStateAsync(searchtext, 0, 0).subscribe({
         next: (res) => {
   
           if (res) {
@@ -82,6 +82,45 @@ export class StateListComponent {
           alert("Erro while Adding")
         }
       })
+    }
+    DeleteItem(id: number) {
+
+      this.stateService.deleteState(id).subscribe({
+        next: (res) => {
+          if (res.isSucess) {
+            this.notificationService.showSuccess('Successfully deleted state!!',"Deleted");
+            this.GetItems("");
+          }
+          else {
+  
+            this.notificationService.showError('Failed to Delete state :' + res.error,"Error")
+  
+          }
+  
+        },
+        error: (res) => {
+  
+        }
+      })
+    }
+    openModal() {
+      this.show = true;
+    }
+  
+    closeModal() {
+      this.show = false;
+    }
+  
+    handleConfirmation(obj: any) {
+
+      if (obj[0]==true) {
+  
+        this. DeleteItem(obj[1].ID)
+        // Handle confirmation logic here
+      } else {
+        console.log('Cancelled!');
+        // Handle cancellation logic here
+      }
     }
   
 }

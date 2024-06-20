@@ -27,7 +27,7 @@ export class StateService {
 
   }
 
-  getCategoriesAsync(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
+  getStateAsync(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
     return this.httphelper.GetDataWithObject("/api_datatable/GetPageinatedDataAsync", this._listRequest.ReportType, searchtext, pageSize, pageNumber).pipe(map((val) => val.isSucess ? val.value : []));
   }
   

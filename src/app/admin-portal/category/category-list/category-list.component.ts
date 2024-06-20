@@ -71,6 +71,8 @@ export class CategoryListComponent {
   }
 
   GlobalSearch(sarchtxt: string) {
+    console.log("search text--->",sarchtxt);
+    
     this.GetItems(sarchtxt)
   }
 

@@ -1,55 +1,73 @@
-import { Component } from '@angular/core';
+import { Component,EventEmitter } from '@angular/core';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { KiduTableComponent } from '../../shared/kidu-table/kidu-table.component';
 import { CustomApiResponse } from '../../../models/Common/custom-api-responseo.model';
 import { UserTypeService } from '../../../Services/usertype.service';
 import { Router } from '@angular/router';
-import { CellType, Column } from '../../shared/kidu-table/columns';
+import { CellType, Column, KiduTableModel } from '../../shared/kidu-table/columns';
+import { CommonModule } from '@angular/common';
+import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
+import { FormsModule } from '@angular/forms';
+import { NotificationService } from '../../../Services/Common/notification.service';
+
+
 
 @Component({
   selector: 'app-usertype-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent],
+  imports: [TitleBarComponent,KiduTableComponent,CommonModule,KiduConfirmModalComponent,FormsModule],
   templateUrl: './usertype-list.component.html',
   styleUrl: './usertype-list.component.css'
 })
 export class UsertypeListComponent {
+
   headingText="User Types";
   response!: CustomApiResponse;
   Items!:any[];
-  constructor(private router: Router,private categoryService: UserTypeService ) {
+  constructor(private router: Router,private usertypeService: UserTypeService,private notitficationService:NotificationService) {
 
 
   }
-  tableColumns: Array<Column> = [
+  data = 'Are you sure you want to proceed?';
+  show = false; // Flag to control modal visibility
+  _kiduTableModel: KiduTableModel = {
+  tableColumns:  [
     {columnDef:'id',header:'Serial#',colType:CellType.Text}
     ,{columnDef:'abbreviation',header:'Abbreviation',colType:CellType.Text}
 
-    ,{columnDef:'description',header:'Description',colType:CellType.Button}
-    ,{columnDef:'isActive',header:'Status',colType:CellType.Status}
+    ,{columnDef:'description',header:'Description',colType:CellType.Button}],
+   // ,{columnDef:'isActive',header:'Status',colType:CellType.Status}],
     // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button}
-  ];
+    isDeleteButton: true,
+    isEditButton: true,
+    rows: [{}],
+    StatusColumns:[""],
+    deleteconfirmationmessage: 'Are you sure you want to delete this Usertype?'
+  };
     handleCreateNewItem() {
 
       this.router.navigate(['/usertypes-create']);
     }
     ngOnInit(): void {
+      this.configureKidutable();
 
-
-      this.GetItems();
+      this.GetItems("");
     }
-  GetItems() {
-    this.categoryService.getUserTypes().subscribe({
-      next: (res) => {
-        this.response = res;
-        if (this.response.isSucess == true) {
-          this.Items=this.response.value;
-          console.log(res);
+  configureKidutable() {
+   // throw new Error('Method not implemented.');
+  }
+  GlobalSearch(sarchtxt: string) {
+   this.GetItems(sarchtxt)
 
+    }
+  GetItems(searchtext: string) {
+    this.usertypeService.getUserTypeAsync(searchtext, 0, 0).subscribe({
+      next: (res) => {
+
+        if (res) {
+          this._kiduTableModel.rows = res.rowData;
         }
-        else {
-          alert(this.response.error);
-        }
+        console.log(this.Items)
 
       },
       error: (res) => {

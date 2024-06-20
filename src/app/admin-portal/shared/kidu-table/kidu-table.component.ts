@@ -39,7 +39,8 @@ export class KiduTableComponent {
   }
 
 
-  sarchtxt: string = "";
+  //sarchtxt: string = "";
+  sarchtxt:any;
 
 
   @ViewChild('confirmBox') confirmBox!: KiduConfirmModalComponent;
@@ -50,9 +51,9 @@ export class KiduTableComponent {
   @Output() EditButtonClickfun: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() ConfirmActionFun: EventEmitter<any> = new EventEmitter<any>();
-  GlobalSearchfun() {
+  GlobalSearchfun(sarchtxt:string) {
 
-    this.SearchTextfun.emit(this.sarchtxt);
+   this.SearchTextfun.emit(this.sarchtxt);
   }
 
   EditClicked(item: any) {

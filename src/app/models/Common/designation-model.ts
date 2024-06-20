@@ -6,7 +6,7 @@ export class Designation implements AuditEntity {
     id!: number;
     name!: string;
     description!: string;
-
+    
     //audit
     isActive: boolean=true;
     createdByUserId!: number | null;
