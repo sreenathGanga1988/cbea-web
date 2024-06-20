@@ -1,4 +1,5 @@
-<!-- <app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
 
 
-<app-kidu-table [tableColumns]="tableColumns" [rows]="Items"></app-kidu-table> -->
+<app-kidu-table  [_kiduTableModel]="_kiduTableModel"   (SearchTextfun)="GlobalSearch($event)"    (EditButtonClickfun)="EditButtonClicked($event)"
+></app-kidu-table>

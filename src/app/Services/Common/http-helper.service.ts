@@ -9,7 +9,8 @@ import { CustomApiResponse } from '../../models/Common/custom-api-responseo.mode
 })
 export class HttpHelperService {
  //  BaseUrl: String = "https://www.cbeugjfws.co.in/api";
- BaseUrl: String = "  http://localhost:5293/api";
+ //BaseUrl: String = "  http://localhost:5293/api";
+ BaseUrl: String = "  http://sreenathganga-001-site7.jtempurl.com/api";
   //https://localhost:7157/
 
   header: HttpHeaders;

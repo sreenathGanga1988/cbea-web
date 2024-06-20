@@ -8,7 +8,7 @@ export class State implements AuditEntity {
     abbreviation!: string;
 
 
-    isActive: boolean=true;
+    isActive!: boolean;
     createdByUserId!: number | null;
     addedUser!: string;
     createdDate!: string | null;
@@ -20,7 +20,6 @@ export class State implements AuditEntity {
     deletedUser!: string;
     deletedDate!: string | null;
 
-    
-    btnString:string="";
+    btnString:string=" ";
 
 }
