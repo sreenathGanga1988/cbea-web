@@ -26,10 +26,10 @@ export class StateCreateComponent {
     modifiedDate: null,
     isDeleted: false,
     deletedByByUserId: null,
-    btnString: '',
+      btnString: '',
     addedUser: '',
     modifiedUser: '',
-   deletedUser: '',
+    deletedUser: '',
     deletedDate: null
   };
   constructor(private router: Router, private stateService: StateService, private notificationService: NotificationService) {
@@ -43,8 +43,12 @@ export class StateCreateComponent {
 
 
   onSubmit() {
+  this.newState.createdDate=new Date().toISOString();
 
 
+  this.newState.modifiedByUserId=1;
+
+  this.newState.modifiedDate=new Date().toISOString();
     this.stateService.postStates(this.newState).subscribe({
       next: (res) => {
 
