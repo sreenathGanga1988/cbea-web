@@ -15,7 +15,7 @@ import { State } from '../models/Common/state.model';
   providedIn: 'root'
 })
 export class StateService {
- 
+
   url:string="/api_State";
   _listRequest!: ListRequest;
   constructor(private httphelper: HttpHelperService) {
@@ -30,7 +30,7 @@ export class StateService {
   getStateAsync(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
     return this.httphelper.GetDataWithObject("/api_datatable/GetPageinatedDataAsync", this._listRequest.ReportType, searchtext, pageSize, pageNumber).pipe(map((val) => val.isSucess ? val.value : []));
   }
-  
+
 
 
 
@@ -38,9 +38,11 @@ export class StateService {
     return this.httphelper.GetData(this.url);
    // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
      }
-     
+
     postStates(obj:State) {
       obj.createdByUserId=1;
+
+
       return this.httphelper.POST(this.url,obj);
      }
      putStates(id:number,obj :any) {
@@ -53,6 +55,6 @@ export class StateService {
       return this.httphelper.GetData(this.url+"/"+Id);
      // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
        }
-    
+
 
 }
