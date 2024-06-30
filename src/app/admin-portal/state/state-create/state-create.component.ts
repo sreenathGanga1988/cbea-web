@@ -44,7 +44,11 @@ export class StateCreateComponent {
 
   onSubmit() {
 
+    this.newState.createdDate=new Date().toISOString();
+    this.newState.modifiedDate=new Date().toISOString();
 
+    this.newState.modifiedByUserId=1;
+    
     this.stateService.postStates(this.newState).subscribe({
       next: (res) => {
 
