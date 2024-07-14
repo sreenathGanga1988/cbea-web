@@ -33,5 +33,14 @@ export class DayquotesService {
     return this.httphelper.POST(this.url, obj);
   }
 
-  
+  putQuotes(id: number, obj: any) {
+    return this.httphelper.PUT(this.url + "/" + id, obj);
+  }
+  deleteQuote(id: number) {
+    return this.httphelper.Delete(this.url + "/" + id);
+  }
+  getQuotessById(Id: number) {
+    return this.httphelper.GetData(this.url + "/" + Id);
+    // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
+  }
 }

@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { NotificationService } from '../../../Services/Common/notification.service';
 import { State } from '../../../models/Common/state.model';
 import { StateService } from '../../../Services/state.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-state-create',
   standalone: true,
-  imports: [TitleBarComponent, FormsModule],
+  imports: [TitleBarComponent, FormsModule,CommonModule],
   templateUrl: './state-create.component.html',
   styleUrl: './state-create.component.css'
 })

@@ -5,11 +5,17 @@
   <form (ngSubmit)="onSubmit()" class="col-md-6">
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
-      <input type="text" id="name" [(ngModel)]="newState.name" name="name" class="form-control" required>
+      <input type="text" id="name" [(ngModel)]="newState.name" name="name" class="form-control" required #name="ngModel">
+      <div *ngIf="name.touched && name.invalid" class="alert alert-danger p-0">
+        <div *ngIf="name.hasError('required')" >Name is required</div>
+         </div>
     </div>
     <div class="mb-3">
       <label for="abbreviation" class="form-label">Abbreviation:</label>
-      <input type="text" id="abbreviation" [(ngModel)]="newState.abbreviation" name="abbreviation" class="form-control" required>
+      <input type="text" id="abbreviation" [(ngModel)]="newState.abbreviation" name="abbreviation" class="form-control" required #abbreviation="ngModel">
+      <div *ngIf="abbreviation.touched && abbreviation.invalid" >
+        <div *ngIf="name.hasError('required')" class="alert alert-danger p-0">Abbreviation is required</div>
+         </div>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" id="isActive" [(ngModel)]="newState.isActive" name="isActive" class="form-check-input">

@@ -1,1 +1,41 @@
-<p>circle-create works!</p>
+<!--<p>circle-create works!</p>-->
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<div class="container mt-4">
+    <h2>Create Circle</h2>
+    <form (ngSubmit)="onSubmit()" #circleCreate="ngForm" class="col-md-6">
+      
+      <div class="mb-3">
+        <label for="Code" class="form-label">Circle-Code:</label>
+        <input type="text" id="Code" [(ngModel)]="newCircle.circleCode" name="Code" class="form-control" required #Code="ngModel"/>
+        <div *ngIf="Code.touched && Code.invalid" class="alert alert-danger p-0">
+        <div *ngIf="Code.hasError('required')" >Circle-code is required</div>
+         </div>
+         
+        <div class="mb-3">
+        <label for="Abbreviation" class="form-label">Code:</label>
+        <input type="text" id="Abbreviation" [(ngModel)]="newCircle.abbreviation" name="Abbreviation" class="form-control" required #abbreviation="ngModel">
+        <div *ngIf="abbreviation.touched && abbreviation.invalid" >
+         <div *ngIf="abbreviation.hasError('required')" class="alert alert-danger p-0">Code is required</div>
+          </div> 
+        </div>
+    
+
+      <div class="mb-3">
+        <label for="Name" class="form-label">Circle Name:</label>
+        
+        <input type="text" id="Name" [(ngModel)]="newCircle.name" name="Name" class="form-control" required #Name="ngModel">
+        
+        <div *ngIf="Name.touched && abbreviation.invalid" >
+          <div *ngIf="Name.hasError('required')" class="alert alert-danger p-0">Circle-name is required</div>
+     </div> 
+     </div>
+     </div>
+    
+      <div class="mb-3 form-check">
+        <input type="checkbox" id="isActive" [(ngModel)]="newCircle.isActive" name="isActive" class="form-check-input">
+        <label for="isActive" class="form-check-label">Active</label>
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+  </div>

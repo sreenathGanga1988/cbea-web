@@ -1,4 +1,4 @@
-import { Component, OnInit, inject,EventEmitter } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { TitleBarComponent } from '../../../shared/title-bar/title-bar.component';
 import { KiduTableComponent } from '../../../shared/kidu-table/kidu-table.component';
 import { CustomApiResponse } from '../../../../models/Common/custom-api-responseo.model';
@@ -7,15 +7,15 @@ import { NotificationService } from '../../../../Services/Common/notification.se
 import { KiduConfirmModalComponent } from '../../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
 import { FormsModule } from '@angular/forms';
 import { CellType, KiduTableModel } from '../../../shared/kidu-table/columns';
-import { AuditEntity } from '../../../../models/Common/audit-entity.model';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { HttpHelperService } from '../../../../Services/Common/http-helper.service';
-import { filter } from 'rxjs';
+
+import { DayquotesService } from '../../../../Services/dayquotes.service';
+import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-dailyquotes-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,KiduConfirmModalComponent,FormsModule,HttpClientModule],
+  imports: [TitleBarComponent,KiduTableComponent,KiduConfirmModalComponent,FormsModule,CommonModule],
   templateUrl: './dailyquotes-list.component.html',
   styleUrl: './dailyquotes-list.component.css'
 })
@@ -23,9 +23,9 @@ export class DailyquotesListComponent implements OnInit {
   headingText="Quotes";
   response!: CustomApiResponse;
   Items!:any[];
-  httpclient=inject(HttpClient);
   
-  constructor(private router: Router,private notificationService: NotificationService,private httphelper:HttpHelperService ) {
+  
+  constructor(private router: Router,private notificationService: NotificationService,private dayQuoteservice:DayquotesService ) {
 
   }
   data = 'Are you sure you want to proceed?';
@@ -64,7 +64,12 @@ export class DailyquotesListComponent implements OnInit {
    handleCreateNewItem() {
  
      this.router.navigate(['/dailyquotes-create']);
-   }
+   };
+   EditButtonClicked(item: any) {
+
+    this.router.navigate(['/dailyquotes-edit', item.Id]);
+
+  }
   GlobalSearch(sarchtxt: string) {
     console.log("search text--->",sarchtxt);
     this.getData(sarchtxt)
@@ -72,27 +77,60 @@ export class DailyquotesListComponent implements OnInit {
    
   }
   getData(searchtext:string){
-    this.httpclient.get('http://sreenathganga-001-site7.jtempurl.com/API/api_DataTable/GetPageinatedDataAsync?ReportType=dayquote&SearchText=&PageSize=50&PageNumber=0')
-    
-   .subscribe({
-    
-      next: (res:any) => {
+    this.dayQuoteservice.getQuoteAsync(searchtext, 0, 0).subscribe({
+      next: (res) => {
 
         if (res) {
-          this._kiduTableModel.rows = res.value.rowData;
-       
-        
-           }
-       },
+          this._kiduTableModel.rows = res.rowData;
+        }
+        console.log(this.Items)
+
+      },
       error: (res) => {
         alert("Error while Adding")
       }
-      
     })
-     
-    
+  }
+  handleConfirmation(obj: any) {
 
-  } 
+    if (obj[0]==true) {
+
+      this. DeleteItem(obj[1].Id)
+      // Handle confirmation logic here
+    } else {
+      console.log('Cancelled!');
+      // Handle cancellation logic here
+    }
+  }
+  DeleteItem(id:number) {
+   
+    this.dayQuoteservice.deleteQuote(id).subscribe({
+      next: (res) => {
+        if (res.isSucess) {
+          this.notificationService.showSuccess('Successfully deleted Quotes!!',"Deleted");
+          this.getData("");
+        }
+        else {
+
+          this.notificationService.showError('Failed to Delete Quotes:' + res.error,"Error")
+
+        }
+
+      },
+      error: (res) => {
+
+      }
+    })
+  }
+  openModal() {
+    this.show = true;
+  }
+
+  closeModal() {
+    this.show = false;
+  }
 
   }
+
+  
  

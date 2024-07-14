@@ -4,13 +4,14 @@ import { Route, Router } from '@angular/router';
 import { NotificationService } from '../../../../Services/Common/notification.service';
 import { Title } from '@angular/platform-browser';
 import { TitleBarComponent } from '../../../shared/title-bar/title-bar.component';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule } from '@angular/forms';
 import { DayquotesService } from '../../../../Services/dayquotes.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-dailyquotes-create',
   standalone: true,
-  imports: [TitleBarComponent,FormsModule],
+  imports: [TitleBarComponent,FormsModule,CommonModule],
   templateUrl: './dailyquotes-create.component.html',
   styleUrl: './dailyquotes-create.component.css'
 })
@@ -35,14 +36,17 @@ export class DailyquotesCreateComponent {
     deletedUser: '',
     deletedDate: null
   };
-constructor(private router:Router,private notification:NotificationService,private dayquotes:DayquotesService){
+  
 
+constructor(private router:Router,private notification:NotificationService,private dayquotes:DayquotesService){
+ 
 }
+
 onSubmit() {
 
-this.newQuotes.createdDate=new Date().toISOString();
-this.newQuotes.modifiedDate=new Date().toISOString();
-this.newQuotes.modifiedByUserId=1;
+//this.newQuotes.createdDate=new Date().toISOString();
+//this.newQuotes.modifiedDate=new Date().toISOString();
+//this.newQuotes.modifiedByUserId=1;
   
 
 this.dayquotes.postQuotes(this.newQuotes).subscribe({

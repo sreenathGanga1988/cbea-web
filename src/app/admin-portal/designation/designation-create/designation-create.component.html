@@ -6,11 +6,17 @@
   <form (ngSubmit)="onSubmit()" class="col-md-6">
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
-      <input type="text" id="name" [(ngModel)]="newDesignation.name" name="name" class="form-control" required>
+      <input type="text" id="name" [(ngModel)]="newDesignation.name" name="name" class="form-control" required #name="ngModel">
+      <div *ngIf="name.touched && name.invalid" class="alert alert-danger p-0">
+        <div *ngIf="name.hasError('required')" >Name is required</div>
+         </div>
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description:</label>
-      <input type="text" id="description" [(ngModel)]="newDesignation.description" name="description" class="form-control" required>
+      <input type="text" id="description" [(ngModel)]="newDesignation.description" name="description" class="form-control" required #description="ngModel">
+      <div *ngIf="description.touched && description.invalid" class="alert alert-danger p-0">
+        <div *ngIf="description.hasError('required')" > Description is required</div>
+         </div>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" id="isActive" [(ngModel)]="newDesignation.isActive" name="isActive" class="form-check-input">

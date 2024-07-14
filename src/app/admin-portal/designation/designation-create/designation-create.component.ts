@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
 import { DesignationService } from '../../../Services/designation-service';
 import { NotificationService } from '../../../Services/Common/notification.service';
 import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-designation-create',
   standalone: true,
-  imports: [TitleBarComponent,FormsModule,KiduConfirmModalComponent],
+  imports: [TitleBarComponent,FormsModule,KiduConfirmModalComponent,CommonModule],
   templateUrl: './designation-create.component.html',
   styleUrl: './designation-create.component.css'
 })

@@ -26,6 +26,6 @@ export class Circle implements AuditEntity {
     deletedDate!: string | null;
 
 
-    btnString:string="";
+   // btnString:string="";
 
 }

@@ -37,6 +37,8 @@ import { BranchselectorComponent } from './admin-portal/branch/branchselector/br
 import { Component } from '@angular/core';
 import { StateEditComponent } from './admin-portal/state/state-edit/state-edit.component';
 import { DesignationEditComponent } from './admin-portal/designation/designation-edit/designation-edit.component';
+import { DailyquotesEditComponent } from './admin-portal/cms/dailyquotes/dailyquotes-edit/dailyquotes-edit.component';
+import { CircleEditComponent } from './admin-portal/circle/circle-edit/circle-edit.component';
 
 export const routes: Routes = [
 
@@ -47,8 +49,8 @@ export const routes: Routes = [
    { path: 'usertypes',    component: UsertypeListComponent,},
    { path: 'status',    component: StatusListComponent,},
    { path: 'designation',    component: DesignationListComponent,},
-   { path: 'circles',    component: CircleListComponent,},
-   { path: 'branch',    component: BranchListComponent,},
+   { path: 'Circles',    component: CircleListComponent,},
+   { path: 'Branches',    component:BranchListComponent,},
    { path: 'user',    component: UserListComponent,},
    { path: 'member',    component: MemberListComponent,},
    { path: 'dailyquotes',    component: DailyquotesListComponent,},
@@ -85,6 +87,7 @@ export const routes: Routes = [
    { path: 'branch-select',    component: BranchselectorComponent,},
    { path: 'designations-edit/:id',   component:DesignationEditComponent,},
 
-
+   { path: 'dailyquotes-edit/:id', component:DailyquotesEditComponent,},
+   { path:  'Circles-edit/:id',component:CircleEditComponent}
 
   ];

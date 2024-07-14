@@ -1,1 +1,25 @@
-<p>circle-edit works!</p>
+<!---<p>circle-edit works!</p>--->
+<app-title-bar [headingText]="headingText" (createNewItem)="handleCreateNewItem()"></app-title-bar>
+
+<div class="container mt-4">
+    <h2></h2>
+    <form (ngSubmit)="onSubmit()" class="col-md-6">
+      <div class="mb-3">
+        <label for="name" class="form-label">Circle-Code:</label>
+        <input type="text" id="name" name="name"   [(ngModel)]="newCircle.circleCode"class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="abbreviation"  class="form-label">Code:</label>
+        <input type="text" id="abbreviation" [(ngModel)]="newCircle.abbreviation"  name="abbreviation" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="Name" class="form-label">Circle Name:</label>
+         <input type="text" id="Name" [(ngModel)]="newCircle.name" name="Name" class="form-control" required >
+       </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" id="isActive"  [(ngModel)]="newCircle.isActive" name="isActive" class="form-check-input">
+        <label for="isActive" class="form-check-label">Active</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+  </div>

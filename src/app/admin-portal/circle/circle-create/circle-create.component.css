@@ -1,0 +1,9 @@
+.alert-danger{
+  
+    max-height: 40px;
+    font-size: small;
+    height: 40%;
+    top:50%;
+    color: red;
+    
+ }

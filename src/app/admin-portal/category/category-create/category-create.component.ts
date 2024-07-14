@@ -5,11 +5,12 @@ import { CategoryService } from '../../../Services/category.service';
 import { Category } from '../../../models/Common/category.model';
 import { FormsModule } from '@angular/forms';
 import { NotificationService } from '../../../Services/Common/notification.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-category-create',
   standalone: true,
-  imports: [TitleBarComponent, FormsModule],
+  imports: [TitleBarComponent, FormsModule,CommonModule],
   templateUrl: './category-create.component.html',
   styleUrl: './category-create.component.css'
 })
@@ -33,6 +34,7 @@ export class CategoryCreateComponent {
     deletedUser: '',
     deletedDate: null
   };
+abbreviation: any;
   constructor(private router: Router, private categoryService: CategoryService, private notificationService: NotificationService) {
 
 
