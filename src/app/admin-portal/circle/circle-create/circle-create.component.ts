@@ -29,9 +29,9 @@ this.router.navigate(['/circles-create']);
   
  
   
-  stateId:0,
+  //stateId:0,
   
-  stateName: '',
+ // stateName: '',
 
   //audit
   isActive: false,

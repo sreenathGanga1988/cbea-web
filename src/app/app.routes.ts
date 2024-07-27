@@ -52,7 +52,7 @@ export const routes: Routes = [
    { path: 'Circles',    component: CircleListComponent,},
    { path: 'Branches',    component:BranchListComponent,},
    { path: 'user',    component: UserListComponent,},
-   { path: 'member',    component: MemberListComponent,},
+   { path: 'Member',    component: MemberListComponent,},
    { path: 'dailyquotes',    component: DailyquotesListComponent,},
    { path: 'newsitem',    component: NewsListComponent,},
    { path: 'mainPage',    component: MainpageListComponent,},

@@ -6,6 +6,7 @@ import { observable, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpHelperService } from './Common/http-helper.service';
 import { ListRequest } from '../models/Common/listrequest.model';
+import { Circle } from '../models/Common/circle.model';
 
 
 @Injectable({
@@ -35,7 +36,7 @@ export class CircleService {
       return this.httphelper.GetData(this.url+"/"+Id);
      // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
        }
-    postCircles(obj :any) {
+    postCircles(obj :Circle) {
       obj.createdByUserId=1;
        return this.httphelper.POST(this.url,obj);
      }
