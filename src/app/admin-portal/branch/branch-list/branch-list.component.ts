@@ -45,7 +45,7 @@ export class BranchListComponent {
       { columnDef: 'CircleName', header: 'Circle-Name', colType: CellType.Text },
       { columnDef: 'StateName', header: 'State-Name', colType: CellType.Text },
       { columnDef: 'StateCode', header: 'State-Code', colType: CellType.Text },
-      { columnDef: 'Status', header: 'Status', colType: CellType.Text },
+     // { columnDef: 'Status', header: 'Status', colType: CellType.Text },
       { columnDef: 'IsActive', header: 'Status', colType: CellType.Status }],
     isDeleteButton: false,
     isEditButton: true,
@@ -73,14 +73,16 @@ handleCreateNewItem() {
   //throw new Error('Method not implemented.');
   }
   GetItems(searchtext: string) {
+    console.log("get data-------------");
+    
    // throw new Error('Method not implemented.');
-   this.branchService.getBranchAsync(searchtext,0,0).subscribe({
+   this.branchService.getBranchAsync(searchtext,1,10).subscribe({
     next: (res) => {
 
       if (res) {
         this._kiduTableModel.rows = res.rowData;
       }
-      console.log(this.Items)
+      console.log("res----",res)
 
     },
     error: (res) => {
