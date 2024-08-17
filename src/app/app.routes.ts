@@ -39,6 +39,7 @@ import { StateEditComponent } from './admin-portal/state/state-edit/state-edit.c
 import { DesignationEditComponent } from './admin-portal/designation/designation-edit/designation-edit.component';
 import { DailyquotesEditComponent } from './admin-portal/cms/dailyquotes/dailyquotes-edit/dailyquotes-edit.component';
 import { CircleEditComponent } from './admin-portal/circle/circle-edit/circle-edit.component';
+import { BranchEditComponent } from './admin-portal/branch/branch-edit/branch-edit.component';
 
 export const routes: Routes = [
 
@@ -83,7 +84,7 @@ export const routes: Routes = [
 
    { path: 'categories-edit/:id',    component: CategoryEditComponent,},
    { path: 'states-edit/:id',    component: StateEditComponent,},
-
+   { path: 'branch-edit/:id',    component: BranchEditComponent,},
    { path: 'branch-select',    component: BranchselectorComponent,},
    { path: 'designations-edit/:id',   component:DesignationEditComponent,},
 

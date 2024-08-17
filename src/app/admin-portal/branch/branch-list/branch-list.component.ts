@@ -11,6 +11,7 @@ import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-moda
 import { FormsModule } from '@angular/forms';
 
 
+
 @Component({
   selector: 'app-branch-list',
   standalone: true,
@@ -21,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 export class BranchListComponent {
 
 
+  p:number=1;
   headingText="Branches";
   response!: CustomApiResponse;
   Items!:any[];
@@ -37,14 +39,14 @@ export class BranchListComponent {
       { columnDef: 'CircleID', header: 'CircleID', colType: CellType.Text },
       { columnDef: 'StateID', header: 'StateID', colType: CellType.Text },
       { columnDef: 'Name', header: 'Name', colType: CellType.Text },
-      { columnDef: 'Address1', header: 'Address1', colType: CellType.Text },
-      { columnDef: 'Address2', header: 'Address2', colType: CellType.Text },
-      { columnDef: 'Address3', header: 'Address3', colType: CellType.Text },
+    //  { columnDef: 'Address1', header: 'Address1', colType: CellType.Text },
+    //  { columnDef: 'Address2', header: 'Address2', colType: CellType.Text },
+      //{ columnDef: 'Address3', header: 'Address3', colType: CellType.Text },
       { columnDef: 'District', header: 'District', colType: CellType.Text },
-      { columnDef: 'CircleCode', header: 'Circle-Code', colType: CellType.Text },
-      { columnDef: 'CircleName', header: 'Circle-Name', colType: CellType.Text },
-      { columnDef: 'StateName', header: 'State-Name', colType: CellType.Text },
-      { columnDef: 'StateCode', header: 'State-Code', colType: CellType.Text },
+     // { columnDef: 'CircleCode', header: 'Circle-Code', colType: CellType.Text },
+      { columnDef: 'CircleName', header: 'Circle', colType: CellType.Text },
+      { columnDef: 'StateName', header: 'State', colType: CellType.Text },
+    //  { columnDef: 'StateCode', header: 'State-Code', colType: CellType.Text },
      // { columnDef: 'Status', header: 'Status', colType: CellType.Text },
       { columnDef: 'IsActive', header: 'Status', colType: CellType.Status }],
     isDeleteButton: false,
@@ -66,12 +68,21 @@ handleCreateNewItem() {
   configureKidutable() {
    
   }
+  EditButtonClicked(item: any) {
+   // throw new Error('Method not implemented.');
+   this.router.navigate(['/branch-edit', item.ID]);
+    }
   GlobalSearch(sarchtxt: string) {
     console.log("search text--->",sarchtxt);
       
       this.GetItems(sarchtxt)
   //throw new Error('Method not implemented.');
   }
+  pageChangeEvent(event: number){
+    this.p=event;
+   // this.GetItems("");
+    
+}
   GetItems(searchtext: string) {
     console.log("get data-------------");
     

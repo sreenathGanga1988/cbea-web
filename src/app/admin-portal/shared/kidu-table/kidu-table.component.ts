@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild, output } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -51,6 +51,8 @@ export class KiduTableComponent {
   @Output() EditButtonClickfun: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() ConfirmActionFun: EventEmitter<any> = new EventEmitter<any>();
+  
+  @Output() pageChange:EventEmitter<number>=new EventEmitter<any>();
   GlobalSearchfun(sarchtxt:string) {
 
    this.SearchTextfun.emit(this.sarchtxt);
