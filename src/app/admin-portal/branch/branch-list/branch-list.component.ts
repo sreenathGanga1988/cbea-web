@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { BranchService } from '../../../Services/branch.service ';
 import { CustomApiResponse } from '../../../models/Common/custom-api-responseo.model';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { KiduTableComponent } from '../../shared/kidu-table/kidu-table.component';
 import { CellType, Column, KiduTableModel } from '../../shared/kidu-table/columns';
@@ -9,27 +9,26 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 import { CommonModule } from '@angular/common';
 import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
 import { FormsModule } from '@angular/forms';
+import { Injectable } from '@angular/core';
+
 
 
 
 @Component({
   selector: 'app-branch-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,CommonModule,KiduConfirmModalComponent,FormsModule],
+  imports: [TitleBarComponent,KiduTableComponent,CommonModule,KiduConfirmModalComponent,FormsModule,RouterModule],
   templateUrl: './branch-list.component.html',
   styleUrl: './branch-list.component.css'
-})
+ })
+
 export class BranchListComponent {
-
-
-  p:number=1;
-  headingText="Branches";
+// p:number=1; 
+headingText="Branches";
   response!: CustomApiResponse;
   Items!:any[];
-  constructor(private router: Router,private branchService: BranchService, private notificationServices:NotificationService ) {
-
-
-  }
+  constructor(private router: Router,private branchService: BranchService, private notificationServices:NotificationService) {
+ }
   data = 'Are you sure you want to proceed?';
   show = false; // Flag to control modal visibility
   _kiduTableModel: KiduTableModel = {
@@ -79,7 +78,7 @@ handleCreateNewItem() {
   //throw new Error('Method not implemented.');
   }
   pageChangeEvent(event: number){
-    this.p=event;
+   // this.p=event;
    // this.GetItems("");
     
 }
