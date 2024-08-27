@@ -20,3 +20,11 @@ export class KiduTableModel{
    deleteconfirmationmessage:string="";
 
 }
+
+export class KiduDataPickerModel{
+  tableColumns!: Array<Column>
+  rows: any[]| undefined;
+  TopTittle!: string;
+
+}
+

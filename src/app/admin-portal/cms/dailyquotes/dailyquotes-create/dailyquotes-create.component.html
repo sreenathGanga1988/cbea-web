@@ -20,9 +20,10 @@
       </div>
       <div class="mb-3">
         <label for="monthname" class="form-label">Month Name:</label>
-      <!---- <input type="text" id="monthname" [(ngModel)]="newQuotes.monthname" name="monthname" class="form-control" required min="1" max="12">-->
-    <select name="monthname" id="monthname" [(ngModel)]="newQuotes.monthname" required #monthname="ngModel">
-      <option value="January">January</option>
+
+
+  <select [(ngModel)]="newQuotes.monthname" required #monthname="ngModel" name="monthname" id="monthname" class="form-select" >
+  <option value="January">January</option>
   <option value="February">February</option>
   <option value="March">March</option>
   <option value="April">April</option>
@@ -40,7 +41,7 @@
     <div *ngIf="monthname.touched && monthname.invalid" class="alert alert-danger p-0">
       <div *ngIf="monthname.hasError('required')" >Month name is required</div>
        </div>
-    
+
     </div>
 
     <div class="mb-3">
