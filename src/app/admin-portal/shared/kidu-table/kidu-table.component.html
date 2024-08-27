@@ -14,7 +14,7 @@
   <br>
   <div *ngIf="_kiduTableModel.rows">
 
-    <table id="dtTable" class="table-striped table-responsive table-bordered  table mat-elevation-z8">
+    <table id="dtTable" class="table-striped table-responsive table-bordered  table mat-elevation-z8" >
       <thead>
         <tr>
           <th *ngFor="let disCol of _kiduTableModel.tableColumns let colIndex = index;">{{ disCol.header }}</th>
@@ -36,18 +36,24 @@
                 <span [innerHTML]="item[disCol.columnDef]"></span>
 
               </div>
-              <div *ngSwitchCase="2">
-                <span class="rounded-pill " style="background-color: green;"
+             
+              <div *ngSwitchCase="2" class="text-center">
+                
+                <span class="rounded-pill " style="background-color: green; "
                   [innerHTML]="item[disCol.columnDef]"></span>
 
               </div>
-              <div *ngSwitchCase="3">
+              <div *ngSwitchCase="3" class="text-center">
 
 
                 <span [ngClass]="item[disCol.columnDef] ==true ? 'activemeployeeclass' : 'inactiveemployeeclass'" class="rounded-pill"  [innerHTML]="item[disCol.columnDef]"></span>
 
 
               </div>
+             
+
+
+
 
 
             </div>

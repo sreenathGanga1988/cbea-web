@@ -33,7 +33,7 @@ import {
   popScheduler,
   scheduleIterable,
   subscribeOn
-} from "./chunk-ZDOIMVJD.js";
+} from "./chunk-E4U7SOWH.js";
 
 // node_modules/rxjs/dist/esm5/internal/scheduler/performanceTimestampProvider.js
 var performanceTimestampProvider = {
@@ -551,26 +551,24 @@ function bindCallbackInternals(isNodeStyle, callbackFunc, resultSelector, schedu
         uninitialized = false;
         var isAsync_1 = false;
         var isComplete_1 = false;
-        callbackFunc.apply(_this, __spreadArray(__spreadArray([], __read(args)), [
-          function() {
-            var results = [];
-            for (var _i2 = 0; _i2 < arguments.length; _i2++) {
-              results[_i2] = arguments[_i2];
-            }
-            if (isNodeStyle) {
-              var err = results.shift();
-              if (err != null) {
-                subject.error(err);
-                return;
-              }
-            }
-            subject.next(1 < results.length ? results : results[0]);
-            isComplete_1 = true;
-            if (isAsync_1) {
-              subject.complete();
+        callbackFunc.apply(_this, __spreadArray(__spreadArray([], __read(args)), [function() {
+          var results = [];
+          for (var _i2 = 0; _i2 < arguments.length; _i2++) {
+            results[_i2] = arguments[_i2];
+          }
+          if (isNodeStyle) {
+            var err = results.shift();
+            if (err != null) {
+              subject.error(err);
+              return;
             }
           }
-        ]));
+          subject.next(1 < results.length ? results : results[0]);
+          isComplete_1 = true;
+          if (isAsync_1) {
+            subject.complete();
+          }
+        }]));
         if (isComplete_1) {
           subject.complete();
         }
@@ -776,8 +774,7 @@ function generate(initialStateOrOptions, condition, iterate, resultSelectorOrSch
           state = initialState;
           _a2.label = 1;
         case 1:
-          if (!(!condition || condition(state)))
-            return [3, 4];
+          if (!(!condition || condition(state))) return [3, 4];
           return [4, resultSelector(state)];
         case 2:
           _a2.sent();
@@ -904,4 +901,4 @@ export {
   range,
   using
 };
-//# sourceMappingURL=chunk-V2DXGMIT.js.map
+//# sourceMappingURL=chunk-56Y3C3CL.js.map

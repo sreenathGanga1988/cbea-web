@@ -22,28 +22,28 @@ import {
   REMOVE_STYLES_ON_COMPONENT_DESTROY,
   SharedStylesHost,
   Title,
-  TransferState,
   VERSION,
   bootstrapApplication,
   createApplication,
   disableDebugTools,
   enableDebugTools,
   initDomAdapter,
-  makeStateKey,
   platformBrowser,
   provideClientHydration,
   provideProtractorTestingSupport,
+  withEventReplay,
   withHttpTransferCacheOptions,
+  withI18nSupport,
   withNoHttpTransferCache
-} from "./chunk-5LV5AQHJ.js";
-import "./chunk-SRMAZHWM.js";
+} from "./chunk-AQLG3QS4.js";
+import "./chunk-G5WL6JSF.js";
 import {
   getDOM
-} from "./chunk-DGV72MND.js";
-import "./chunk-4RVK6YC4.js";
-import "./chunk-V2DXGMIT.js";
-import "./chunk-UKEHM6V6.js";
-import "./chunk-ZDOIMVJD.js";
+} from "./chunk-55MC45CC.js";
+import "./chunk-FQ7VUTNV.js";
+import "./chunk-56Y3C3CL.js";
+import "./chunk-HMZ5JMOE.js";
+import "./chunk-E4U7SOWH.js";
 export {
   BrowserModule,
   By,
@@ -59,17 +59,17 @@ export {
   Meta,
   REMOVE_STYLES_ON_COMPONENT_DESTROY,
   Title,
-  TransferState,
   VERSION,
   bootstrapApplication,
   createApplication,
   disableDebugTools,
   enableDebugTools,
-  makeStateKey,
   platformBrowser,
   provideClientHydration,
   provideProtractorTestingSupport,
+  withEventReplay,
   withHttpTransferCacheOptions,
+  withI18nSupport,
   withNoHttpTransferCache,
   BrowserDomAdapter as ɵBrowserDomAdapter,
   BrowserGetTestability as ɵBrowserGetTestability,

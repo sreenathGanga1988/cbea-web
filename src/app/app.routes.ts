@@ -40,6 +40,7 @@ import { DesignationEditComponent } from './admin-portal/designation/designation
 import { DailyquotesEditComponent } from './admin-portal/cms/dailyquotes/dailyquotes-edit/dailyquotes-edit.component';
 import { CircleEditComponent } from './admin-portal/circle/circle-edit/circle-edit.component';
 import { BranchEditComponent } from './admin-portal/branch/branch-edit/branch-edit.component';
+import { UsertypeEditComponent } from './admin-portal/usertype/usertype-edit/usertype-edit.component';
 
 export const routes: Routes = [
 
@@ -89,6 +90,8 @@ export const routes: Routes = [
    { path: 'designations-edit/:id',   component:DesignationEditComponent,},
 
    { path: 'dailyquotes-edit/:id', component:DailyquotesEditComponent,},
-   { path:  'Circles-edit/:id',component:CircleEditComponent}
+   { path: 'Circles-edit/:id',component:CircleEditComponent,},
+   
+   { path: 'usertypes-edit/:id',    component: UsertypeEditComponent,},
 
   ];

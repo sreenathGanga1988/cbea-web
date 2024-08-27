@@ -3,16 +3,22 @@ a{
 }
 
 .inactiveemployeeclass{
-
+  margin: auto;
   background-color: red;
   text-align: center;
+ align-content: center;
 
 }
 
 .activemeployeeclass{
 background-color: green;
 text-align: center;
+align-content: center;
 }
 .kidueditbtn{
   padding-right: 10px;
+  
 }
+
+
+

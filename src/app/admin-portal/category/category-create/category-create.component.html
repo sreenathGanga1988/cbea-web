@@ -2,12 +2,13 @@
 
 <div class="container mt-4">
   <h2>Create Category</h2>
-  <form (ngSubmit)="onSubmit()" class="col-md-6" #categorycreate="ngForm">
+  <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
       <input type="text" id="name" [(ngModel)]="newCategory.name" name="name" class="form-control" required #name="ngModel">
       <div *ngIf="name.touched && name.invalid" class="alert alert-danger p-0">
         <div *ngIf="name.hasError('required')">*Name is required</div>
+        
      </div>
     </div>
     <div class="mb-3">
@@ -17,7 +18,8 @@
       
       
        <div *ngIf="abbreviation.hasError('required') && abbreviation.touched && abbreviation.invalid " class="alert alert-danger p-0" id="Abbval">*Abbreviation is required</div>
-       </div>
+      
+      </div>
     
     
 
@@ -25,6 +27,6 @@
       <input type="checkbox" id="isActive" [(ngModel)]="newCategory.isActive" name="isActive" class="form-check-input">
       <label for="isActive" class="form-check-label">Active</label>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Create</button>
   </form>
 </div>

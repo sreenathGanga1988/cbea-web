@@ -3,13 +3,14 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../../Services/category.service';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { Category } from '../../../models/Common/category.model';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,Validators,FormBuilder } from '@angular/forms';
 import { NotificationService } from '../../../Services/Common/notification.service';
-
+import { FormGroup } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-category-edit',
   standalone: true,
-  imports: [TitleBarComponent,FormsModule],
+  imports: [TitleBarComponent,FormsModule,CommonModule],
   templateUrl: './category-edit.component.html',
   styleUrl: './category-edit.component.css'
 })
@@ -19,10 +20,16 @@ export class CategoryEditComponent {
   newCategory! :Category;
 
   // constructor(private route: ActivatedRoute,private categoryService :CategoryService) { }
-  constructor(private route: ActivatedRoute,private router: Router, private categoryService: CategoryService, private notificationService: NotificationService) {
+  constructor(private route: ActivatedRoute,private router: Router, private categoryService: CategoryService, private notificationService: NotificationService,private createcategory:FormBuilder) {
 
-
+    this.myform=this.createcategory.group({
+      name: ['', [Validators.required, Validators.minLength(2)]]
+     
+     });
+    
   }
+  formSubmitted = false;
+  myform:FormGroup;
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
@@ -37,6 +44,9 @@ export class CategoryEditComponent {
   handleCreateNewItem() {
 
    // this.router.navigate(['/categories-create']);
+  }
+  get name() {
+    return this.myform.get('name');
   }
 
   getItem(id:string){
@@ -68,8 +78,8 @@ export class CategoryEditComponent {
 
   }
 
-  onSubmit() {
-
+  onSubmit(form:any) {
+    this.formSubmitted=true;
     this.categoryService.putCategories(Number(this.id),this.newCategory).subscribe({
       next: (res) => {
 

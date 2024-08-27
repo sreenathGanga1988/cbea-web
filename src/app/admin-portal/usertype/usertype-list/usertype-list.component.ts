@@ -32,11 +32,10 @@ export class UsertypeListComponent {
   show = false; // Flag to control modal visibility
   _kiduTableModel: KiduTableModel = {
   tableColumns:  [
-    {columnDef:'id',header:'Serial#',colType:CellType.Text}
-    ,{columnDef:'abbreviation',header:'Abbreviation',colType:CellType.Text}
-
-    ,{columnDef:'description',header:'Description',colType:CellType.Button}],
-   // ,{columnDef:'isActive',header:'Status',colType:CellType.Status}],
+    {columnDef:'ID',header:'Serial#',colType:CellType.Text},
+    {columnDef:'Description',header:'Description',colType:CellType.Text}
+    ,{columnDef:'Abbreviation',header:'Abbreviation',colType:CellType.Text}
+],
     // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button}
     isDeleteButton: true,
     isEditButton: true,
@@ -51,10 +50,15 @@ export class UsertypeListComponent {
     ngOnInit(): void {
       this.configureKidutable();
 
-      this.GetItems("");
+      this.GetItems(" ");
     }
   configureKidutable() {
    // throw new Error('Method not implemented.');
+  }
+  EditButtonClicked(item: any) {
+
+    this.router.navigate(['/usertypes-edit', item.ID]);
+
   }
   GlobalSearch(sarchtxt: string) {
    this.GetItems(sarchtxt)
@@ -66,6 +70,7 @@ export class UsertypeListComponent {
 
         if (res) {
           this._kiduTableModel.rows = res.rowData;
+          
         }
         console.log(this.Items)
 
