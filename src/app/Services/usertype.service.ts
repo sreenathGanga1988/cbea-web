@@ -33,6 +33,7 @@ export class UserTypeService {
    // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
      }
     postUserTypes(obj :UserType) {
+      obj.createdByUserId=1;
        return this.httphelper.POST(this.url,obj);
      }
      putUserTypes(id:number,obj :any) {

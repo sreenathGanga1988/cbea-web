@@ -1,1 +1,26 @@
-<p>usertype-create works!</p>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<div class="container mt-4">
+    <h2>Create Usertype</h2>
+    <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <input type="text" id="description" [(ngModel)]="newUsertype.description" name="description" class="form-control" required #description="ngModel">
+        <div *ngIf="description.touched && description.invalid" class="alert alert-danger p-0">
+          <div *ngIf="description.hasError('required')">*description is required</div>
+          
+       </div>
+      </div>
+      <div class="mb-3">
+        <label for="abbreviation" class="form-label">Abbreviation:</label>
+       
+        <input type="text" id="abbreviation" [(ngModel)]="newUsertype.abbreviation" name="abbreviation" class="form-control" required  #abbreviation="ngModel" >
+        
+        
+         <div *ngIf="abbreviation.hasError('required') && abbreviation.touched && abbreviation.invalid " class="alert alert-danger p-0" id="Abbval">*Abbreviation is required</div>
+        
+        </div>
+      
+      <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Create</button>
+    </form>
+  </div>
+  
