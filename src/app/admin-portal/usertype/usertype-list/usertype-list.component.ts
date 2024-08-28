@@ -21,6 +21,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 })
 export class UsertypeListComponent {
 
+
   headingText="User Types";
   response!: CustomApiResponse;
   Items!:any[];
@@ -81,5 +82,43 @@ export class UsertypeListComponent {
     })
 
   }
+  DeleteItem(id: number) {
+
+    this.usertypeService.deleteItem(id).subscribe({
+      next: (res) => {
+        if (res.isSucess) {
+          this.notitficationService.showSuccess('Successfully deleted Usertype!!',"Deleted");
+          this.GetItems("");
+        }
+        else {
+
+          this.notitficationService.showError('Failed to Delete Usertype :' + res.error,"Error")
+
+        }
+
+      },
+      error: (res) => {
+
+      }
+    })
+  }
+  openModal() {
+    this.show = true;
+  }
+
+  closeModal() {
+    this.show = false;
+  }
+  handleConfirmation(obj: any) {
+    //throw new Error('Method not implemented.');
+    if (obj[0]==true) {
+
+      this. DeleteItem(obj[1].ID)
+      // Handle confirmation logic here
+    } else {
+      console.log('Cancelled!');
+      // Handle cancellation logic here
+    }
+    }
 
 }
