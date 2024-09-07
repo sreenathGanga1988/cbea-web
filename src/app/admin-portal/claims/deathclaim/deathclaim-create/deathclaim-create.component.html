@@ -1,1 +1,57 @@
-<p>deathclaim-create works!</p>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<div class="container mt-4">
+    <h2></h2>
+    <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
+        <div class="mb-3">
+            <label for="staffnonavigationstaffno" class="form-label" >StaffNo:</label>
+            <input type="text" id="staffnonavigationstaffno" [(ngModel)]="newDeathClaim.staffnonavigationstaffno" name="staffnonavigationstaffno" class="form-control"  required #staffnonavigationstaffno="ngModel" minlength="2" >
+            </div>
+        <div class="mb-3">
+          <label for="name" class="form-label" >Name:</label>
+          <input type="text" id="name" [(ngModel)]="newDeathClaim.name" name="name" class="form-control"  required #name="ngModel" minlength="2" >
+          
+            <div *ngIf="name.hasError('required') && name.touched && name.invalid" class="alert alert-danger p-0">*Name is required</div>
+            <div *ngIf="name.hasError('minlength')" class="alert alert-danger p-0">
+              Name must be at least 2 characters long
+    
+            </div></div>
+            <div class="mb-3">
+                <label for="nominee" class="form-label" >Nominee:</label>
+                <input type="text" id="name" [(ngModel)]="newDeathClaim.nominee" name="nominee" class="form-control"  required #nominee="ngModel" minlength="2" >
+                
+                  <div *ngIf="nominee.hasError('required') && nominee.touched && nominee.invalid" class="alert alert-danger p-0">*Nominee is required</div>
+                  <div *ngIf="nominee.hasError('minlength')" class="alert alert-danger p-0">
+                    Nominee must be at least 2 characters long
+          
+                  </div>
+                  
+               </div>
+               <div class="mb-3">
+                <label for="nomineerelation" class="form-label" >Nominee Relation:</label>
+                <select [(ngModel)]="newDeathClaim.nomineeRelation" required #nomineerelation="ngModel" name="nomineerelation" id="nomineerelation" class="form-select" >
+                    <option value="Spouse">SPOUSE</option>
+                    <option value="February">FATHER</option>
+                    <option value="March">MOTHER</option>
+                   </select> 
+               </div>
+               <div class="mb-3">
+                <label for="nomineeidentity" class="form-label" >NomineeIDentity:</label>
+                <input type="text" id="nomineeidentity" [(ngModel)]="newDeathClaim.nomineeidentity" name="nomineeidentity" class="form-control"  required #nomineeidentity="ngModel" minlength="2" >
+                </div>
+
+                <div class="mb-3">
+                    <label for="amount" class="form-label" >Amount:</label>
+                    <input type="text" id="amount" [(ngModel)]="newDeathClaim.amount" name="amount" class="form-control"  required #amount="ngModel" minlength="2" >
+                    </div>
+            <div class="mb-3">
+            <label for="lastcontribution" class="form-label" >Last Contribution:</label>
+             <input type="text" id="lastcontribution" [(ngModel)]="newDeathClaim.lastcontribution" name="lastcontribution" class="form-control"  required #lastcontribution="ngModel" minlength="2" >
+             </div>
+             <div class="mb-3 form-check">
+                <input type="checkbox" id="isActive" [(ngModel)]="newDeathClaim.isActive" name="isActive" class="form-check-input">
+                <label for="isActive" class="form-check-label">Active</label>
+              </div>
+                          
+    <button type="submit"  class="btn btn-primary" >Create</button>
+         </form>
+    </div>

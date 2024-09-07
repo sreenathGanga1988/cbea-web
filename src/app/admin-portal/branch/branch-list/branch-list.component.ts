@@ -40,6 +40,7 @@ export class BranchListComponent {
     private branchService: BranchService,
     private notificationServices: NotificationService
   ) {}
+  
   data = 'Are you sure you want to proceed?';
   show = false; // Flag to control modal visibility
   _kiduTableModel: KiduTableModel = {
@@ -60,7 +61,7 @@ export class BranchListComponent {
       // { columnDef: 'Status', header: 'Status', colType: CellType.Text },
       { columnDef: 'IsActive', header: 'Status', colType: CellType.Status },
     ],
-    isDeleteButton: false,
+    isDeleteButton: true,
     isEditButton: true,
 
     rows: [{}],

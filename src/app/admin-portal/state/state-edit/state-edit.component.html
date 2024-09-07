@@ -2,21 +2,40 @@
 <app-title-bar [headingText]="headingText" (createNewItem)="handleCreateNewItem()"></app-title-bar>
 
 <div class="container mt-4">
-  <h2>Edit Category</h2>
-  <form (ngSubmit)="onSubmit()" class="col-md-6">
+ 
+  <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
-      <input type="text" id="name" name="name"   [(ngModel)]="newStates.name"class="form-control" required>
+      
+      <input type="text" id="name" [(ngModel)]="newStates.name" name="name" class="form-control" required #name="ngModel"  >
+      
+        <span *ngIf="name.hasError('required') && name.touched && (name.invalid|| name.dirty)" class="text-danger ">*Name is required</span>
+        <span *ngIf="name.hasError('minlength')" class="text-danger">
+          Name must be at least 2 characters long
+
+        </span>
+     
     </div>
     <div class="mb-3">
       <label for="abbreviation"  class="form-label">Abbreviation:</label>
-      <input type="text" id="abbreviation" [(ngModel)]="newStates.abbreviation"  name="abbreviation" class="form-control" required>
+      
+      
+      <input type="text" id="abbreviation" [(ngModel)]="newStates.abbreviation" name="abbreviation" class="form-control" required  #abbreviation="ngModel" >
+      
+      
+      <span *ngIf="abbreviation.hasError('required') && abbreviation.touched && (abbreviation.invalid||abbreviation.dirty) " class="text-danger p-0" id="Abbval" >*Abbreviation is required</span>
+     
+      <span *ngIf="abbreviation.hasError('minlength')" class="text-danger">
+        Name must be at least 2 characters long
+
+      </span>
+      
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" id="isActive"  [(ngModel)]="newStates.isActive" name="isActive" class="form-check-input">
       <label for="isActive" class="form-check-label">Active</label>
     </div>
-    <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" class="btn btn-primary" [disabled]="myform.invalid ">Update</button>
   </form>
 </div>
 

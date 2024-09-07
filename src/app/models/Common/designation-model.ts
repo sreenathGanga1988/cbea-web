@@ -8,8 +8,8 @@ export class Designation implements AuditEntity {
     description!: string;
     
     //audit
-    isActive: boolean=true;
-    createdByUserId!: number | null;
+    isActive!: boolean;
+   createdByUserId!: number | null;
     addedUser!: string;
     createdDate!: string | null;
     modifiedByUserId!: number | null;

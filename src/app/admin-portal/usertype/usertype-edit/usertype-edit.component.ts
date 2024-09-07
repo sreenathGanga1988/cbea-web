@@ -35,6 +35,12 @@ export class UsertypeEditComponent {
       console.error('ID is null');
     }
   }
+  Space(event:any)
+  {
+    if(event.target.selectionStart === 0 && event.code === "Space"){
+    event.preventDefault();
+    }
+  }
   handleCreateNewItem() {
     //throw new Error('Method not implemented.');
     }

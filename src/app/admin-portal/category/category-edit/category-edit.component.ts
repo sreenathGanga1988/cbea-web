@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
+import { Component ,NgModule} from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../../Services/category.service';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { Category } from '../../../models/Common/category.model';
-import { FormsModule,Validators,FormBuilder } from '@angular/forms';
+import { FormsModule,Validators,FormBuilder,AbstractControl } from '@angular/forms';
 import { NotificationService } from '../../../Services/Common/notification.service';
 import { FormGroup } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -18,18 +18,26 @@ export class CategoryEditComponent {
   headingText = "Edit Categories";
   id: string = '';
   newCategory! :Category;
-
+  textControl!: AbstractControl;
+  myform:FormGroup;
+  isAlive = true;
+  formSubmitted = false;
   // constructor(private route: ActivatedRoute,private categoryService :CategoryService) { }
-  constructor(private route: ActivatedRoute,private router: Router, private categoryService: CategoryService, private notificationService: NotificationService,private createcategory:FormBuilder) {
+  constructor(private route: ActivatedRoute,private router: Router, private categoryService: CategoryService, private notificationService: NotificationService,private editcategory:FormBuilder) {
 
-    this.myform=this.createcategory.group({
-      name: ['', [Validators.required, Validators.minLength(2)]]
+    this.myform=this.editcategory.group({
+      name: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
      
      });
     
   }
-  formSubmitted = false;
-  myform:FormGroup;
+  noWhiteSpaceValidator(control: AbstractControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true }
+  }
+
+  
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
@@ -40,7 +48,7 @@ export class CategoryEditComponent {
       console.error('ID is null');
     }
   }
-
+  
   handleCreateNewItem() {
 
    // this.router.navigate(['/categories-create']);
@@ -48,7 +56,6 @@ export class CategoryEditComponent {
   get name() {
     return this.myform.get('name');
   }
-
   getItem(id:string){
     this.categoryService.getCategoriesById(Number(id)).subscribe({
       next: (res) => {
@@ -88,7 +95,7 @@ export class CategoryEditComponent {
         this.router.navigate(['/categories']);
       },
       error: (res) => {
-        alert("Erro while Adding")
+        alert("Error while Adding")
       }
     })
 

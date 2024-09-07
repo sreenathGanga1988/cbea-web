@@ -10,7 +10,7 @@ import { StatusListComponent } from './admin-portal/status/status-list/status-li
 import { BranchListComponent } from './admin-portal/branch/branch-list/branch-list.component';
 import { MemberListComponent } from './admin-portal/member/member-list/member-list.component';
 import { DailyquotesListComponent } from './admin-portal/cms/dailyquotes/dailyquotes-list/dailyquotes-list.component';
-import { NewsListComponent } from './admin-portal/cms/news/news-list/news-list.component';
+import { NewsListComponent} from './admin-portal/cms/news/news-list/news-list.component';
 import { MainpageListComponent } from './admin-portal/cms/mainpage/mainpage-list/mainpage-list.component';
 import { ManagingcommiteeListComponent } from './admin-portal/cms/managingcommitee/managingcommitee-list/managingcommitee-list.component';
 import { RefundListComponent } from './admin-portal/claims/refund/refund-list/refund-list.component';
@@ -41,6 +41,8 @@ import { DailyquotesEditComponent } from './admin-portal/cms/dailyquotes/dailyqu
 import { CircleEditComponent } from './admin-portal/circle/circle-edit/circle-edit.component';
 import { BranchEditComponent } from './admin-portal/branch/branch-edit/branch-edit.component';
 import { UsertypeEditComponent } from './admin-portal/usertype/usertype-edit/usertype-edit.component';
+import { DeathclaimEditComponent } from './admin-portal/claims/deathclaim/deathclaim-edit/deathclaim-edit.component';
+import { NewsEditComponent } from './admin-portal/cms/news/news-edit/news-edit.component';
 
 export const routes: Routes = [
 
@@ -56,7 +58,7 @@ export const routes: Routes = [
    { path: 'user',    component: UserListComponent,},
    { path: 'Member',    component: MemberListComponent,},
    { path: 'dailyquotes',    component: DailyquotesListComponent,},
-   { path: 'newsitem',    component: NewsListComponent,},
+   { path: 'DailyNews',    component:NewsListComponent,},
    { path: 'mainPage',    component: MainpageListComponent,},
    { path: 'managingcomitee',    component: ManagingcommiteeListComponent,},
    { path: 'refunds',    component: RefundListComponent,},
@@ -88,10 +90,11 @@ export const routes: Routes = [
    { path: 'branch-edit/:id',    component: BranchEditComponent,},
    { path: 'branch-select',    component: BranchselectorComponent,},
    { path: 'designations-edit/:id',   component:DesignationEditComponent,},
+   { path:'newsitem-edit/:id',component:NewsEditComponent,},
 
    { path: 'dailyquotes-edit/:id', component:DailyquotesEditComponent,},
    { path: 'Circles-edit/:id',component:CircleEditComponent,},
-   
+   { path: 'deathclaims-edit/:id',    component: DeathclaimEditComponent,},
    { path: 'usertypes-edit/:id',    component: UsertypeEditComponent,},
 
   ];

@@ -3,8 +3,8 @@ import { AuditEntity } from "./audit-entity.model";
 
 export interface Branch extends AuditEntity {
     id: number;
-    dpCode: number;
-    circleId: number;
+    dpCode: number|null;
+    circleId: number|null;
     stateId: number | null;
     name: string;
     address1: string;

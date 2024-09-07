@@ -6,7 +6,7 @@ import { Category } from '../../../models/Common/category.model';
 import { FormsModule } from '@angular/forms';
 import { NotificationService } from '../../../Services/Common/notification.service';
 import { CommonModule } from '@angular/common';
-import { FormGroup,Validators,FormBuilder } from '@angular/forms';
+import { FormGroup,Validators,FormBuilder ,AbstractControl} from '@angular/forms';
 @Component({
   selector: 'app-category-create',
   standalone: true,
@@ -37,27 +37,42 @@ export class CategoryCreateComponent {
   };
  
   formSubmitted = false;
+ 
 abbreviation: any;
  myform:FormGroup;
+ textControl!: AbstractControl;
+ text!:String;
+ isAlive = true;
   constructor(private router: Router, private categoryService: CategoryService, private notificationService: NotificationService ,private createcategory:FormBuilder) {
  this.myform=this.createcategory.group({
-  name: ['', [Validators.required, Validators.minLength(2)]]
+  text: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
  
  });
 
   }
+  noWhiteSpaceValidator(control: AbstractControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true }
+  }
+    
+  
   handleCreateNewItem() {
 
     this.router.navigate(['/categories-create']);
   }
+  
   get name() {
     return this.myform.get('name');
   }
+  
+  
 
   onSubmit(form: any) {
 
     this.formSubmitted=true;
     
+
 
     
     this.categoryService.postCategories(this.newCategory).subscribe({

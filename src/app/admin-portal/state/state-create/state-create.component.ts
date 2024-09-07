@@ -1,11 +1,12 @@
 import { Component, NgModule } from '@angular/core';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule,AbstractControl ,FormGroup,Validators} from '@angular/forms';
 import { NotificationService } from '../../../Services/Common/notification.service';
 import { State } from '../../../models/Common/state.model';
 import { StateService } from '../../../Services/state.service';
 import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-state-create',
@@ -33,17 +34,28 @@ export class StateCreateComponent {
     deletedUser: '',
     deletedDate: null
   };
-  constructor(private router: Router, private stateService: StateService, private notificationService: NotificationService) {
+  myform:FormGroup;
+  textControl!: AbstractControl;
+  isAlive = true;
+  constructor(private router: Router, private stateService: StateService, private notificationService: NotificationService,private createState:FormBuilder) {
+    this.myform=this.createState.group({
+      name: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
+     
+     })
 
-
+  }
+  noWhiteSpaceValidator(control: AbstractControl) {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    const isValid = !isWhitespace;
+    return isValid ? null : { 'whitespace': true }
   }
   handleCreateNewItem() {
 
     this.router.navigate(['/states-create']);
   }
+  
 
-
-  onSubmit() {
+  onSubmit(form:any) {
   this.newState.createdDate=new Date().toISOString();
 
     this.newState.createdDate=new Date().toISOString();
