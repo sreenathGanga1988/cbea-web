@@ -43,6 +43,7 @@ import { BranchEditComponent } from './admin-portal/branch/branch-edit/branch-ed
 import { UsertypeEditComponent } from './admin-portal/usertype/usertype-edit/usertype-edit.component';
 import { DeathclaimEditComponent } from './admin-portal/claims/deathclaim/deathclaim-edit/deathclaim-edit.component';
 import { NewsEditComponent } from './admin-portal/cms/news/news-edit/news-edit.component';
+import { StatusEditComponent } from './admin-portal/status/status-edit/status-edit.component';
 
 export const routes: Routes = [
 
@@ -90,7 +91,8 @@ export const routes: Routes = [
    { path: 'branch-edit/:id',    component: BranchEditComponent,},
    { path: 'branch-select',    component: BranchselectorComponent,},
    { path: 'designations-edit/:id',   component:DesignationEditComponent,},
-   { path:'newsitem-edit/:id',component:NewsEditComponent,},
+   { path: 'newsitem-edit/:id',component:NewsEditComponent,},
+   {path:  'status-edit/:id',component:StatusEditComponent,},
 
    { path: 'dailyquotes-edit/:id', component:DailyquotesEditComponent,},
    { path: 'Circles-edit/:id',component:CircleEditComponent,},

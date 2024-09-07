@@ -12,7 +12,7 @@ export class Status implements AuditEntity {
 
 
 
-    isActive: boolean=true;
+    isActive!: boolean;
     createdByUserId!: number | null;
     addedUser!: string;
     createdDate!: string | null;

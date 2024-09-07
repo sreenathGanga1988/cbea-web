@@ -53,8 +53,8 @@ export class DesignationCreateComponent {
 
     this.router.navigate(['/designations-create']);
   }
-  onSubmit() {
-
+  onSubmit(myform:any) {
+   this.newDesignation.createdByUserId=1;
     this.newDesignation.createdDate=new Date().toISOString();
 
      this.designationService.postDesignations(this.newDesignation).subscribe({

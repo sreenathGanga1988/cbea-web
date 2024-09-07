@@ -3,26 +3,31 @@
 
 <div class="container mt-4">
   <h2>Create Designation</h2>
-  <form (ngSubmit)="onSubmit()" class="col-md-6">
+  <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
    
     <div class="mb-3">
       <label for="name" class="form-label">Name:</label>
       <input type="text" id="name" [(ngModel)]="newDesignation.name" name="name" class="form-control" required #name="ngModel">
-      <div *ngIf="name.touched && name.invalid" class="alert alert-danger p-0">
-        <div *ngIf="name.hasError('required')" >Name is required</div>
-         </div>
+      <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty)" class="text-danger">*Name is required</span>
+      <span *ngIf="name.hasError('minlength')" class="text-danger">
+        Name must be at least 2 characters long
+
+      </span>
+      
     </div>
     <div class="mb-3">
-      <label for="description" class="form-label">Description:</label>
+      <label for="description" class="form-label">Code:</label>
       <input type="text" id="description" [(ngModel)]="newDesignation.description" name="description" class="form-control" required #description="ngModel">
-      <span *ngIf="description.touched && (description.invalid||description.dirty)" class="text-danger p-0">
-        <span *ngIf="description.hasError('required')" > Description is required</span>
-      </span>
+      <span *ngIf="description.hasError('required') && description.touched && (description.invalid||description.dirty) " class="text-danger" id="Abbval">*description is required</span>
+        <span *ngIf="name.hasError('minlength')" class="text-danger">
+          Name must be at least 2 characters long
+
+        </span>
     </div>
     <div class="mb-3 form-check">
       <input type="checkbox" id="isActive" [(ngModel)]="newDesignation.isActive" name="isActive" class="form-check-input">
       <label for="isActive" class="form-check-label">Active</label>
     </div>
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary" [disabled]="myform.invalid ">Create</button>
   </form>
 </div>
