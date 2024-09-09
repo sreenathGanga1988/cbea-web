@@ -18,6 +18,8 @@ export class KiduTableComponent {
 
  _currentrowitem :any
 
+ public isLoading: boolean = true; // This will be true initially
+
   @Input()
   // _kiduTableModel: KiduTableModel = { tableColumns: [], isDeleteButton: false,isEditButton:false ,rows:[{}]optionalCol}; // Initialize with default values
 
@@ -28,6 +30,9 @@ export class KiduTableComponent {
 
 
   constructor() {
+
+      this.isLoading=true; // Call the function to load rows initially
+
     // Initialize the kiduTableModel object
     this._kiduTableModel = new KiduTableModel();
     this._kiduTableModel.tableColumns = [];
@@ -51,7 +56,7 @@ export class KiduTableComponent {
   @Output() EditButtonClickfun: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() ConfirmActionFun: EventEmitter<any> = new EventEmitter<any>();
-  
+
   @Output() pageChange:EventEmitter<number>=new EventEmitter<any>();
   GlobalSearchfun(sarchtxt:string) {
 
@@ -65,7 +70,13 @@ export class KiduTableComponent {
   }
   ngOnInit(): void {
 
-    this.displayedColumns = this._kiduTableModel.tableColumns.map((c) => c.columnDef);
+    setTimeout(() => {
+      this.displayedColumns = this._kiduTableModel.tableColumns.map((c) => c.columnDef);
+      this.isLoading = false; // Set loading to false when data is loaded
+    }, 500); // Simulated delay
+
+    // this.displayedColumns = this._kiduTableModel.tableColumns.map((c) => c.columnDef);
+
   };
 
 

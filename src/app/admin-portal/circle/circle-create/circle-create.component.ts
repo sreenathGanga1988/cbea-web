@@ -21,16 +21,16 @@ handleCreateNewItem() {
 this.router.navigate(['/circles-create']);
 }
   headingText="Add Circle";
- newCircle: Circle={ 
+ newCircle: Circle={
   id: 0,
   name : '',
   abbreviation: '',
   circleCode: 0,
-  
- 
-  
+
+
+
   //stateId:0,
-  
+
  // stateName: '',
 
   //audit
@@ -47,7 +47,7 @@ this.router.navigate(['/circles-create']);
  deletedDate:  null,
  //btnString:''
 };
-    
+
 constructor(private router: Router, private circleService: CircleService, private notificationService: NotificationService) {
 
 
@@ -59,16 +59,17 @@ onSubmit()
      this.newCircle.modifiedDate=new Date().toISOString();
 
      this.newCircle.modifiedByUserId=1;
+     this.newCircle.createdByUserId=1;
 
    this.circleService.postCircles(this.newCircle).subscribe({
    next: (res) => {
 
 
     this.notificationService.showSuccess("New circle is Added Successfully", "Added")
-    
+
     this.router.navigate(['/Circles']);
-    
-     
+
+
   },
   error: (res) => {
     alert("Error while Adding")

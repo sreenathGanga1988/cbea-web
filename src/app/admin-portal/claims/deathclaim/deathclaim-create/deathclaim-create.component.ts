@@ -7,18 +7,28 @@ import { TitleBarComponent } from '../../../shared/title-bar/title-bar.component
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FormGroup,Validators,FormBuilder } from '@angular/forms';
+import { KiduDataPickerComponent } from "../../../shared/Modals/kidu-data-picker/kidu-data-picker.component";
+import { CellType, KiduDataPickerModel } from '../../../shared/kidu-table/columns';
 
 
 @Component({
   selector: 'app-deathclaim-create',
   standalone: true,
-  imports: [TitleBarComponent,FormsModule,CommonModule],
+  imports: [TitleBarComponent, FormsModule, CommonModule, KiduDataPickerComponent],
   templateUrl: './deathclaim-create.component.html',
   styleUrl: './deathclaim-create.component.css'
 })
 export class DeathclaimCreateComponent {
 handleCreateNewItem() {
 //throw new Error('Method not implemented.');
+}
+_kiduDataPickerModel: KiduDataPickerModel = {
+  tableColumns: [
+    { columnDef: 'StaffNo', header: 'Staff#', colType: CellType.Text },
+    { columnDef: 'Name', header: 'Name', colType: CellType.Text },
+  ],
+  rows: [],
+  TopTittle: 'Select Staff'
 }
   headingText = "New DeathClaims";
   newDeathClaim: Deathclaim = {
@@ -52,36 +62,36 @@ handleCreateNewItem() {
   formSubmitted = false;
   myform:FormGroup;
   constructor(private router: Router, private deathclaimservice: DeathclaimService, private notificationService: NotificationService,private createdeathclaim:FormBuilder) {
-    
+
     this.myform=this.createdeathclaim.group({
       name: ['', [Validators.required, Validators.minLength(2)]]
-     
+
      });
      }
      onSubmit(form: any) {
       this.newDeathClaim.deathdate=new Date().toISOString();
       this.newDeathClaim.createdDate=new Date().toISOString();
 
-      
+
       this.newDeathClaim.modifiedDate=new Date().toISOString();
-  
+
       this.newDeathClaim.modifiedByUserId=1;
       this.formSubmitted=true;
      this.deathclaimservice.postclaim(this.newDeathClaim).subscribe({
         next: (res) => {
-  
-  
+
+
           this.notificationService.showSuccess("Claim Added Successfully", "Added")
           this.router.navigate(['/deathclaims']);
           console.log()
         },
-      
+
        error: (res) => {
          alert("Error while Adding")
         }
       })
-      
-    
+
+
   }
 
 }

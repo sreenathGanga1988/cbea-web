@@ -40,7 +40,7 @@ export class DesignationCreateComponent {
   constructor(private router: Router, private designationService: DesignationService, private notificationService: NotificationService,private validDesignation:FormBuilder) {
     this.myform=this.validDesignation.group({
       text: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
-     
+
      });
 
   }
@@ -55,6 +55,7 @@ export class DesignationCreateComponent {
   }
   onSubmit(myform:any) {
    this.newDesignation.createdByUserId=1;
+   this.newDesignation.modifiedByUserId=1;
     this.newDesignation.createdDate=new Date().toISOString();
 
      this.designationService.postDesignations(this.newDesignation).subscribe({

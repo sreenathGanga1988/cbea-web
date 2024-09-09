@@ -8,11 +8,16 @@
       <div class="input-group">
         <input class="form-control border" type="text" placeholder="Type here and press enter for searching" value="**"
           [(ngModel)]="sarchtxt" (change)="GlobalSearchfun(sarchtxt)" id="example-search-input">
-     
-  </div>
 
+  </div>
+ <!-- Progress Bar for Loading -->
+ <div *ngIf="isLoading" class="progress mt-3">
+  <div class="progress-bar progress-bar-striped progress-bar-animated"
+       role="progressbar"
+       style="width: 100%"></div>
+</div>
   <br>
-  <div *ngIf="_kiduTableModel.rows">
+  <div *ngIf="!isLoading &&_kiduTableModel.rows">
 
     <table id="dtTable" class="table-striped table-responsive table-bordered  table mat-elevation-z8" >
       <thead>
@@ -36,9 +41,9 @@
                 <span [innerHTML]="item[disCol.columnDef]"></span>
 
               </div>
-             
+
               <div *ngSwitchCase="2" class="text-center">
-                
+
                 <span class="rounded-pill " style="background-color: green; "
                   [innerHTML]="item[disCol.columnDef]"></span>
 
@@ -50,7 +55,7 @@
 
 
               </div>
-             
+
 
 
 

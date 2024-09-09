@@ -7,6 +7,10 @@ a{
   background-color: red;
   text-align: center;
  align-content: center;
+ padding-left: 10px;
+padding-right: 10PX;
+padding-top: 3px;
+padding-bottom: 3PX;
 
 }
 
@@ -14,10 +18,14 @@ a{
 background-color: green;
 text-align: center;
 align-content: center;
+padding-left: 10px;
+padding-right: 10PX;
+padding-top: 3px;
+padding-bottom: 3PX;
 }
 .kidueditbtn{
   padding-right: 10px;
-  
+
 }
 
 
