@@ -4,19 +4,19 @@
   <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
     <div class="mb-3">
         <label for="newstext" class="form-label" >News :</label> 
-        <input type="text" id="newstext" [(ngModel)]="newNews.newstext" name="newstext" class="form-control"  required  #newstext="ngModel" minlength="2" >
+        <textarea name="newstext" id="newstext" [(ngModel)]="newNews.newstext"  class="form-control"  required  #newstext="ngModel" minlength="2" ></textarea>
       
         <span *ngIf="newstext.hasError('required') && newstext.touched && (newstext.invalid||newstext.dirty)" class="text-danger">*please type news items</span>
         <span *ngIf="newstext.hasError('minlength')" class="text-danger">
-          Name must be at least 2 characters long
+          please check!!
 
         </span>  
     </div>
   <div class="mb-3">
         <label for="dateofaction" class="form-label" >Date:</label> 
-        <input type="datetime" placeholder="yyyy-mm-dd"  id="dateofaction" [(ngModel)]="newNews.dateofaction" name="dateofaction" class="form-control"  required  #dateofaction="ngModel"  min="2024-01-01"  >
+        <input type="date" placeholder="dd-mm-yyyy"  id="dateofaction" [(ngModel)]="newNews.dateofaction" name="dateofaction" class="form-control"  required  #dateofaction="ngModel"  min="2024-01-01"  >
       
-        <span *ngIf="dateofaction.hasError('required') && dateofaction.touched && (dateofaction.invalid||dateofaction.dirty)" class="text-danger">*please type news items</span>
+        <span *ngIf="dateofaction.hasError('required') && dateofaction.touched && (dateofaction.invalid||dateofaction.dirty)" class="text-danger">*please type date</span>
         
         </div> 
     <div class="mb-3 form-check">

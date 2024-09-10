@@ -33,7 +33,7 @@ export class DailyquotesListComponent implements OnInit {
   _kiduTableModel: KiduTableModel = {
     tableColumns: [
       { columnDef: 'Id', header: 'Serial#', colType: CellType.Text },
-      { columnDef: 'Day', header: 'day', colType: CellType.Text },
+      { columnDef: 'Day', header: 'Day', colType: CellType.Text },
       { columnDef: 'MonthCode', header: 'MonthCode', colType: CellType.Text },
      
       //{ columnDef: 'UnformatedContent', header: 'Content', colType: CellType.Text },

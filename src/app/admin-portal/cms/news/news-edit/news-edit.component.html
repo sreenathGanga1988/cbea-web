@@ -4,7 +4,7 @@
     <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
         <div class="mb-3">
             <label for="newstext" class="form-label"  >news:</label>
-            <input type="textarea" id="newstext" [(ngModel)]="newNews.newstext" name="newstext" class="form-control"  required  #newstext="ngModel" minlength="2" >
+            <textarea id="newstext" [(ngModel)]="newNews.newstext" name="newstext" class="form-control"  required  #newstext="ngModel" minlength="2"></textarea>
       
             <span *ngIf="newstext.hasError('required') && newstext.touched && (newstext.invalid||newstext.dirty)" class="text-danger">*please type news items</span>
             <span *ngIf="newstext.hasError('minlength')" class="text-danger">
@@ -14,7 +14,7 @@
         </div>
         <div class="mb-3">
             <label for="dateofaction" class="form-label" >Date:</label> 
-            <input type="datetime" id="dateofaction" [(ngModel)]="newNews.dateofaction" name="dateofaction" class="form-control"  required  #dateofaction="ngModel" min="2024-01-01" max="2024-09-07" >
+            <input type="date" id="dateofaction" [(ngModel)]="newNews.dateofaction" name="dateofaction" class="form-control"  required  #dateofaction="ngModel" min="2024-01-01" max="2024-09-07" >
           
             <span *ngIf="dateofaction.hasError('required') && dateofaction.touched && (dateofaction.invalid||dateofaction.dirty)" class="text-danger">*please type news items</span>
             

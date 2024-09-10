@@ -5,6 +5,7 @@ import { observable, Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpHelperService } from './Common/http-helper.service';
 import { ListRequest } from '../models/Common/listrequest.model';
+import { Status } from '../models/Common/status.model';
 
 
 @Injectable({
@@ -27,7 +28,7 @@ export class StatusService {
     return this.httphelper.GetDataWithObject("/api_datatable/GetPageinatedDataAsync", this._listRequest.ReportType, searchtext, pageSize, pageNumber).pipe(map((val) => val.isSucess ? val.value : []));
 }
 
-getCategories(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
+getStatus(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
 
 
 
@@ -35,18 +36,8 @@ getCategories(searchtext: string, pageNumber: number = 0, pageSize: number = 0) 
 
 }
 
-     getStatusById(Id :number) {
-      return this.httphelper.GetData(this.url+"/"+Id);
-     // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
-       }
-    postStatus(obj :any) {
-       return this.httphelper.POST(this.url,obj);
-     }
-     putStatus(id:number,obj :any) {
-      return this.httphelper.PUT(this.url+"/"+id,obj);
-    }
-    deleteStatus(id:number) {
-      return this.httphelper.Delete(this.url+"/"+id);
-    }
-
+postStatus(obj: Status) {
+  obj.createdByUserId=1;
+  return this.httphelper.POST(this.url, obj);
+}
 }

@@ -5,7 +5,7 @@ import { NewsService } from '../../../../Services/news.service';
 import { NotificationService } from '../../../../Services/Common/notification.service';
 import { FormBuilder,Validators,AbstractControl,FormGroup, FormsModule } from '@angular/forms';
 import { TitleBarComponent } from '../../../shared/title-bar/title-bar.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 @Component({
   selector: 'app-news-create',
   standalone: true,
@@ -27,7 +27,7 @@ export class NewsCreateComponent {
     isDeleted: false,
     deletedByByUserId: null,
     createdDate:null,
-    dateofaction: null,
+    dateofaction:null,
     addedUser: '',
     modifiedUser: '',
     deletedUser: '',
@@ -62,7 +62,7 @@ export class NewsCreateComponent {
   
   
       this.newNews.createdDate=new Date().toISOString();
-
+     
      
       this.newNews.modifiedDate=new Date().toISOString();
   

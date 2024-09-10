@@ -7,11 +7,11 @@ import { NotificationService } from '../../../../Services/Common/notification.se
 import { CommonModule } from '@angular/common';
 import { NewsService } from '../../../../Services/news.service';
 import { CellType, KiduTableModel } from '../../../shared/kidu-table/columns';
-
+import { formatDate } from '@angular/common';
 @Component({
   selector: 'app-news-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,CommonModule],
+  imports: [TitleBarComponent,KiduTableComponent,CommonModule,],
  templateUrl: './news-list.component.html',
   styleUrl: './news-list.component.css'
 })
@@ -19,7 +19,7 @@ export class NewsListComponent {
   headingText="DailyNews";
   response!: CustomApiResponse;
   Items!:any[];
-
+ 
   constructor(private router:Router,private newsService:NewsService,private notification:NotificationService) {
     
     }
@@ -48,6 +48,7 @@ export class NewsListComponent {
   
       this.configureKidutable();
       this.GetItems("");
+      
     }
     EditButtonClicked(item: any) {
 
@@ -68,8 +69,10 @@ export class NewsListComponent {
    
            if (res) {
              this._kiduTableModel.rows = res.rowData;
+             
            }
            console.log(this.Items)
+           
    
          },
          error: (res) => {
