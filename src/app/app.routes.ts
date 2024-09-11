@@ -44,6 +44,7 @@ import { UsertypeEditComponent } from './admin-portal/usertype/usertype-edit/use
 import { DeathclaimEditComponent } from './admin-portal/claims/deathclaim/deathclaim-edit/deathclaim-edit.component';
 import { NewsEditComponent } from './admin-portal/cms/news/news-edit/news-edit.component';
 import { StatusEditComponent } from './admin-portal/status/status-edit/status-edit.component';
+import { ManagingcommiteeEditComponent } from './admin-portal/cms/managingcommitee/managingcommitee-edit/managingcommitee-edit.component';
 
 export const routes: Routes = [
 
@@ -93,6 +94,7 @@ export const routes: Routes = [
    { path: 'designations-edit/:id',   component:DesignationEditComponent,},
    { path: 'newsitem-edit/:id',component:NewsEditComponent,},
    {path:  'status-edit/:id',component:StatusEditComponent,},
+    { path:'managingcommitee-edit/:id', component:ManagingcommiteeEditComponent},
 
    { path: 'dailyquotes-edit/:id', component:DailyquotesEditComponent,},
    { path: 'Circles-edit/:id',component:CircleEditComponent,},

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,NgModule } from '@angular/core';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { FormBuilder, FormsModule,Validators,FormGroup,AbstractControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -52,6 +52,10 @@ noWhiteSpaceValidator(control: AbstractControl) {
   const isWhitespace = (control.value || '').trim().length === 0;
   const isValid = !isWhitespace;
   return isValid ? null : { 'whitespace': true }
+}
+handleCreateNewItem() {
+
+  
 }
 onSubmit(form: any) {
 

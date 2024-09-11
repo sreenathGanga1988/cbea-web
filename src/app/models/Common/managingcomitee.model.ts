@@ -4,8 +4,9 @@ export class Managingcomitee implements AuditEntity {
     id!: number;
     name!: string;
     position!: string;
-    Description1!: string;
-    Description2!: string;
+    description1!: string;
+    description2!: string;
+   
 
     isActive!: boolean;
     createdByUserId!: number | null;

@@ -1,1 +1,49 @@
-<p>managingcommitee-edit works!</p>
+<app-title-bar [headingText]="headingText" (createNewItem)="handleCreateNewItem()"></app-title-bar>
+
+<div class="container mt-4">
+  <h2></h2>
+  <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
+    <div class="mb-3">
+      <label for="name" class="form-label"  >Name:</label>
+      <input type="text" id="name" [(ngModel)]="newManagingCommitee.name" name="name" class="form-control" required #name="ngModel"  >
+      
+        <span *ngIf="name.hasError('required') && name.touched && (name.invalid|| name.dirty)" class="text-danger ">*Name is required</span>
+        <span *ngIf="name.hasError('minlength')" class="text-danger">
+          Name must be at least 2 characters long
+
+        </span>
+     </div>
+ <div class="mb-3">
+        <label for="Position" class="form-label" >Position</label>
+         <input type="text" id="position" [(ngModel)]="newManagingCommitee.position" name="position" class="form-control"  required  #position="ngModel" minlength="2" >
+            <span *ngIf="position.hasError('required') && position.touched && (position.invalid||position.dirty)" class="text-danger">*Position is required</span>
+             <span *ngIf="position.hasError('minlength')" class="text-danger">
+                 Position must be at least 2 characters long
+    
+              </span>
+         </div>
+ <div class="mb-3">
+  <label for="description1" class="form-label" >Description1</label>
+    <textarea id="description1" [(ngModel)]="newManagingCommitee.description1" name="Description1" class="form-control"  required  #description1="ngModel" minlength="2" ></textarea>
+         <span *ngIf="description1.hasError('required') && description1.touched && (description1.invalid||description1.dirty)" class="text-danger">*Description1 is required</span>
+         <span *ngIf="description1.hasError('minlength')" class="text-danger">
+         Description1 must be at least 2 characters long
+        
+         </span>
+   </div>  
+   <div class="mb-3">
+    <label for="description2" class="form-label" >Description2</label>
+     <textarea id="description2" [(ngModel)]="newManagingCommitee.description2" name="description2" class="form-control"  required  #description2="ngModel" minlength="2" ></textarea>
+        <span *ngIf="description2.hasError('required') && description2.touched && (description2.invalid||description2.dirty)" class="text-danger">*Description2 is required</span>
+         <span *ngIf="description2.hasError('minlength')" class="text-danger">
+            Description2 must be at least 2 characters long
+
+          </span>
+     </div>  
+     <div class="mb-3 form-check">
+        <input type="checkbox" id="isActive"  [(ngModel)]="newManagingCommitee.isActive" name="isActive" class="form-check-input">
+        <label for="isActive" class="form-check-label">Active</label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="myform.invalid">Update</button>
+  </form>
+</div>

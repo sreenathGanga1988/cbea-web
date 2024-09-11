@@ -41,7 +41,7 @@ export class ManagingcommiteeListComponent {
     isEditButton: true,
     rows: [{}],
     StatusColumns:["IsActive"],
-    deleteconfirmationmessage: 'Are you sure you want to delete this category?'
+    deleteconfirmationmessage: 'Are you sure you want to delete this?'
 
 
   };
@@ -57,6 +57,11 @@ export class ManagingcommiteeListComponent {
   }
   configureKidutable() {
    // throw new Error('Method not implemented.');
+  }
+  EditButtonClicked(item: any) {
+
+    this.router.navigate(['/managingcommitee-edit', item.Id]);
+
   }
   GlobalSearch(sarchtxt: string) {
     console.log("search text--->",sarchtxt);
@@ -80,4 +85,48 @@ export class ManagingcommiteeListComponent {
     })
 
 }
+DeleteItem(id: number) {
+
+  this.managingComiteService.deleteItem(id).subscribe({
+    next: (res) => {
+      if (res.isSucess) {
+        this.notificationService.showSuccess('Successfully deleted managing comitee!!',"Deleted");
+        this.GetItems("");
+      }
+      else {
+
+        this.notificationService.showError('Failed to Delete managing comitee :' + res.error,"Error")
+
+      }
+
+    },
+    error: (res) => {
+
+    }
+  })
 }
+
+
+openModal() {
+  this.show = true;
+}
+
+closeModal() {
+  this.show = false;
+}
+
+handleConfirmation(obj: any) {
+
+  if (obj[0]==true) {
+
+    this. DeleteItem(obj[1].Id)
+    // Handle confirmation logic here
+  } else {
+    console.log('Cancelled!');
+    // Handle cancellation logic here
+  }
+}
+
+
+}
+

@@ -10,7 +10,7 @@
           <label for="name" class="form-label" >Name:</label>
           <input type="text" id="name" [(ngModel)]="newDeathClaim.name" name="name" class="form-control"  required #name="ngModel" minlength="2" >
 
-            <div *ngIf="name.hasError('required') && name.touched && name.invalid" class="alert alert-danger p-0">*Name is required</div>
+            <div *ngIf="name.hasError('required') && name.touched && name.invalid" class="text-danger p-0">*Name is required</div>
             <div *ngIf="name.hasError('minlength')" class="alert alert-danger p-0">
               Name must be at least 2 characters long
 
@@ -19,7 +19,7 @@
                 <label for="nominee" class="form-label" >Nominee:</label>
                 <input type="text" id="name" [(ngModel)]="newDeathClaim.nominee" name="nominee" class="form-control"  required #nominee="ngModel" minlength="2" >
 
-                  <div *ngIf="nominee.hasError('required') && nominee.touched && nominee.invalid" class="alert alert-danger p-0">*Nominee is required</div>
+                  <div *ngIf="nominee.hasError('required') && nominee.touched && nominee.invalid" class="text-danger p-0">*Nominee is required</div>
                   <div *ngIf="nominee.hasError('minlength')" class="alert alert-danger p-0">
                     Nominee must be at least 2 characters long
 

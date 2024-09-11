@@ -1,1 +1,55 @@
-<p>status-create works!</p>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<div class="container mt-4">
+    
+    <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
+      <div class="mb-3">
+        <label for="name" class="form-label" >Name</label>
+        <input type="text" id="name" [(ngModel)]="newStatus.name" name="name" class="form-control"  required  #name="ngModel" minlength="2" >
+        
+          <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty)" class="text-danger">*Name is required</span>
+          <span *ngIf="name.hasError('minlength')" class="text-danger">
+            Name must be at least 2 characters long
+  
+          </span>
+          
+       </div>
+       <div class="mb-3">
+        <label for="abbreviation" class="form-label" >Code</label>
+        <input type="text" id="abbreviation" [(ngModel)]="newStatus.abbreviation" name="abbreviation" class="form-control"  required  #abbreviation="ngModel" minlength="2" >
+        
+          <span *ngIf="abbreviation.hasError('required') && abbreviation.touched && (abbreviation.invalid||abbreviation.dirty)" class="text-danger">Code is required</span>
+          <span *ngIf="abbreviation.hasError('minlength')" class="text-danger">
+            Code must be at least 2 characters long
+  
+          </span>
+          
+       </div> 
+    <div class="mb-3">
+     <label for="description" class="form-label" >Description</label>
+        <input type="text" id="description" [(ngModel)]="newStatus.description" name="description" class="form-control"  required  #description="ngModel" minlength="2" >
+        
+          <span *ngIf="description.hasError('required') && description.touched && (description.invalid||description.dirty)" class="text-danger">Description is required</span>
+          <span *ngIf="description.hasError('minlength')" class="text-danger">
+            Description must be at least 2 characters long
+  
+          </span>
+          
+    </div> 
+  
+    <div class="mb-3">
+        <label for="groupId" class="form-label" >GroupId</label>
+           <input type="number" id="groupId" [(ngModel)]="newStatus.groupId" name="description" class="form-control"  required  #groupId="ngModel"  >
+           
+             <span *ngIf="groupId.hasError('required') && groupId.touched && (groupId.invalid||groupId.dirty)" class="text-danger">Group ID is required</span>
+             
+             
+       </div>
+       
+       <div class="mb-3 form-check">
+        <input type="checkbox" id="isActive" [(ngModel)]="newStatus.isActive" name="isActive" class="form-check-input">
+        <label for="isActive" class="form-check-label">Active</label>
+      </div>
+     <button type="submit"  class="btn btn-primary" [disabled]="myform.invalid ">Create</button> 
+  </form>
+ </div>
+

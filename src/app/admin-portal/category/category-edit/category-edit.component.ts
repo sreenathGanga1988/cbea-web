@@ -79,7 +79,7 @@ export class CategoryEditComponent {
 
       },
       error: (res) => {
-        alert("Erro while Adding")
+        alert("Error while Adding")
       }
     })
 

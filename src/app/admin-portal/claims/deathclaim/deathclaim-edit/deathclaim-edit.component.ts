@@ -31,7 +31,7 @@ export class DeathclaimEditComponent {
       this.getItem(id)
     } else {
       // Handle the case where id is null (e.g., redirect or show an error)
-      console.error('ID is null');
+      console.error('Id is null');
     }
   }
   handleCreateNewItem() {
