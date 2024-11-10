@@ -6,8 +6,8 @@
       {{headingText}}
     </a>
     <div class="d-flex">
-
-      <button class="btn btn-success"  (click)="addNewItem()"   type="button">Add New</button>
+      <button  *ngIf="isListMode==1" class="btn btn-success"  (click)="addNewItem()"   type="button">Add New</button>
+      <button  *ngIf="isListMode==0" class="btn btn-success"  (click)="goToPrevious()"   type="button"> 'Back</button>
     </div>
   </div>
 </nav>

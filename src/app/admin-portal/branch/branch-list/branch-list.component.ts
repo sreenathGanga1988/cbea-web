@@ -25,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     CommonModule,
     KiduConfirmModalComponent,
     FormsModule,
-    
+
   ],
   templateUrl: './branch-list.component.html',
   styleUrl: './branch-list.component.css',
@@ -40,25 +40,17 @@ export class BranchListComponent {
     private branchService: BranchService,
     private notificationServices: NotificationService
   ) {}
-  
+
   data = 'Are you sure you want to proceed?';
   show = false; // Flag to control modal visibility
   _kiduTableModel: KiduTableModel = {
     tableColumns: [
-      { columnDef: 'ID', header: 'Serial#', colType: CellType.Text },
-      { columnDef: 'DPCode', header: 'DP-Code', colType: CellType.Text },
-      { columnDef: 'CircleID', header: 'CircleID', colType: CellType.Text },
-      { columnDef: 'StateID', header: 'StateID', colType: CellType.Text },
-      { columnDef: 'Name', header: 'Name', colType: CellType.Text },
-      //  { columnDef: 'Address1', header: 'Address1', colType: CellType.Text },
-      //  { columnDef: 'Address2', header: 'Address2', colType: CellType.Text },
-      //{ columnDef: 'Address3', header: 'Address3', colType: CellType.Text },
+      { columnDef: 'ID', header: 'Serial #', colType: CellType.Text },
+      { columnDef: 'DpCode', header: 'DP Code', colType: CellType.Text },
+      { columnDef: 'Name', header: 'Branch Name', colType: CellType.Text },
       { columnDef: 'District', header: 'District', colType: CellType.Text },
-      // { columnDef: 'CircleCode', header: 'Circle-Code', colType: CellType.Text },
       { columnDef: 'CircleName', header: 'Circle', colType: CellType.Text },
       { columnDef: 'StateName', header: 'State', colType: CellType.Text },
-      //  { columnDef: 'StateCode', header: 'State-Code', colType: CellType.Text },
-      // { columnDef: 'Status', header: 'Status', colType: CellType.Text },
       { columnDef: 'IsActive', header: 'Status', colType: CellType.Status },
     ],
     isDeleteButton: true,
@@ -72,9 +64,9 @@ export class BranchListComponent {
     this.configureKidutable();
     this.GetItems('');
   }
-  
+
   handleCreateNewItem() {
-   
+
     this.router.navigate(['/branch-create']);
   }
   configureKidutable() {}

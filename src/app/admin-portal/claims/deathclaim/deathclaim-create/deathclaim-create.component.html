@@ -2,9 +2,13 @@
 <div class="container mt-4">
     <h2></h2>
     <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
-        <div class="mb-3">
-            <label for="staffnonavigationstaffno" class="form-label" >StaffNo:</label>
-            <input type="text" id="staffnonavigationstaffno" [(ngModel)]="newDeathClaim.staffnonavigationstaffno" name="staffnonavigationstaffno" class="form-control"  required #staffnonavigationstaffno="ngModel" minlength="2" >
+        <div class="mb-6">
+          <label for="staffnonavigationstaffno" class="form-label" >StaffNo:</label>
+          <div class="input-group">
+
+            <input type="text" id="staffnonavigationstaffno" [(ngModel)]="newDeathClaim.staffno" name="staffno" class="form-control"  required #staffno="ngModel" minlength="2" >
+            <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel"   (PopUpSelected)="StaffSelected($event)"  ></app-kidu-data-picker>
+          </div>
             </div>
         <div class="mb-3">
           <label for="name" class="form-label" >Name:</label>
@@ -58,4 +62,3 @@
 
 
 
-    <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel" ></app-kidu-data-picker>

@@ -9,8 +9,8 @@ import { CustomApiResponse } from '../../models/Common/custom-api-responseo.mode
 })
 export class HttpHelperService {
  //  BaseUrl: String = "https://www.cbeugjfws.co.in/api";
- //BaseUrl: String = "  http://localhost:5293/api";
- BaseUrl: String = "  http://sreenathganga-001-site7.jtempurl.com/api";
+ BaseUrl: String = "  http://localhost:5293/api";
+ //BaseUrl: String = "  http://sreenathganga-001-site7.jtempurl.com/api";
   //https://localhost:7157/
 
   header: HttpHeaders;
@@ -24,20 +24,26 @@ export class HttpHelperService {
     // return  this.httpclient.get<CustomApiResponse>(this.BaseUrl+url);
   }
   GetDataWithObject(url: string, ReportType:string,SearchText :string, PageSize:number, PageNumber : number): Observable<CustomApiResponse> {
-    // const data = {
-    //   "ReportType": "CATEGORY",
-    //   "SearchText": "",
-    //   "PageSize": 0,
-    //   "PageNumber": 0
-    // };
-
-   // return this.http.get(url, { headers: headers, params: params });
 
     const _params = new HttpParams()
       .set('ReportType', ReportType)
       .set('SearchText', SearchText)
       .set('PageSize', PageSize)
       .set('PageNumber', PageNumber);
+    return this.httpclient.get<CustomApiResponse>(this.BaseUrl + url, { headers: this.header ,params:_params});
+
+
+    // return  this.httpclient.get<CustomApiResponse>(this.BaseUrl+url);
+  }
+
+  GetDataWithSelectedObject(url: string, ReportType:string,SearchText :string, PageSize:number, PageNumber : number,SelectedItems :string): Observable<CustomApiResponse> {
+
+    const _params = new HttpParams()
+      .set('listType', ReportType)
+      .set('SearchTerm', SearchText)
+      .set('PageSize', PageSize)
+      .set('PageNumber', PageNumber)
+      .set('SelectedItems', SelectedItems);
     return this.httpclient.get<CustomApiResponse>(this.BaseUrl + url, { headers: this.header ,params:_params});
 
 

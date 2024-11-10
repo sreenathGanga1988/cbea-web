@@ -33,9 +33,10 @@ export class UsertypeListComponent {
   show = false; // Flag to control modal visibility
   _kiduTableModel: KiduTableModel = {
   tableColumns:  [
-    {columnDef:'ID',header:'Serial#',colType:CellType.Text},
-    {columnDef:'Description',header:'Description',colType:CellType.Text}
-    ,{columnDef:'Abbreviation',header:'Abbreviation',colType:CellType.Text}
+    {columnDef:'ID',header:'Serial #',colType:CellType.Text}
+    ,{columnDef:'Abbreviation',header:'User Type Code',colType:CellType.Text}
+    ,{columnDef:'Description',header:'User Type Name',colType:CellType.Text}
+
 ],
     // ,{columnDef:'btnString',header:'Actions',colType:CellType.Button}
     isDeleteButton: true,
@@ -71,7 +72,7 @@ export class UsertypeListComponent {
 
         if (res) {
           this._kiduTableModel.rows = res.rowData;
-          
+
         }
         console.log(this.Items)
 

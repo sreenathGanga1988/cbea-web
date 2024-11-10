@@ -25,6 +25,9 @@ export class KiduDataPickerModel{
   tableColumns!: Array<Column>
   rows: any[]| undefined;
   TopTittle!: string;
+  reporttype!: string;
+  pageSize!:number;
+  pageNumber!:number;
 
 }
 

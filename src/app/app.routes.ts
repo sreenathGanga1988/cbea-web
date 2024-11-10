@@ -83,8 +83,8 @@ export const routes: Routes = [
    { path: 'managingcomitee-create',    component: ManagingcommiteeCreateComponent,},
    { path: 'refunds-create',    component: RefundCreateComponent,},
    { path: 'deathclaims-create',    component: DeathclaimCreateComponent,},
-   { path: 'directpays-create',    component:DeathclaimCreateComponent,},
-   { path: 'refunds-create',    component: CircleCreateComponent,},
+   { path: 'directpays-create',    component:DirectpaysCreateComponent,},
+   { path: 'refunds-create',    component: RefundCreateComponent,},
 
 
    { path: 'categories-edit/:id',    component: CategoryEditComponent,},

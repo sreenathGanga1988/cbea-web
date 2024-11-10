@@ -3,7 +3,7 @@ import { AuditEntity } from "./audit-entity.model";
 
 export interface Deathclaim extends AuditEntity {
     id: number;
-    staffnonavigationstaffno:number|null;
+    staffno:number|null;
     name: string;
     nominee: string;
     StateId:number|null;
@@ -11,7 +11,7 @@ export interface Deathclaim extends AuditEntity {
     nomineeidentity:string;
     deathdate: string | null;
     amount:number|null;
-    lastcontribution:number|null; 
+    lastcontribution:number|null;
     ddno:number|null;
     dddate:number|null;
     expr1:number|null;

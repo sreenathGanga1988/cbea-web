@@ -1,0 +1,8 @@
+
+#dtTable :hover {
+  cursor: pointer;
+  cursor: hand;
+}
+#myconfirmbox{
+  display: block;
+}

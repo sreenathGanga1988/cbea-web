@@ -34,9 +34,9 @@ export class CategoryListComponent {
   show = false; // Flag to control modal visibility
   _kiduTableModel: KiduTableModel = {
     tableColumns: [
-      { columnDef: 'ID', header: 'Serial#', colType: CellType.Text },
-      { columnDef: 'Abbreviation', header: 'Code', colType: CellType.Text },
-      { columnDef: 'Name', header: 'Name', colType: CellType.Text },
+      { columnDef: 'ID', header: 'Serial #', colType: CellType.Text },
+      { columnDef: 'Abbreviation', header: 'Category Code', colType: CellType.Text },
+      { columnDef: 'Name', header: ' Category Name', colType: CellType.Text },
       { columnDef: 'IsActive', header: 'Status', colType: CellType.Status }],
     isDeleteButton: true,
     isEditButton: true,
@@ -64,6 +64,11 @@ export class CategoryListComponent {
 
     this.router.navigate(['/categories-create']);
   };
+  gotoPreviousPage(){
+    alert("back")
+    this.router.navigate(['/categories']);
+  }
+
   EditButtonClicked(item: any) {
 
     this.router.navigate(['/categories-edit', item.ID]);
@@ -72,7 +77,7 @@ export class CategoryListComponent {
 
   GlobalSearch(sarchtxt: string) {
     console.log("search text--->",sarchtxt);
-    
+
     this.GetItems(sarchtxt)
   }
 

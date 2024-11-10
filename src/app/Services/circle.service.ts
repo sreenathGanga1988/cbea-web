@@ -21,7 +21,7 @@ export class CircleService {
     this._listRequest.SearchText = "";
     this._listRequest.PageSize = 25;
     this._listRequest.PageNumber = 0;
-  
+
   }
   getCircleAsync(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
 
@@ -38,6 +38,7 @@ export class CircleService {
        }
     postCircles(obj :Circle) {
       obj.createdByUserId=1;
+      alert(obj.createdByUserId)
        return this.httphelper.POST(this.url,obj);
      }
      putCircles(id:number,obj :any) {
