@@ -1,1 +1,4 @@
 node_modules
+# Ignore Angular build output
+dist/
+.angular/cache/

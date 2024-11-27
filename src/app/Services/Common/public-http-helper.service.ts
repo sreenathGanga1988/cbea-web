@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { LoginResponse } from '../../Custom Modules/public-area/Models/loginresponse.model';
+import { environment } from '../../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class PublicHttpHelperService {
+  BaseUrl: String = environment.BaseUrl;
 
-  BaseUrl:String="https://www.cbeugjfws.co.in/api";
   constructor( private httpclient :HttpClient) {
    }
 
@@ -15,9 +16,9 @@ export class PublicHttpHelperService {
     return  this.httpclient.get<any>(this.BaseUrl+url);
    }
    Login(obj :any ) {
-            return this.httpclient.post<LoginResponse>(this.BaseUrl+'/Security',obj);
+            return this.httpclient.post<any>(this.BaseUrl+'/Api_Security/login',obj);
 }
 
   }
 
-  
+

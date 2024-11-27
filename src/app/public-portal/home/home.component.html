@@ -1,1 +1,14 @@
-<p>home works!</p>
+
+
+<app-publicnavbar></app-publicnavbar>
+
+<main>
+
+  <div *ngIf="isLandingPage()">
+       <app-mainpage></app-mainpage>
+   </div>
+  <router-outlet></router-outlet>
+ <app-publicfooter></app-publicfooter>
+
+</main>
+

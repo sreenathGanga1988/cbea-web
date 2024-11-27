@@ -1,0 +1,68 @@
+/* Login Container Styles */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa; /* Light background to contrast with navbar */
+  padding: 20px;
+}
+
+/* Login Card Styles */
+.login-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px 30px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.login-card h2 {
+  color: #0d6efd; /* Match navbar primary color */
+  margin-bottom: 20px;
+}
+
+.login-card .form-group label {
+  font-weight: bold;
+  color: #495057;
+}
+
+.login-card .form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+.login-card .btn-primary {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.login-card .btn-primary:hover {
+  background-color: #084298;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login-card .btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.login-card .btn-secondary:hover {
+  background-color: #5a6268;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Form Check */
+.form-check-label {
+  color: #495057;
+}
+
+/* Responsive Design */
+@media (max-width: 576px) {
+  .login-card {
+    padding: 15px 20px;
+  }
+}

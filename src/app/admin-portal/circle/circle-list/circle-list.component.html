@@ -1,2 +1,2 @@
-<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()" [isListMode]=1></app-title-bar>
 <app-kidu-table  [_kiduTableModel]="_kiduTableModel"   (SearchTextfun)="GlobalSearch($event)" (EditButtonClickfun)="EditButtonClicked($event)" (ConfirmActionFun)="handleConfirmation($event)" ></app-kidu-table>

@@ -1,0 +1,37 @@
+image-flip {
+  perspective: 1000px;
+}
+
+.mainflip {
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+.frontside,
+.backside {
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.frontside {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.backside {
+  transform: rotateY(180deg);
+}
+
+.image-flip:hover .mainflip {
+  transform: rotateY(180deg);
+}
+
+.card {
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

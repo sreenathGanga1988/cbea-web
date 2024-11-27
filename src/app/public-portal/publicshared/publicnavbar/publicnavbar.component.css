@@ -1,0 +1,37 @@
+/* Navbar Styles */
+.navbar {
+  background-color: #0d6efd; /* Bootstrap primary color */
+  padding: 10px 15px;
+}
+
+/* Logo Styling */
+.navbar-logo {
+  max-height: 50px; /* Adjust the logo size */
+  width: auto;
+}
+
+/* Navigation Links */
+.navbar .nav-link {
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  padding: 10px 15px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Centering Navigation Links */
+.navigation {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/* Responsive Design for Mobile View */
+@media (max-width: 768px) {
+  .navbar .navbar-logo {
+    max-height: 40px; /* Resize logos for smaller screens */
+  }
+
+  .navigation {
+    flex-direction: column;
+  }
+}

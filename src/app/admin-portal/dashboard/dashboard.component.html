@@ -10,7 +10,7 @@
         </a>
         <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
           <li class="nav-item">
-            <a href="#" class="nav-link align-middle px-0">
+            <a  [routerLink]="['/admin/']" class="nav-link align-middle px-0">
               <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
             </a>
           </li>
@@ -19,34 +19,34 @@
               <i class="fs-4 bi-speedometer2"></i> <span class="ms-1 d-none d-sm-inline">Settings</span> </a>
             <ul class="collapse  nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
               <li class="w-100">
-                <a [routerLink]="['/categories']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/categories']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">Category</span></a>
               </li>
               <li>
-                <a [routerLink]="['/states']" class="nav-link px-0"> <span class="d-none d-sm-inline">States</span></a>
+                <a [routerLink]="['/admin/states']" class="nav-link px-0"> <span class="d-none d-sm-inline">States</span></a>
               </li>
               <li>
-                <a [routerLink]="['/usertypes']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/usertypes']" class="nav-link px-0"> <span
                    class="d-none d-sm-inline">User Types</span></a>
               </li>
               <li>
-                <a [routerLink]="['/status']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/status']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Status</span></a>
               </li>
               <li>
-                <a [routerLink]="['/designation']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/designation']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">Designation</span></a>
               </li>
               <li>
-                <a [routerLink]="['/Circles']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/Circles']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">Circles</span></a>
               </li>
               <li>
-                <a [routerLink]="['/Branches']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/Branches']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">Branches</span></a>
               </li>
               <li>
-                <a [routerLink]="['/User']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/User']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">User</span></a>
               </li>
 
@@ -64,16 +64,16 @@
               <i class="fs-4 bi-wallet-fill"></i> <span class="ms-1 d-none d-sm-inline">Contributions</span></a>
             <ul class="collapse nav flex-column ms-1" id="subcontribute" data-bs-parent="#menu">
               <li class="w-100">
-                <a [routerLink]="['/Member']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/Member']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Member</span></a>
 
               </li>
               <li>
-                <a [routerLink]="['/directpays']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/directpays']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Monthly Contributions</span></a>
               </li>
               <li>
-                <a [routerLink]="['/directpays']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/directpays']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Direct Pays</span></a>
               </li>
             </ul>
@@ -83,11 +83,11 @@
               <i class="fs-4 bi-credit-card"></i> <span class="ms-1 d-none d-sm-inline">Claims</span></a>
             <ul class="collapse nav flex-column ms-1" id="submenuclaim" data-bs-parent="#menu">
               <li class="w-100">
-                <a [routerLink]="['/refunds']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/refunds']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Refunds</span></a>
               </li>
               <li>
-                <a [routerLink]="['/deathclaims']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/deathclaims']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Death Claims</span></a>
               </li>
             </ul>
@@ -100,21 +100,21 @@
               <li class="w-100">
 
 
-                  <a [routerLink]="['/MainPage']" class="nav-link px-0"> <span
+                  <a [routerLink]="['/admin/MainPage']" class="nav-link px-0"> <span
                       class="d-none d-sm-inline">Main Page</span></a>
 
 
               </li>
               <li>
-                <a [routerLink]="['/dailyquotes']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/dailyquotes']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Quotes</span></a>
               </li>
               <li>
-                <a [routerLink]="['/DailyNews']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/DailyNews']" class="nav-link px-0"> <span
                   class="d-none d-sm-inline">Daily News</span></a>
               </li>
               <li>
-                <a [routerLink]="['/managingcomitee']" class="nav-link px-0"> <span
+                <a [routerLink]="['/admin/managingcomitee']" class="nav-link px-0"> <span
                     class="d-none d-sm-inline">Managing Comitee</span></a>
               </li>
 
@@ -141,28 +141,7 @@
 
 
 
-          <li>
-            <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline">Products</span> </a>
-            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
-              <li class="w-100">
-                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 1</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 2</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 3</a>
-              </li>
-              <li>
-                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline">Product</span> 4</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#" class="nav-link px-0 align-middle">
-              <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-          </li>
+
         </ul>
         <hr>
         <div class="dropdown pb-4">
@@ -178,7 +157,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Sign out</a></li>
+            <li><a class="dropdown-item" (click)="logOut()" >Sign out</a></li>
           </ul>
         </div>
       </div>

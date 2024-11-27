@@ -2,16 +2,16 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { CustomApiResponse } from '../../models/Common/custom-api-responseo.model';
+import { environment } from '../../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpHelperService {
- //  BaseUrl: String = "https://www.cbeugjfws.co.in/api";
- BaseUrl: String = "  http://localhost:5293/api";
- //BaseUrl: String = "  http://sreenathganga-001-site7.jtempurl.com/api";
-  //https://localhost:7157/
+
+ BaseUrl: String = environment.BaseUrl;
+
 
   header: HttpHeaders;
   constructor(private httpclient: HttpClient) {

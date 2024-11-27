@@ -62,11 +62,11 @@ export class CategoryListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/categories-create']);
+    this.router.navigate(['/admin/categories-create']);
   };
   gotoPreviousPage(){
     alert("back")
-    this.router.navigate(['/categories']);
+    this.router.navigate(['/admin/categories']);
   }
 
   EditButtonClicked(item: any) {

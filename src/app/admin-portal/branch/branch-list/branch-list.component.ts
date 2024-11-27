@@ -72,7 +72,7 @@ export class BranchListComponent {
   configureKidutable() {}
   EditButtonClicked(item: any) {
     // throw new Error('Method not implemented.');
-    this.router.navigate(['/branch-edit', item.ID]);
+    this.router.navigate(['admin/branch-edit', item.ID]);
   }
   GlobalSearch(sarchtxt: string) {
     console.log('search text--->', sarchtxt);
