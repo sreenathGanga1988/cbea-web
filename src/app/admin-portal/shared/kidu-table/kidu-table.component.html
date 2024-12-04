@@ -51,7 +51,8 @@
               <div *ngSwitchCase="3" class="text-center">
 
 
-                <span [ngClass]="item[disCol.columnDef] ==true ? 'activemeployeeclass' : 'inactiveemployeeclass'" class="rounded-pill"  [innerHTML]="item[disCol.columnDef]"></span>
+                <!-- <span [ngClass]="item[disCol.columnDef] ==true ? 'activemeployeeclass' : 'inactiveemployeeclass'" class="rounded-pill"  [innerHTML]="item[disCol.columnDef]"></span> -->
+                <span [ngClass]="isPositiveStatus(item[disCol.columnDef]) ==true ? 'activemeployeeclass' : 'inactiveemployeeclass'" class="rounded-pill"  [innerHTML]="item[disCol.columnDef]"></span>
 
 
               </div>

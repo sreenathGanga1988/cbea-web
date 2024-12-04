@@ -9,16 +9,16 @@ import { KiduConfirmModalComponent } from '../Modals/kidu-confirm-modal/kidu-con
 @Component({
   selector: 'app-kidu-table',
   standalone: true,
-  imports: [CommonModule, FormsModule,KiduConfirmModalComponent],
+  imports: [CommonModule, FormsModule, KiduConfirmModalComponent],
   templateUrl: './kidu-table.component.html',
   styleUrl: './kidu-table.component.css'
 })
 export class KiduTableComponent {
 
 
- _currentrowitem :any
+  _currentrowitem: any
 
- public isLoading: boolean = true; // This will be true initially
+  public isLoading: boolean = true; // This will be true initially
 
   @Input()
   // _kiduTableModel: KiduTableModel = { tableColumns: [], isDeleteButton: false,isEditButton:false ,rows:[{}]optionalCol}; // Initialize with default values
@@ -31,7 +31,7 @@ export class KiduTableComponent {
 
   constructor() {
 
-      this.isLoading=true; // Call the function to load rows initially
+    this.isLoading = true; // Call the function to load rows initially
 
     // Initialize the kiduTableModel object
     this._kiduTableModel = new KiduTableModel();
@@ -40,12 +40,12 @@ export class KiduTableComponent {
     this._kiduTableModel.isEditButton = true;
     this._kiduTableModel.rows = []; // Initialize rows as an empty array
     this._kiduTableModel.StatusColumns = []; // Initialize StatusColumns as an empty array
-    this._kiduTableModel.deleteconfirmationmessage="";
+    this._kiduTableModel.deleteconfirmationmessage = "";
   }
 
 
   //sarchtxt: string = "";
-  sarchtxt:any;
+  sarchtxt: any;
 
 
   @ViewChild('confirmBox') confirmBox!: KiduConfirmModalComponent;
@@ -57,15 +57,15 @@ export class KiduTableComponent {
 
   @Output() ConfirmActionFun: EventEmitter<any> = new EventEmitter<any>();
 
-  @Output() pageChange:EventEmitter<number>=new EventEmitter<any>();
-  GlobalSearchfun(sarchtxt:string) {
+  @Output() pageChange: EventEmitter<number> = new EventEmitter<any>();
+  GlobalSearchfun(sarchtxt: string) {
 
-   this.SearchTextfun.emit(this.sarchtxt);
+    this.SearchTextfun.emit(this.sarchtxt);
   }
 
   EditClicked(item: any) {
 
-    this._currentrowitem=item;
+    this._currentrowitem = item;
     this.EditButtonClickfun.emit(item);
   }
   ngOnInit(): void {
@@ -79,15 +79,28 @@ export class KiduTableComponent {
 
   };
 
+   isPositiveStatus(itemValue: any): boolean {
+
+    if (itemValue == true) {
+      return true;
+    }
+    else if (itemValue == 'Active')
+      {
+      return true;
+    }
+    else{return false;}
+
+    }
+
 
   openConfirmBox(item: any) {
-    this._currentrowitem=item;
+    this._currentrowitem = item;
     this.confirmBox.open(); // Call the open method on the confirm box component
   }
 
   handleConfirmation(confirmed: boolean) {
 
-    this.ConfirmActionFun.emit([confirmed,this._currentrowitem])
+    this.ConfirmActionFun.emit([confirmed, this._currentrowitem])
   }
 
   handleVisibilityChange(visible: boolean) {
