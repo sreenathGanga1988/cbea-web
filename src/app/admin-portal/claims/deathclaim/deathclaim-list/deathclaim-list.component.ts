@@ -57,7 +57,7 @@ export class DeathclaimListComponent {
   }
   handleCreateNewItem() {
 
-    this.router.navigate(['/deathclaims-create']);
+    this.router.navigate(['/admin/deathclaims-create']);
   }
   EditButtonClicked(item: any) {
 

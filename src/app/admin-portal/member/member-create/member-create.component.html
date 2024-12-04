@@ -1,1 +1,60 @@
-<p>member-create works!</p>
+<app-title-bar [headingText]='headingText'  (goToPrevious)="gotoPreviousPage()"
+[isListMode]=0></app-title-bar>
+<div class="container mt-4">
+    <h2>Create member</h2>
+    <form  class="col-md-6">
+      <div class="mb-3">
+        <label for="staffno" class="form-label" >Staff number :</label>
+  
+        <input type="text" id="staffno" [(ngModel)]="newMember.staffno" name="staffno" class="form-control" maxlength="4" required  #staffno="ngModel" minlength="2" >
+  
+          </div>
+          <div class="mb-3">
+            <label for="name"class="form-label" >Name :</label>
+      
+            <input type="text" id="name" [(ngModel)]="newMember.name" name="name" class="form-control" maxlength="4" required  #name="ngModel" minlength="2" >
+      
+              </div>
+              <div class="mb-3">
+                <p>Gender</p>
+               <label for="male">male</label>
+               <input type="radio" id="male" name="gender" value="Male">
+               <label for="female">female</label>
+               <input type="radio" id="female" name="gender" value="female">
+                
+         </div> 
+         <div class="mb-3">
+            <label for="dob"class="form-label" >Date of Birth :</label>
+      
+            <input type="date" id="dob" [(ngModel)]="newMember.dob" name="dob" class="form-control" >
+      
+              </div>
+              <div class="mb-3">
+                <label for="doj"class="form-label" >Date of Joining:</label>
+          
+                <input type="date" id="doj" [(ngModel)]="newMember.doj" name="doj" class="form-control" >
+          
+                  </div>
+                  <div class="mb-3">
+                    <label for="dojscheme"class="form-label" >Date of Joining To Scheme:</label>
+              
+                    <input type="date" id="dojscheme" [(ngModel)]="newMember.dojtoscheme" name="dojscheme" class="form-control" >
+              
+                      </div>  
+                      <div class="mb-3">
+                        <label for="nominee"class="form-label" >Nominee :</label>
+                  
+                        <input type="text" id="nominee" [(ngModel)]="newMember.nominee" name="nominee" class="form-control" >
+                  
+                          </div>       
+                          <div class="mb-3">
+                            <label for="branchname"class="form-label" >Branch Name :</label>
+                      
+                            <input type="text" id="nambranchnamee" [(ngModel)]="newMember.branchname" name="branchname" class="form-control" >
+                            <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel"   (PopUpSelected)="BranchSelected($event)"  ></app-kidu-data-picker>
+                              </div>
+                          
+                              <div class="mb-3 form-check">
+                                <input type="checkbox" id="isActive" [(ngModel)]="newMember.isActive" name="isActive" class="form-check-input">
+                                <label for="isActive" class="form-check-label">Active</label>
+                              </div>    

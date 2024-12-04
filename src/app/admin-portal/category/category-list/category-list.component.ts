@@ -71,7 +71,7 @@ export class CategoryListComponent {
 
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/categories-edit', item.ID]);
+    this.router.navigate(['/admin/categories-edit', item.ID]);
 
   }
 

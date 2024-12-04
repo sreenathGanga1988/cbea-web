@@ -3,13 +3,17 @@ import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { KiduTableComponent } from '../../shared/kidu-table/kidu-table.component';
 import { CustomApiResponse } from '../../../models/Common/custom-api-responseo.model';
 import { Router } from '@angular/router';
-import { CellType, Column } from '../../shared/kidu-table/columns';
-import { UserTypeService } from '../../../Services/usertype.service';
+import { CellType, Column, KiduTableModel } from '../../shared/kidu-table/columns';
+import { MemberService } from '../../../Services/member.service';
+import { NotificationService } from '../../../Services/Common/notification.service';
+import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-member-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent],
+  imports: [TitleBarComponent,KiduTableComponent,KiduConfirmModalComponent,FormsModule,CommonModule],
   templateUrl: './member-list.component.html',
   styleUrl: './member-list.component.css'
 })
@@ -18,18 +22,55 @@ export class MemberListComponent {
   response!: CustomApiResponse;
   Items!:any[];
 
-  constructor(private router: Router,private categoryService:UserTypeService) {
+  constructor(private router: Router,private memberService:MemberService,private notificationservice:NotificationService) {
   
   }
-  tableColumns: Array<Column> = [
-    {columnDef:'id',header:'Serial#',colType:CellType.Text}
-    ,{columnDef:'abbreviation',header:'Code',colType:CellType.Text},
-    {columnDef:'name',header:'Name',colType:CellType.Text}
-    ,{columnDef:'isActive',header:'Status',colType:CellType.Status}
-    ,{columnDef:'btnString',header:'Actions',colType:CellType.Button} ];
-    handleCreateNewItem() {
+  data = 'Are you sure you want to proceed?';
+  show = false; // Flag to control modal visibility
+  _kiduTableModel: KiduTableModel = {
+    tableColumns: [
+      { columnDef: 'ID', header: 'Serial #', colType: CellType.Text },
+      { columnDef: 'StaffNo', header: 'StaffNo', colType: CellType.Text },
+      { columnDef: 'Name',header: 'Name', colType: CellType.Text },
+      { columnDef: 'Gender', header: ' Gender', colType: CellType.Text },
+      { columnDef: 'Designation', header: 'Designation ', colType: CellType.Text },
+      { columnDef: 'Status', header: 'Status', colType: CellType.Status }],
+    isDeleteButton: true,
+    isEditButton: true,
+    rows: [{}],
+    StatusColumns:["IsActive"],
+    deleteconfirmationmessage: 'Are you sure you want to delete this member?'
 
-      this.router.navigate(['/member-create']);
-    }
+
+  };
+  ngOnInit(): void {
+
+    this.configureKidutable();
+    this.GetItems("");
+  }
+  handleCreateNewItem() {
+
+    this.router.navigate(['/admin/member-create']);
+  };
+  configureKidutable() {
+  
+  }
+  GetItems(searchtext: string) {
+    this.memberService.getMembersAsync(searchtext, 1, 10).subscribe({
+      next: (res) => {
+
+        if (res) {
+          this._kiduTableModel.rows = res.rowData;
+        }
+        console.log(this.Items)
+
+      },
+      error: (res) => {
+        alert("Error while Adding")
+      }
+    })
+  }
+
+
 
 }

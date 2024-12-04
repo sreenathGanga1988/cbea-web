@@ -1,6 +1,6 @@
 import { Component, NgModule } from '@angular/core';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../../Services/category.service';
 import { Category } from '../../../models/Common/category.model';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +10,7 @@ import { FormGroup,Validators,FormBuilder ,AbstractControl} from '@angular/forms
 @Component({
   selector: 'app-category-create',
   standalone: true,
-  imports: [TitleBarComponent, FormsModule,CommonModule],
+  imports: [TitleBarComponent, FormsModule,CommonModule,RouterModule,],
   templateUrl: './category-create.component.html',
   styleUrl: './category-create.component.css'
 })
@@ -59,7 +59,11 @@ abbreviation: any;
   
   handleCreateNewItem() {
 
-    this.router.navigate(['/categories-create']);
+    
+  }
+  gotoPreviousPage(){
+   alert("back")
+   this.router.navigate(['/categories']);
   }
   
   get name() {
