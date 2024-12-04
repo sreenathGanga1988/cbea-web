@@ -19,8 +19,8 @@ import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/ki
 export class MemberCreateComponent {
   _kiduDataPickerModel1: KiduDataPickerModel = {
     tableColumns: [
-      { columnDef: 'ID', header: 'Serial #', colType: CellType.Text },
-      { columnDef: 'Name', header: 'Branch Name', colType: CellType.Text },
+      { columnDef: 'code', header: ' #', colType: CellType.Text },
+      { columnDef: 'label', header: 'Branch Name ', colType: CellType.Text },
     ],
     rows: [],
     TopTittle: 'Select Branch',
@@ -31,12 +31,12 @@ export class MemberCreateComponent {
   }
   _kiduDataPickerModel2: KiduDataPickerModel= {
     tableColumns: [
-      { columnDef: 'Name', header: 'Code', colType: CellType.Text },
-     // { columnDef: 'Description', header: 'Name', colType: CellType.Text },
+      { columnDef: 'code', header: ' #', colType: CellType.Text },
+      { columnDef: 'label', header: 'Designation Name ', colType: CellType.Text },
     ],
     rows: [],
     TopTittle: 'Select Designation',
-    reporttype: "Designation",
+    reporttype: "DESIGNATION",
     pageSize: 0,
     pageNumber: 0
 
