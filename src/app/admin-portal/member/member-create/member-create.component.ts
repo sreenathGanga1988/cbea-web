@@ -17,7 +17,7 @@ import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/ki
   styleUrl: './member-create.component.css'
 })
 export class MemberCreateComponent {
-  _kiduDataPickerModel: KiduDataPickerModel = {
+  _kiduDataPickerModel1: KiduDataPickerModel = {
     tableColumns: [
       { columnDef: 'ID', header: 'Serial #', colType: CellType.Text },
       { columnDef: 'Name', header: 'Branch Name', colType: CellType.Text },
@@ -26,6 +26,18 @@ export class MemberCreateComponent {
     TopTittle: 'Select Branch',
     reporttype: "BRANCH",
     pageSize: 25,
+    pageNumber: 0
+
+  }
+  _kiduDataPickerModel2: KiduDataPickerModel= {
+    tableColumns: [
+      { columnDef: 'Name', header: 'Code', colType: CellType.Text },
+     // { columnDef: 'Description', header: 'Name', colType: CellType.Text },
+    ],
+    rows: [],
+    TopTittle: 'Select Designation',
+    reporttype: "Designation",
+    pageSize: 0,
     pageNumber: 0
 
   }
@@ -89,6 +101,13 @@ BranchSelected(obj: any) {
   if (obj[1] != null) {
     this.newMember.branchname = obj[1].label
   }
+
+}
+DesignationSelected(obj: any) {
+  if (obj[1] != null) {
+    this.newMember.designation= obj[1].label
+  }
+  
 }
 
 }

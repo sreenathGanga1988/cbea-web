@@ -58,7 +58,7 @@ export class DesignationListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/designation-create']);
+    this.router.navigate(['/admin/designation-create']);
   };
     EditButtonClicked(item: any) {
 

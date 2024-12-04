@@ -55,6 +55,16 @@ export class MemberListComponent {
   configureKidutable() {
   
   }
+  EditButtonClicked(item: any) {
+
+    this.router.navigate(['/admin/member-edit', item.ID]);
+
+  }
+  GlobalSearch(sarchtxt: string) {
+    console.log("search text--->",sarchtxt);
+
+    this.GetItems(sarchtxt)
+  }
   GetItems(searchtext: string) {
     this.memberService.getMembersAsync(searchtext, 1, 10).subscribe({
       next: (res) => {
