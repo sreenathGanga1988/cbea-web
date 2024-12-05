@@ -56,7 +56,7 @@ export class StateListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/states-create']);
+    this.router.navigate(['/admin/states-create']);
   };
     EditButtonClicked(item: any) {
 

@@ -9,6 +9,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-member-list',
@@ -57,7 +58,7 @@ export class MemberListComponent {
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/admin/member-edit', item.ID]);
+    this.router.navigate(['/admin/member-edit' ,item.ID]);
 
   }
   GlobalSearch(sarchtxt: string) {

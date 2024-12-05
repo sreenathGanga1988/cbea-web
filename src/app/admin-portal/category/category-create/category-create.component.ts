@@ -45,7 +45,7 @@ abbreviation: any;
  isAlive = true;
   constructor(private router: Router, private categoryService: CategoryService, private notificationService: NotificationService ,private createcategory:FormBuilder) {
  this.myform=this.createcategory.group({
-  text: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
+  text: [null, [Validators.required,this.noWhiteSpaceValidator]]
  
  });
 

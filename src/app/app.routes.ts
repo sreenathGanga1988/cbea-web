@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 
+
 export const routes: Routes = [
 
    // Public routes
@@ -14,9 +15,4 @@ export const routes: Routes = [
 // Fallback route for undefined paths
 { path: '**', redirectTo: 'public', pathMatch: 'full' },
 
-
-
-
-
-
-  ];
+ ];

@@ -32,9 +32,17 @@ getMembers(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
   return this.httphelper.GetData(this.url)
 
 }
-postCategories(obj: Member) {
+postMember(obj: Member) {
   obj.createdByUserId=1;
   return this.httphelper.POST(this.url, obj);
 }
+getMemberById(ID: number) {
+  return this.httphelper.GetData(this.url + "/" + ID);
+
+}
+   
+   putMember(id: number, obj: any) {
+     return this.httphelper.PUT(this.url + "/" + id, obj);
+   }
 
 }

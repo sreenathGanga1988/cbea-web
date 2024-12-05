@@ -33,9 +33,7 @@ export class CategoryService {
 
   getCategories(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
 
-
-
-    return this.httphelper.GetData(this.url)
+ return this.httphelper.GetData(this.url)
 
   }
 
