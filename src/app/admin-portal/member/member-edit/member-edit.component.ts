@@ -10,7 +10,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [TitleBarComponent,FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })

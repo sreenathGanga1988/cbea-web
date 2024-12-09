@@ -14,7 +14,7 @@ import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-member-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,KiduConfirmModalComponent,FormsModule,CommonModule],
+  imports: [TitleBarComponent,KiduTableComponent,FormsModule,CommonModule],
   templateUrl: './member-list.component.html',
   styleUrl: './member-list.component.css'
 })
@@ -58,7 +58,7 @@ export class MemberListComponent {
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/Admin/member-edit',item.ID]);
+    this.router.navigate(['/admin/member-edit',item.ID]);
 
   }
   GlobalSearch(sarchtxt: string) {

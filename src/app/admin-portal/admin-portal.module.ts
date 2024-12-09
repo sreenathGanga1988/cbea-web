@@ -45,6 +45,7 @@ import { DailyquotesEditComponent } from './cms/dailyquotes/dailyquotes-edit/dai
 import { CircleEditComponent } from './circle/circle-edit/circle-edit.component';
 import { DeathclaimEditComponent } from './claims/deathclaim/deathclaim-edit/deathclaim-edit.component';
 import { UsertypeEditComponent } from './usertype/usertype-edit/usertype-edit.component';
+import { MemberEditComponent } from './member/member-edit/member-edit.component';
 
 
 
@@ -97,7 +98,7 @@ const adminRoutes: Routes = [
       { path: 'designations-edit/:id',   component:DesignationEditComponent,},
       { path: 'newsitem-edit/:id',component:NewsEditComponent,},
       {path:  'status-edit/:id',component:StatusEditComponent,},
-
+      {path:   'member-edit/:id',component:MemberEditComponent,},
       { path: 'dailyquotes-edit/:id', component:DailyquotesEditComponent,},
       { path: 'Circles-edit/:id',component:CircleEditComponent,},
       { path: 'deathclaims-edit/:id',    component: DeathclaimEditComponent,},
