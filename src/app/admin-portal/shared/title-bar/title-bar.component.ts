@@ -13,14 +13,17 @@ export class TitleBarComponent {
   headingText: String="";
   @Input()
   isListMode : number=0;
+  
   @Output() gotoPreviousPage: EventEmitter<void> = new EventEmitter<void>();
-
+  goToPrevious() {
+    this.gotoPreviousPage.emit();
+  }
   @Output() createNewItem: EventEmitter<void> = new EventEmitter<void>();
   addNewItem() {
     this.createNewItem.emit();
   }
 
-  goToPrevious() {
-    this.gotoPreviousPage.emit();
-  }
+ // goToPrevious() {
+   // this.gotoPreviousPage.emit();
+ // }
 }

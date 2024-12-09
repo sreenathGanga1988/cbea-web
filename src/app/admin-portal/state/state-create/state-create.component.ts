@@ -49,10 +49,11 @@ export class StateCreateComponent {
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true }
   }
-  handleCreateNewItem() {
-
-    this.router.navigate(['/states-create']);
-  }
+  
+  gotoPreviousPage(){
+    alert("back")
+    this.router.navigate(['/states']);
+   }
   
 
   onSubmit(form:any) {

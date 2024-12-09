@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, EventEmitter, NgModule } from '@angular/core';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { Router, RouterModule } from '@angular/router';
 import { CategoryService } from '../../../Services/category.service';
@@ -62,8 +62,8 @@ abbreviation: any;
     
   }
   gotoPreviousPage(){
-   alert("back")
-   this.router.navigate(['/categories']);
+  alert("back")
+   this.router.navigate(['/admin/categories']);
   }
   
   get name() {
@@ -84,7 +84,7 @@ abbreviation: any;
 
 
         this.notificationService.showSuccess("Category Added Successfully", "Added")
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/admin/categories']);
       },
     
      error: (res) => {

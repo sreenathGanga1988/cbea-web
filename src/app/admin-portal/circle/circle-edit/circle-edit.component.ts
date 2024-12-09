@@ -69,7 +69,7 @@ ngOnInit(): void {
 
 
         this.notificationService.showSuccess("Circle Updated Successfully", "Added")
-        this.router.navigate(['/Circles']);
+        this.router.navigate(['/admin/Circles']);
       },
       error: (res) => {
         alert("Error while Adding")

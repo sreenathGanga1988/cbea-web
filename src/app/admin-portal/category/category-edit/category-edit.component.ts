@@ -53,6 +53,10 @@ export class CategoryEditComponent {
 
    // this.router.navigate(['/categories-create']);
   }
+  gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/categories']);
+    }
   get name() {
     return this.myform.get('name');
   }
@@ -92,7 +96,7 @@ export class CategoryEditComponent {
 
 
         this.notificationService.showSuccess("Category Updated Successfully", "Added")
-        this.router.navigate(['/categories']);
+        this.router.navigate(['/admin/categories']);
       },
       error: (res) => {
         alert("Error while Adding")
