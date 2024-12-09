@@ -36,7 +36,10 @@ export class ManagingcommiteeEditComponent {
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true }
   }
-
+  gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/managingcomitee']);
+    }
   
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');

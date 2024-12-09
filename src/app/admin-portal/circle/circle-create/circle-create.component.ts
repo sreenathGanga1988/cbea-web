@@ -52,6 +52,10 @@ constructor(private router: Router, private circleService: CircleService, privat
 
 
 }
+gotoPreviousPage(){
+  alert("back")
+   this.router.navigate(['/admin/Circles']);
+  }
 onSubmit()
   {
     this.newCircle.createdDate=new Date().toISOString();
@@ -67,7 +71,7 @@ onSubmit()
 
     this.notificationService.showSuccess("New circle is Added Successfully", "Added")
 
-    this.router.navigate(['/Circles']);
+    this.router.navigate(['/admin/Circles']);
 
 
   },

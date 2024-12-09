@@ -1,5 +1,6 @@
-<app-title-bar [headingText]='headingText'  (goToPrevious)="gotoPreviousPage()"
-[isListMode]=0></app-title-bar>
+<app-title-bar [headingText]='headingText'   (gotoPreviousPage)="gotoPreviousPage()"
+[isListMode]=0
+></app-title-bar>
 <div class="container mt-4">
     <h2>Create member</h2>
     <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>

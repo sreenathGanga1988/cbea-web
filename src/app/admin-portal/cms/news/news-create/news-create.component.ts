@@ -54,7 +54,10 @@ export class NewsCreateComponent {
 
      // this.router.navigate(['/categories-create']);
     }
-    
+    gotoPreviousPage(){
+      alert("back")
+       this.router.navigate(['/admin/DailyNews']);
+      }
     onSubmit(form: any) {
   
       this.formSubmitted=true;
@@ -72,7 +75,7 @@ export class NewsCreateComponent {
   
   
           this.notificationService.showSuccess("News Added Successfully", "Added")
-          this.router.navigate(['/DailyNews']);
+          this.router.navigate(['/admin/DailyNews']);
         },
       
        error: (res) => {

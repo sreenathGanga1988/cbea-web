@@ -1,5 +1,6 @@
 
-<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"  (gotoPreviousPage)="gotoPreviousPage()"
+[isListMode]=0></app-title-bar>
 
 <div class="container mt-4">
   <h2></h2>

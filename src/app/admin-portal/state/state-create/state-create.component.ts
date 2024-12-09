@@ -52,7 +52,7 @@ export class StateCreateComponent {
   
   gotoPreviousPage(){
     alert("back")
-    this.router.navigate(['/states']);
+    this.router.navigate(['/admin/states']);
    }
   
 
@@ -69,7 +69,7 @@ export class StateCreateComponent {
 
 
         this.notificationService.showSuccess("state Added Successfully", "Added")
-        this.router.navigate(['/states']);
+        this.router.navigate(['/admin/states']);
       },
       error: (res) => {
         alert("Error while Adding")

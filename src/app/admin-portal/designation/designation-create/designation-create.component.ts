@@ -12,7 +12,7 @@ import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-designation-create',
   standalone: true,
-  imports: [TitleBarComponent,FormsModule,KiduConfirmModalComponent,CommonModule],
+  imports: [TitleBarComponent,FormsModule,CommonModule],
   templateUrl: './designation-create.component.html',
   styleUrl: './designation-create.component.css'
 })
@@ -49,9 +49,13 @@ export class DesignationCreateComponent {
     const isValid = !isWhitespace;
     return isValid ? null : { 'whitespace': true }
   }
+  gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/designation']);
+    }
   handleCreateNewItem() {
 
-    this.router.navigate(['/designations-create']);
+   // this.router.navigate(['/designations-create']);
   }
   onSubmit(myform:any) {
    this.newDesignation.createdByUserId=1;

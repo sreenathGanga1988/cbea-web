@@ -54,8 +54,12 @@ export class UsertypeCreateComponent {
   }
   handleCreateNewItem() {
 
-    this.router.navigate(['/usertypes-create']);
+    this.router.navigate(['/admin/usertypes-create']);
   }
+  gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/usertypes']);
+    }
  
   onSubmit(form: any) {
 
@@ -64,7 +68,7 @@ export class UsertypeCreateComponent {
 
 
         this.notificationService.showSuccess("Usertypes Added Successfully", "Added")
-        this.router.navigate(['/usertypes']);
+        this.router.navigate(['/admin/usertypes']);
       },
     
      error: (res) => {

@@ -38,6 +38,10 @@ export class DeathclaimEditComponent {
 
     
   }  
+  gotoPreviousPage(){
+    alert("back")
+    this.router.navigate(['/admin/deathclaims']);
+   }
     getItem(id:string){
       this.deathclaimservice.getClaimById(Number(id)).subscribe({
         next: (res) => {
@@ -74,7 +78,7 @@ export class DeathclaimEditComponent {
 
 
         this.notificationService.showSuccess("Claim Updated Successfully", "Added")
-        this.router.navigate(['/deathclaims']);
+        this.router.navigate(['/admin/deathclaims']);
       },
       error: (res) => {
         alert("Error while Adding")

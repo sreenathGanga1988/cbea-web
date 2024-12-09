@@ -1,5 +1,6 @@
 <!--<p>circle-create works!</p>-->
-<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()" (gotoPreviousPage)="gotoPreviousPage()"
+[isListMode]=0></app-title-bar>
 <div class="container mt-4">
     <h2>Create Circle</h2>
     <form (ngSubmit)="onSubmit()" #circleCreate="ngForm" class="col-md-6">

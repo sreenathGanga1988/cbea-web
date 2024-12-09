@@ -35,6 +35,10 @@ export class DesignationEditComponent {
   handleCreateNewItem() {
 
    }
+   gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/designation']);
+    }
  
    getItem(id:string){
      this.designationService.getDesignationById(Number(id)).subscribe({
@@ -72,7 +76,7 @@ export class DesignationEditComponent {
 
 
         this.notificationService.showSuccess("designation Updated Successfully", "Added")
-        this.router.navigate(['/designation']);
+        this.router.navigate(['/admin/designation']);
       },
       error: (res) => {
         alert("Error while Adding")

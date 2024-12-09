@@ -64,6 +64,10 @@ export class DailyquotesEditComponent {
     })
 
   }
+  gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/dailyquotes']);
+    }
 onSubmit() {
 
     this.quotesService.putQuotes(Number(this.id),this.newQuotes).subscribe({

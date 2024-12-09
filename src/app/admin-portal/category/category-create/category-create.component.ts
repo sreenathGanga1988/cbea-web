@@ -88,7 +88,7 @@ abbreviation: any;
       },
     
      error: (res) => {
-       alert("Erro while Adding")
+       alert("Error while Adding")
       }
     })
     

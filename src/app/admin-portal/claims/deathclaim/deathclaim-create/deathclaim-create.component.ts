@@ -72,6 +72,10 @@ export class DeathclaimCreateComponent {
 
     });
   }
+  gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/deathclaims']);
+    }
   onSubmit(form: any) {
     this.newDeathClaim.deathdate = new Date().toISOString();
     this.newDeathClaim.createdDate = new Date().toISOString();
@@ -86,7 +90,7 @@ export class DeathclaimCreateComponent {
 
 
         this.notificationService.showSuccess("Claim Added Successfully", "Added")
-        this.router.navigate(['/deathclaims']);
+        this.router.navigate(['/admin/deathclaims']);
         console.log()
       },
 

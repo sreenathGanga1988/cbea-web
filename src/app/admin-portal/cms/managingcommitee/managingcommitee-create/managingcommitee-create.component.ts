@@ -62,6 +62,10 @@ export class ManagingcommiteeCreateComponent {
   
       
     }
+    gotoPreviousPage(){
+      alert("back")
+       this.router.navigate(['/admin/managingcomitee']);
+      }
     
     get name() {
       return this.myform.get('name');
@@ -82,7 +86,7 @@ onSubmit(form: any) {
   this.ManagingcomiteeService.postManagingComite(this.newManagingCommitee).subscribe({
     next: (res) => {
      this.notificationService.showSuccess("New team member is Added Successfully", "Added")
-      this.router.navigate(['/managingcomitee']);
+      this.router.navigate(['/admin/managingcomitee']);
       console.log(this.newManagingCommitee);
     },
   

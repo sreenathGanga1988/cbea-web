@@ -41,6 +41,10 @@ export class DailyquotesCreateComponent {
 constructor(private router:Router,private notification:NotificationService,private dayquotes:DayquotesService){
  
 }
+gotoPreviousPage(){
+  alert("back")
+   this.router.navigate(['/admin/dailyquotes']);
+  }
 
 onSubmit() {
 
@@ -54,7 +58,7 @@ this.dayquotes.postQuotes(this.newQuotes).subscribe({
 
 
       this.notification.showSuccess("Quotes Added Successfully", "Added")
-      this.router.navigate(['/dailyquotes']);
+      this.router.navigate(['/admin/dailyquotes']);
     },
     error: (res) => {
       alert("Error while Adding")

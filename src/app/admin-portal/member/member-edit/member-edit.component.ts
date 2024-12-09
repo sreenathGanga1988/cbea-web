@@ -10,7 +10,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,TitleBarComponent],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })
@@ -46,6 +46,10 @@ export class MemberEditComponent {
         console.error('ID is null');
       }
     }
+    gotoPreviousPage(){
+      alert("back")
+      this.router.navigate(['/admin/Member']);
+     }
     
     getItem(id:string){
       this.memberService.getMemberById(Number(id)).subscribe({

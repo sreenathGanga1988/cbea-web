@@ -51,6 +51,10 @@ headingText = "Edit Categories";
 
    
   }
+  gotoPreviousPage(){
+    alert("back")
+     this.router.navigate(['/admin/DailyNews']);
+    }
   getItem(Id:string){
     this.newsService.getNewsById(Number(Id)).subscribe({
       next: (res) => {

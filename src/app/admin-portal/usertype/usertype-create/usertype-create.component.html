@@ -1,4 +1,5 @@
-<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()"></app-title-bar>
+<app-title-bar [headingText]='headingText' (createNewItem)="handleCreateNewItem()" (gotoPreviousPage)="gotoPreviousPage()"
+[isListMode]=0></app-title-bar>
 <div class="container mt-4">
     <h2>Create Usertype</h2>
     <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
@@ -7,7 +8,7 @@
         <input type="text" id="description" [(ngModel)]="newUsertype.description" name="description" class="form-control" required #description="ngModel" >
         <span *ngIf="description.touched && (description.invalid && description.dirty)" class="text-danger p-0"></span>
           
-          <span *ngIf="description.hasError('required')"  class="text-danger p-0">*Description is required</span>
+          <span **ngIf="description.hasError('required')"  class="text-danger p-0">*Description is required</span>
           
       
       </div>

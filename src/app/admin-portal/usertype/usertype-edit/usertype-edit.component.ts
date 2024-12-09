@@ -44,6 +44,10 @@ export class UsertypeEditComponent {
   handleCreateNewItem() {
     //throw new Error('Method not implemented.');
     }
+    gotoPreviousPage(){
+      alert("back")
+       this.router.navigate(['/admin/usertypes']);
+      }
   getItem(id:string){
     this.UsertypeService.getUserTypeById(Number(id)).subscribe({
       next: (res) => {
@@ -79,7 +83,7 @@ export class UsertypeEditComponent {
 
 
         this.notificationService.showSuccess("Usertypes Updated Successfully", "Added")
-        this.router.navigate(['/usertypes']);
+        this.router.navigate(['/admin/usertypes']);
       },
       error: (res) => {
         alert("Error while Adding")

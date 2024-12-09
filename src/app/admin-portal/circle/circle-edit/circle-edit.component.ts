@@ -34,6 +34,10 @@ ngOnInit(): void {
     console.error('ID is null');
   }
 }
+gotoPreviousPage(){
+  alert("back")
+   this.router.navigate(['/admin/Circles']);
+  }
   getItem(id:string){
     this.circleService.getCircleById(Number(id)).subscribe({
       next: (res) => {

@@ -57,6 +57,10 @@ handleCreateNewItem() {
 
   
 }
+gotoPreviousPage(){
+  alert("back")
+   this.router.navigate(['/admin/status']);
+  }
 onSubmit(form: any) {
 
   this.formSubmitted=true;
@@ -65,7 +69,7 @@ onSubmit(form: any) {
 
 
       this.notificationService.showSuccess("Status Added Successfully", "Added")
-      this.router.navigate(['/status']);
+      this.router.navigate(['/admin/status']);
     },
   
    error: (res) => {

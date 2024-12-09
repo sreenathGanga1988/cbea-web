@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 
 @Component({
   selector: 'app-branch-edit',
