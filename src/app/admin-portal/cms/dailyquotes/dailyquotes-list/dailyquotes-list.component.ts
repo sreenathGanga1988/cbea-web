@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-dailyquotes-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,KiduConfirmModalComponent,FormsModule,CommonModule],
+  imports: [TitleBarComponent,KiduTableComponent,FormsModule,CommonModule],
   templateUrl: './dailyquotes-list.component.html',
   styleUrl: './dailyquotes-list.component.css'
 })
@@ -63,11 +63,11 @@ export class DailyquotesListComponent implements OnInit {
    }
    handleCreateNewItem() {
  
-     this.router.navigate(['/dailyquotes-create']);
+     this.router.navigate(['/admin/dailyquotes-create']);
    };
    EditButtonClicked(item: any) {
 
-    this.router.navigate(['/dailyquotes-edit', item.Id]);
+    this.router.navigate(['/admin/dailyquotes-edit', item.Id]);
 
   }
   GlobalSearch(sarchtxt: string) {

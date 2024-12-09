@@ -12,7 +12,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 @Component({
   selector: 'app-status-list',
   standalone: true,
-  imports: [TitleBarComponent, CommonModule, KiduTableComponent, KiduConfirmModalComponent,FormsModule],
+  imports: [TitleBarComponent, CommonModule, KiduTableComponent,FormsModule],
   templateUrl: './status-list.component.html',
   styleUrl: './status-list.component.css'
 })
@@ -46,7 +46,7 @@ export class StatusListComponent {
   };
     handleCreateNewItem() {
 
-      this.router.navigate(['/status-create']);
+      this.router.navigate(['/admin/status-create']);
     }
     ngOnInit(): void {
 
@@ -58,7 +58,7 @@ export class StatusListComponent {
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/status-edit', item.ID]);
+    this.router.navigate(['/admin/status-edit', item.ID]);
 
   }
   

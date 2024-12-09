@@ -15,7 +15,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
     standalone: true,
     templateUrl: './circle-list.component.html',
     styleUrl: './circle-list.component.css',
-    imports: [TitleBarComponent,KiduTableComponent,CommonModule,KiduConfirmModalComponent,FormsModule]
+    imports: [TitleBarComponent,KiduTableComponent,CommonModule,FormsModule]
 })
 export class CircleListComponent {
 
@@ -52,11 +52,11 @@ export class CircleListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/Admin/circles-create']);
+    this.router.navigate(['/admin/circles-create']);
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/Admin/Circles-edit', item.ID]);
+    this.router.navigate(['/admin/Circles-edit', item.ID]);
 
   }
 

@@ -15,7 +15,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 @Component({
   selector: 'app-usertype-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,CommonModule,KiduConfirmModalComponent,FormsModule],
+  imports: [TitleBarComponent,KiduTableComponent,CommonModule,FormsModule],
   templateUrl: './usertype-list.component.html',
   styleUrl: './usertype-list.component.css'
 })
@@ -47,7 +47,7 @@ export class UsertypeListComponent {
   };
     handleCreateNewItem() {
 
-      this.router.navigate(['/usertypes-create']);
+      this.router.navigate(['/admin/usertypes-create']);
     }
     ngOnInit(): void {
       this.configureKidutable();
@@ -59,7 +59,7 @@ export class UsertypeListComponent {
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/usertypes-edit', item.ID]);
+    this.router.navigate(['/admin/usertypes-edit', item.ID]);
 
   }
   GlobalSearch(sarchtxt: string) {

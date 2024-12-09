@@ -15,7 +15,7 @@ import { DesignationService } from '../../../Services/designation-service';
 @Component({
   selector: 'app-designation-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,CommonModule,KiduConfirmModalComponent,FormsModule,],
+  imports: [TitleBarComponent,KiduTableComponent,CommonModule,FormsModule,],
   templateUrl: './designation-list.component.html',
   styleUrl: './designation-list.component.css'
 })
@@ -62,7 +62,7 @@ export class DesignationListComponent {
   };
     EditButtonClicked(item: any) {
 
-      this.router.navigate(['/designations-edit', item.ID]);
+      this.router.navigate(['/admin/designations-edit', item.ID]);
   
     }
     GlobalSearch(sarchtxt: string) {

@@ -25,7 +25,7 @@ export class NewsListComponent {
     }
     handleCreateNewItem() {
 
-      this.router.navigate(['/newsitem-create']);
+      this.router.navigate(['/admin/newsitem-create']);
     }
     data = 'Are you sure you want to proceed?';
     show = false; // Flag to control modal visibility
@@ -52,7 +52,7 @@ export class NewsListComponent {
     }
     EditButtonClicked(item: any) {
 
-      this.router.navigate(['/newsitem-edit', item.Id]);
+      this.router.navigate(['/admin/newsitem-edit', item.Id]);
   
     }
     GlobalSearch(sarchtxt: string) {

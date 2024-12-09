@@ -14,7 +14,7 @@ import { CellType, KiduTableModel } from '../../../shared/kidu-table/columns';
 @Component({
   selector: 'app-managingcommitee-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,CommonModule,FormsModule,KiduConfirmModalComponent],
+  imports: [TitleBarComponent,KiduTableComponent,CommonModule,FormsModule],
   templateUrl: './managingcommitee-list.component.html',
   styleUrl: './managingcommitee-list.component.css'
 })
@@ -48,7 +48,7 @@ export class ManagingcommiteeListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/managingcomitee-create']);
+    this.router.navigate(['/admin/managingcomitee-create']);
   }
   ngOnInit(): void {
 
@@ -60,7 +60,7 @@ export class ManagingcommiteeListComponent {
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/managingcommitee-edit', item.Id]);
+    this.router.navigate(['/admin/managingcommitee-edit', item.Id]);
 
   }
   GlobalSearch(sarchtxt: string) {

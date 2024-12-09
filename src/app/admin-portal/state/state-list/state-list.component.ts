@@ -14,7 +14,7 @@ import { CustomApiResponse } from '../../../models/Common/custom-api-responseo.m
 @Component({
   selector: 'app-state-list',
   standalone: true,
-  imports: [TitleBarComponent,KiduTableComponent,CommonModule,KiduConfirmModalComponent,FormsModule],
+  imports: [TitleBarComponent,KiduTableComponent,CommonModule,FormsModule],
   templateUrl: './state-list.component.html',
   styleUrl: './state-list.component.css'
 })
@@ -60,7 +60,7 @@ export class StateListComponent {
   };
     EditButtonClicked(item: any) {
 
-      this.router.navigate(['/states-edit', item.ID]);
+      this.router.navigate(['/admin/states-edit', item.ID]);
   
     }
     GlobalSearch(sarchtxt: string) {

@@ -16,7 +16,7 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 @Component({
   selector: 'app-category-list',
   standalone: true,
-  imports: [TitleBarComponent, CommonModule, KiduTableComponent, KiduConfirmModalComponent,FormsModule],
+  imports: [TitleBarComponent, CommonModule, KiduTableComponent,FormsModule],
   templateUrl: './category-list.component.html',
   styleUrl: './category-list.component.css'
 })

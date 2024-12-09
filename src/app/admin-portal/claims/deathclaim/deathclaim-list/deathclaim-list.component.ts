@@ -61,7 +61,7 @@ export class DeathclaimListComponent {
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/deathclaims-edit', item.Id]);
+    this.router.navigate(['/admin/deathclaims-edit', item.Id]);
 
   }
   GlobalSearch(sarchtxt: string) {

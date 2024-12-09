@@ -23,7 +23,7 @@ import { FormsModule } from '@angular/forms';
     TitleBarComponent,
     KiduTableComponent,
     CommonModule,
-    KiduConfirmModalComponent,
+    
     FormsModule,
 
   ],
@@ -67,12 +67,12 @@ export class BranchListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/branch-create']);
+    this.router.navigate(['/admin/branch-create']);
   }
   configureKidutable() {}
   EditButtonClicked(item: any) {
     // throw new Error('Method not implemented.');
-    this.router.navigate(['admin/branch-edit', item.ID]);
+    this.router.navigate(['/admin/branch-edit', item.ID]);
   }
   GlobalSearch(sarchtxt: string) {
     console.log('search text--->', sarchtxt);
