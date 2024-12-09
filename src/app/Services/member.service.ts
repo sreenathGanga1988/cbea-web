@@ -44,5 +44,9 @@ getMemberById(ID: number) {
    putMember(id: number, obj: any) {
      return this.httphelper.PUT(this.url + "/" + id, obj);
    }
+   deleteItem(id: number) {
+    return this.httphelper.Delete(this.url + "/" + id);
+  }
+  
 
 }

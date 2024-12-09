@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { KiduTableComponent } from '../../shared/kidu-table/kidu-table.component';
 import { CustomApiResponse } from '../../../models/Common/custom-api-responseo.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CellType, Column, KiduTableModel } from '../../shared/kidu-table/columns';
 import { MemberService } from '../../../Services/member.service';
 import { NotificationService } from '../../../Services/Common/notification.service';
@@ -23,7 +23,7 @@ export class MemberListComponent {
   response!: CustomApiResponse;
   Items!:any[];
 
-  constructor(private router: Router,private memberService:MemberService,private notificationservice:NotificationService) {
+  constructor(private route: ActivatedRoute,private router: Router,private memberService:MemberService,private notificationservice:NotificationService) {
   
   }
   data = 'Are you sure you want to proceed?';
@@ -58,7 +58,7 @@ export class MemberListComponent {
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/admin/member-edit' ,item.ID]);
+    this.router.navigate(['/Admin/member-edit',item.ID]);
 
   }
   GlobalSearch(sarchtxt: string) {
@@ -81,7 +81,47 @@ export class MemberListComponent {
       }
     })
   }
+  DeleteItem(id: number) {
 
+    this.memberService.deleteItem(id).subscribe({
+      next: (res) => {
+        if (res.isSucess) {
+          this.notificationservice.showSuccess('Successfully deleted !!',"Deleted");
+          this.GetItems("");
+        }
+        else {
+
+          this.notificationservice.showError('Failed to Delete  :' + res.error,"Error")
+
+        }
+
+      },
+      error: (res) => {
+
+      }
+    })
+  }
+
+
+  openModal() {
+    this.show = true;
+  }
+
+  closeModal() {
+    this.show = false;
+  }
+
+  handleConfirmation(obj: any) {
+
+    if (obj[0]==true) {
+
+      this. DeleteItem(obj[1].ID)
+      // Handle confirmation logic here
+    } else {
+      console.log('Cancelled!');
+      // Handle cancellation logic here
+    }
+  }
 
 
 }

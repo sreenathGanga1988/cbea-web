@@ -52,11 +52,11 @@ export class CircleListComponent {
 
   handleCreateNewItem() {
 
-    this.router.navigate(['/circles-create']);
+    this.router.navigate(['/Admin/circles-create']);
   }
   EditButtonClicked(item: any) {
 
-    this.router.navigate(['/Circles-edit', item.ID]);
+    this.router.navigate(['/Admin/Circles-edit', item.ID]);
 
   }
 
