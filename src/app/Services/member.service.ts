@@ -9,7 +9,7 @@ import { Member } from '../models/Common/member.model';
 })
 export class MemberService {
 
-  url: string = "/api_category";
+  url: string = "/api_member";
 
   _listRequest!: ListRequest;
   constructor(private httphelper: HttpHelperService) {

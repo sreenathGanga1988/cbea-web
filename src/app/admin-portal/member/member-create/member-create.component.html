@@ -7,10 +7,10 @@
       <div class="mb-3">
         <label for="staffno" class="form-label" >Staff number :</label>
   
-        <input type="text" id="staffno" [(ngModel)]="newMember.staffno" name="staffno" class="form-control" maxlength="4" required  #staffno="ngModel" minlength="2" >
+        <input type="text" id="staffno" [(ngModel)]="newMember.staffNo" name="staffNo" class="form-control" maxlength="4" required  #staffNo="ngModel" minlength="2" >
          
-        <span *ngIf="staffno.hasError('required') && staffno.touched && (staffno.invalid||staffno.dirty) " class="text-danger" id="Abbval">*Staff Number is required</span>
-        <span *ngIf="staffno.hasError('minlength')" class="text-danger">
+        <span *ngIf="staffNo.hasError('required') && staffNo.touched && (staffNo.invalid||staffNo.dirty) " class="text-danger" id="Abbval">*Staff Number is required</span>
+        <span *ngIf="staffNo.hasError('minlength')" class="text-danger">
         Staff Number  must be at least 2 characters long
        </span>
           </div>
@@ -50,7 +50,7 @@
                     <input type="date" id="dojscheme" [(ngModel)]="newMember.dojtoscheme" name="dojscheme" class="form-control" required #dojscheme="ngModel">
                     <span *ngIf="dojscheme.hasError('required') && dojscheme.touched && (dojscheme.invalid||dojscheme.dirty) " class="text-danger" id="Abbval">*Date of Joining To scheme  is required</span>
                       </div>  
-                      <div class="mb-3">
+                  <!----   <div class="mb-3">
                         <label for="nominee"class="form-label" >Nominee :</label>
                   
                         <input type="text" id="nominee" [(ngModel)]="newMember.nominee" name="nominee" class="form-control" required #nominee="ngModel" minlength="2">
@@ -60,7 +60,9 @@
         <span *ngIf="nominee.hasError('minlength')" class="text-danger">
         Nominee  must be at least 2 characters long
        </span>
-                          </div>       
+       
+                          </div>   
+                          --->    
                           <div class="mb-3">
                             <label for="branchname"class="form-label" >Branch Name :</label>
                       

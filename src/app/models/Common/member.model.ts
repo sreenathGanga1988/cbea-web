@@ -2,7 +2,7 @@ import { AuditEntity } from "./audit-entity.model";
 
 export interface Member extends AuditEntity {
     id: number;
-    staffno: number|null;
+    staffNo: number|null;
     name: string;
     gender:string;
     dob:string|null;

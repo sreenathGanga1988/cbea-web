@@ -6,16 +6,44 @@ import { Member } from '../../../models/Common/member.model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MemberService } from '../../../Services/member.service';
 import { NotificationService } from '../../../Services/Common/notification.service';
+import { CellType, KiduDataPickerModel } from '../../shared/kidu-table/columns';
+import { KiduConfirmModalComponent } from '../../shared/Modals/kidu-confirm-modal/kidu-confirm-modal.component';
+import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/kidu-data-picker.component';
 
 @Component({
   selector: 'app-member-edit',
   standalone: true,
-  imports: [FormsModule,CommonModule,TitleBarComponent],
+  imports: [FormsModule,CommonModule,TitleBarComponent,KiduDataPickerComponent],
   templateUrl: './member-edit.component.html',
   styleUrl: './member-edit.component.css'
 })
 export class MemberEditComponent {
-  headingText = "Edit Categories";
+  _kiduDataPickerModel1: KiduDataPickerModel = {
+    tableColumns: [
+      { columnDef: 'code', header: ' #', colType: CellType.Text },
+      { columnDef: 'label', header: 'Branch Name ', colType: CellType.Text },
+    ],
+    rows: [],
+    TopTittle: 'Select Branch',
+    reporttype: "BRANCH",
+    pageSize: 25,
+    pageNumber: 0
+
+  }
+  _kiduDataPickerModel2: KiduDataPickerModel= {
+    tableColumns: [
+      { columnDef: 'code', header: ' #', colType: CellType.Text },
+      { columnDef: 'label', header: 'Designation Name ', colType: CellType.Text },
+    ],
+    rows: [],
+    TopTittle: 'Select Designation',
+    reporttype: "DESIGNATION",
+    pageSize: 0,
+    pageNumber: 0
+
+  }
+
+  headingText = "Edit Members";
   id: string = '';
   newMember!:Member;
   textControl!: AbstractControl;
@@ -93,6 +121,18 @@ export class MemberEditComponent {
         }
       })
   
+    }
+    BranchSelected(obj: any) {
+      if (obj[1] != null) {
+        this.newMember.branchname = obj[1].label
+      }
+    
+    }
+    DesignationSelected(obj: any) {
+      if (obj[1] != null) {
+        this.newMember.designation= obj[1].label
+      }
+      
     }
   
 }

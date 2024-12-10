@@ -44,7 +44,7 @@ export class MemberCreateComponent {
   headingText="Create Member";
   newMember: Member={
     id: 0,
-    staffno: null,
+    staffNo: null,
     name: '',
     gender: '',
     dob: null,
