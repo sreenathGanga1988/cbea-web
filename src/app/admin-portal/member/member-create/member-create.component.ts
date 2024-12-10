@@ -17,18 +17,18 @@ import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/ki
   styleUrl: './member-create.component.css'
 })
 export class MemberCreateComponent {
-  _kiduDataPickerModel1: KiduDataPickerModel = {
-    tableColumns: [
-      { columnDef: 'code', header: ' #', colType: CellType.Text },
-      { columnDef: 'label', header: 'Branch Name ', colType: CellType.Text },
-    ],
-    rows: [],
-    TopTittle: 'Select Branch',
-    reporttype: "BRANCH",
-    pageSize: 25,
-    pageNumber: 0
+  //_kiduDataPickerModel1: KiduDataPickerModel = {
+   // tableColumns: [
+   //   { columnDef: 'code', header: ' #', colType: CellType.Text },
+    //  { columnDef: 'label', header: 'Branch Name ', colType: CellType.Text },
+    //],
+    //rows: [],
+   // TopTittle: 'Select Branch',
+   // reporttype: "BRANCH",
+   // pageSize: 25,
+   // pageNumber: 0
 
-  }
+ // }
   _kiduDataPickerModel2: KiduDataPickerModel= {
     tableColumns: [
       { columnDef: 'code', header: ' #', colType: CellType.Text },
