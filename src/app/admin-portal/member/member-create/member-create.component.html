@@ -18,7 +18,7 @@
             <label for="name"class="form-label" >Name :</label>
       
             <input type="text" id="name" [(ngModel)]="newMember.name" name="name" class="form-control" maxlength="4" required  #name="ngModel" minlength="2" >
-            <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty) " class="text-danger" id="Abbval">*Name is required</span>
+            <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty) " class="text-danger" >*Name is required</span>
             <span *ngIf="name.hasError('minlength')" class="text-danger">
             Name  must be at least 2 characters long
            </span>

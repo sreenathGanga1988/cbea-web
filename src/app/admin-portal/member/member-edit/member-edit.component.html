@@ -17,7 +17,7 @@
             <label for="name"class="form-label" >Name :</label>
       
             <input type="text" id="name" [(ngModel)]="newMember.name" name="name" class="form-control" maxlength="4" required  #name="ngModel" minlength="2" >
-            <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty) " class="text-danger" id="Abbval">*Name is required</span>
+            <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty) " class="text-danger" id="name">*Name is required</span>
             <span *ngIf="name.hasError('minlength')" class="text-danger">
             Name  must be at least 2 characters long
            </span>
@@ -30,46 +30,14 @@
                <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newMember.gender"   #gender="ngModel">
                 <span *ngIf="gender.hasError('required') && gender.touched && (gender.invalid||gender.dirty) " class="text-danger" id="Abbval">*Gender is required</span>
          </div> 
-         <div class="mb-3">
-            <label for="dob"class="form-label" >Date of Birth :</label>
-      
-            <input type="date" id="dob" [(ngModel)]="newMember.dob" name="dob"  class="form-control"  required  #dob="ngModel" >
-            <span *ngIf="dob.hasError('required') && dob.touched && (dob.invalid||dob.dirty) " class="text-danger" id="Abbval">*Date of Birth  is required</span>
-           
-              </div>
-              <div class="mb-3">
-                <label for="doj"class="form-label" >Date of Joining:</label>
-          
-                <input type="date" id="doj" [(ngModel)]="newMember.doj" name="doj" class="form-control"  required #doj="ngModel">
-                <span *ngIf="doj.hasError('required') && doj.touched && (doj.invalid||doj.dirty) " class="text-danger" id="Abbval">*Date of Joining is required</span>
-                  </div>
-                  <div class="mb-3">
-                    <label for="dojscheme"class="form-label" >Date of Joining To Scheme:</label>
-              
-                    <input type="date" id="dojscheme" [(ngModel)]="newMember.dojtoscheme" name="dojscheme" class="form-control" required #dojscheme="ngModel">
-                    <span *ngIf="dojscheme.hasError('required') && dojscheme.touched && (dojscheme.invalid||dojscheme.dirty) " class="text-danger" id="Abbval">*Date of Joining To scheme  is required</span>
-                      </div> 
-                   <!----- <div class="mb-3">
-                        <label for="nominee"class="form-label" >Nominee :</label>
-                  
-                        <input type="text" id="nominee" [(ngModel)]="newMember.nominee" name="nominee" class="form-control" required #nominee="ngModel" minlength="2">
-                          
-                      
-                   <span *ngIf="nominee.hasError('required') && nominee.touched && (nominee.invalid||nominee.dirty) " class="text-danger" id="nominee">*Nominee is required</span>
-        
-               <span *ngIf="nominee.hasError('minlength')" class="text-danger">
-             Nominee  must be at least 2 characters long
-            </span>
-                      
-        </div>
-    -->
-        <div class="mb-3">
+                         
+     <!----   <div class="mb-3">
             <label for="branchname"class="form-label" >Branch Name :</label>
       
             <input type="text" id="branchnamee" [(ngModel)]="newMember.branchname" name="branchname" class="form-control" required #branchname="ngModel" >
             <span *ngIf="branchname.hasError('required') && branchname.touched && (branchname.invalid||branchname.dirty) " class="text-danger" id="Abbval">*Branch Name is required</span>
             <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel1"   (PopUpSelected)="BranchSelected($event)"  ></app-kidu-data-picker>
-              </div>
+              </div>-->
               <div class="mb-3">
                 <label for="designation"class="form-label" >Designation :</label>
           

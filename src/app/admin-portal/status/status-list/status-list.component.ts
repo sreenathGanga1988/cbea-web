@@ -82,4 +82,46 @@ export class StatusListComponent {
       }
     })
   }
+  DeleteItem(id: number) {
+
+    this.statusService.deleteStatus(id).subscribe({
+      next: (res) => {
+        if (res.isSucess) {
+          this.notificationservice.showSuccess('Successfully deleted Status!!',"Deleted");
+          this.GetItems("");
+        }
+        else {
+
+          this.notificationservice.showError('Failed to Delete Status :' + res.error,"Error")
+
+        }
+
+      },
+      error: (res) => {
+
+      }
+    })
+  }
+
+
+  openModal() {
+    this.show = true;
+  }
+
+  closeModal() {
+    this.show = false;
+  }
+
+  handleConfirmation(obj: any) {
+
+    if (obj[0]==true) {
+
+      this. DeleteItem(obj[1].ID)
+      // Handle confirmation logic here
+    } else {
+      console.log('Cancelled!');
+      // Handle cancellation logic here
+    }
+  }
+
 }

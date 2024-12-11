@@ -37,7 +37,7 @@ export class StatusCreateComponent {
     deletedUser: '',
     deletedDate: null
   };
-  formSubmitted=true;
+  formSubmitted=false;
   myform:FormGroup;
  textControl!: AbstractControl;
  text!:String;
@@ -64,6 +64,7 @@ gotoPreviousPage(){
 onSubmit(form: any) {
 
   this.formSubmitted=true;
+  
   this.statusService.postStatus(this.newStatus).subscribe({
     next: (res) => {
 

@@ -16,7 +16,7 @@ export class StatusService {
   _listRequest!: ListRequest;
   constructor(private httphelper: HttpHelperService) {
     this._listRequest = new ListRequest();
-    this._listRequest.ReportType = "Status";
+    this._listRequest.ReportType = "STATUS";
     this._listRequest.SearchText = "";
     this._listRequest.PageSize = 25;
     this._listRequest.PageNumber = 0;
@@ -36,8 +36,20 @@ getStatus(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
 
 }
 
-postStatus(obj: Status) {
-  obj.createdByUserId=1;
-  return this.httphelper.POST(this.url, obj);
-}
+postStatus(obj:Status) {
+  obj.createdByUserId=2;
+
+
+  return this.httphelper.POST(this.url,obj);
+ }
+ getStatusById(Id :number) {
+  return this.httphelper.GetData(this.url+"/"+Id);
+ // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
+   }
+   putStatus(id:number,obj :any) {
+    return this.httphelper.PUT(this.url+"/"+id,obj);
+  }
+  deleteStatus(id:number) {
+    return this.httphelper.Delete(this.url+"/"+id);
+  }
 }
