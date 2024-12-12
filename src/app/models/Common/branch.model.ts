@@ -13,8 +13,8 @@ export interface Branch extends AuditEntity {
     district: string;
     isRegCompleted: boolean;
     status: string; 
-    circle_text: string;
-    state_text: string;
+    circle: string;
+    state: string;
 
     btnString:string;
 }

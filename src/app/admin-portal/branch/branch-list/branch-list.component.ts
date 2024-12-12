@@ -48,9 +48,11 @@ export class BranchListComponent {
       { columnDef: 'ID', header: 'Serial #', colType: CellType.Text },
       { columnDef: 'DpCode', header: 'DP Code', colType: CellType.Text },
       { columnDef: 'Name', header: 'Branch Name', colType: CellType.Text },
-      { columnDef: 'District', header: 'District', colType: CellType.Text },
       { columnDef: 'CircleName', header: 'Circle', colType: CellType.Text },
+      
+      
       { columnDef: 'StateName', header: 'State', colType: CellType.Text },
+      { columnDef: 'District', header: 'District', colType: CellType.Text },
       { columnDef: 'IsActive', header: 'Status', colType: CellType.Status },
     ],
     isDeleteButton: true,
