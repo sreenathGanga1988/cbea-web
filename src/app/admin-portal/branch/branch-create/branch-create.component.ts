@@ -55,7 +55,7 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
   headingText = "Create New Branch";
   newBranch: Branch = {
     id: 0,
-     dpCode:null,
+     dpCode:0,
      circleId:null,
     isActive: false,
     stateId:null,
@@ -101,7 +101,7 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
   
   
           this.notificationService.showSuccess("Branch Added Successfully", "Added")
-          this.router.navigate(['/admin/branch']);
+          this.router.navigate(['/admin/Branches']);
         },
         error: (res) => {
           alert("Error while Adding")
