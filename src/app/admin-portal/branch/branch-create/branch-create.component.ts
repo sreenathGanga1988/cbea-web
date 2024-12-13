@@ -89,7 +89,7 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
     this.router.navigate(['/Branches-create']);
   }
   onSubmit(form:any) {
-    this.newBranch.createdDate=new Date().toISOString();
+   
   
       this.newBranch.createdDate=new Date().toISOString();
       this.newBranch.modifiedDate=new Date().toISOString();

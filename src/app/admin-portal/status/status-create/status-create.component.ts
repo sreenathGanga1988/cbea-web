@@ -61,16 +61,22 @@ gotoPreviousPage(){
   alert("back")
    this.router.navigate(['/admin/status']);
   }
-onSubmit(form: any) {
+  
+onSubmit(myform: any) {
+
+  this.newStatus.createdDate=new Date().toISOString();
+  this.newStatus.modifiedDate=new Date().toISOString();
+  this.newStatus.modifiedByUserId=1;
 
   this.formSubmitted=true;
-  
+
   this.statusService.postStatus(this.newStatus).subscribe({
     next: (res) => {
 
 
       this.notificationService.showSuccess("Status Added Successfully", "Added")
       this.router.navigate(['/admin/status']);
+      console.log(this.myform)
     },
   
    error: (res) => {

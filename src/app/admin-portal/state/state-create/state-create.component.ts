@@ -57,7 +57,7 @@ export class StateCreateComponent {
   
 
   onSubmit(form:any) {
-  this.newState.createdDate=new Date().toISOString();
+  
 
     this.newState.createdDate=new Date().toISOString();
     this.newState.modifiedDate=new Date().toISOString();
