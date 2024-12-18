@@ -30,13 +30,13 @@ gotoPreviousPage() {
 
 _kiduDataPickerModel: KiduDataPickerModel= {
   tableColumns: [
-    { columnDef: 'code', header: ' #', colType: CellType.Text },
+   { columnDef: 'code', header: ' #', colType: CellType.Text },
     { columnDef: 'label', header: 'Circle ', colType: CellType.Text },
   ],
   rows: [],
   TopTittle: 'Select Circle',
   reporttype: "CIRCLE",
-  pageSize: 0,
+  pageSize: 25,
   pageNumber: 0
 
 }
@@ -56,9 +56,9 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
   newBranch: Branch = {
     id: 0,
      dpCode:0,
-     circleId:null,
+     circleId:'',
     isActive: false,
-    stateId:null,
+    stateId:'',
     name:'',
     createdByUserId: null,
     address1:'',

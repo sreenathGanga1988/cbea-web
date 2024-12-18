@@ -31,7 +31,7 @@ export class MemberListComponent {
   _kiduTableModel: KiduTableModel = {
     tableColumns: [
       { columnDef: 'ID', header: 'Serial #', colType: CellType.Text },
-      { columnDef: 'StaffNo', header: 'StaffNo', colType: CellType.Text },
+      { columnDef: 'StaffNo', header: 'Staff Number', colType: CellType.Text },
       { columnDef: 'Name',header: 'Name', colType: CellType.Text },
       { columnDef: 'Gender', header: ' Gender', colType: CellType.Text },
       { columnDef: 'Designation', header: 'Designation ', colType: CellType.Text },

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,NgModule} from '@angular/core';
 import { TitleBarComponent } from '../../shared/title-bar/title-bar.component';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -107,7 +107,7 @@ export class MemberEditComponent {
       })
   
     }
-    onSubmit(form:any) {
+    onSubmit(myformform:any) {
       this.formSubmitted=true;
       this.memberService.putMember(Number(this.id),this.newMember).subscribe({
         next: (res) => {
@@ -122,12 +122,12 @@ export class MemberEditComponent {
       })
   
     }
-    BranchSelected(obj: any) {
-      if (obj[1] != null) {
-        this.newMember.branchname = obj[1].label
-      }
+  //  BranchSelected(obj: any) {
+   //   if (obj[1] != null) {
+    //    this.newMember.branchname = obj[1].label
+    //  }
     
-    }
+   // }
     DesignationSelected(obj: any) {
       if (obj[1] != null) {
         this.newMember.designation= obj[1].label

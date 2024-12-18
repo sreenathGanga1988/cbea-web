@@ -10,7 +10,7 @@ export interface Member extends AuditEntity {
     dojtoscheme:string|null;
     nominee:string;
     status:string;
-    branchname:string;
+     branchname:string;
     designation:string;
     
 //audit entity

@@ -14,9 +14,9 @@ export class MemberService {
   _listRequest!: ListRequest;
   constructor(private httphelper: HttpHelperService) {
     this._listRequest = new ListRequest();
-    this._listRequest.ReportType = "Member";
+    this._listRequest.ReportType = "MEMBER";
     this._listRequest.SearchText = "";
-    this._listRequest.PageSize = 25;
+    this._listRequest.PageSize = 50;
     this._listRequest.PageNumber = 0;
 
   }
@@ -32,7 +32,7 @@ getMembers(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
   return this.httphelper.GetData(this.url)
 
 }
-postMember(obj: Member) {
+postMember(obj:Member) {
   obj.createdByUserId=1;
   return this.httphelper.POST(this.url, obj);
 }

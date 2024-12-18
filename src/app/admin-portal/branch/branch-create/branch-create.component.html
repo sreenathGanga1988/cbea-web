@@ -5,7 +5,7 @@
 <div class="container mt-4">
     
     <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
-     <!----<div class="mb-3">
+     <div class="mb-3">
         <label for="dpcode" class="form-label" >DPCode : </label>
         <input type="text" id="dpcode" [(ngModel)]="newBranch.dpCode" name="dpcode" class="form-control"  maxlength="50" required  #dpcode="ngModel" minlength="2" >
   
@@ -14,10 +14,10 @@
             DPCode must be at least 2 characters long
   
           </span>
-      </div>-->
+      </div>
       <div class="mb-3">
         <label for="name"class="form-label" >BRANCH NAME : </label>
-        <input type="text" id="name" [(ngModel)]="newBranch.name" name="dpcode" class="form-control"  maxlength="50" required  #name="ngModel" minlength="2" >
+        <input type="text" id="name" [(ngModel)]="newBranch.name" name="name" class="form-control"  maxlength="50"  ngmodel required  #name="ngModel" minlength="2" >
   
           <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty)" class="text-danger">*Branch Name is required</span>
           <span *ngIf="name.hasError('minlength')" class="text-danger">
@@ -45,7 +45,7 @@
                 <label for="district"class="form-label" >District : </label>
                 <input type="text" id="district" [(ngModel)]="newBranch.district" name="district" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
           
-                  <span *ngIf="district.hasError('required') && district.touched && (district.invalid||district.dirty)" class="text-danger">*DPCode is required</span>
+                  <span *ngIf="district.hasError('required') && district.touched && (district.invalid||district.dirty)" class="text-danger">*Branch name is required</span>
                   <span *ngIf="district.hasError('minlength')" class="text-danger">
                     Branch Name must be at least 2 characters long
           
@@ -55,7 +55,7 @@
                 <input type="checkbox" id="isActive" [(ngModel)]="newBranch.isActive" name="isActive" class="form-check-input">
                 <label for="isActive" class="form-check-label">Active</label>
               </div>
-             <button type="submit"  class="btn btn-primary" [disabled]="myform.invalid ">Create</button>
+             <button type="submit"  class="btn btn-primary" [disabled]="myform.invalid " >Create</button>
              
       </form>
       </div> 

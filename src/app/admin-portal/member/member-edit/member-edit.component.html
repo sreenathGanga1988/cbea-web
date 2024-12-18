@@ -6,7 +6,7 @@
       <div class="mb-3">
         <label for="staffno" class="form-label" >Staff number :</label>
   
-        <input type="text" id="staffno" [(ngModel)]="newMember.staffNo" name="staffNo" class="form-control" maxlength="4" required  #staffNo="ngModel" minlength="2" >
+        <input type="text" id="staffno" [(ngModel)]="newMember.staffNo" name="staffNo" class="form-control"  required  #staffNo="ngModel" minlength="2" >
          
         <span *ngIf="staffNo.hasError('required') && staffNo.touched && (staffNo.invalid||staffNo.dirty) " class="text-danger" id="Abbval">*Staff Number is required</span>
         <span *ngIf="staffNo.hasError('minlength')" class="text-danger">
@@ -28,7 +28,7 @@
                <input type="radio" id="male" name="gender" value="Male" [(ngModel)]="newMember.gender"  #gender="ngModel">
                <label for="female">female</label>
                <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newMember.gender"   #gender="ngModel">
-                <span *ngIf="gender.hasError('required') && gender.touched && (gender.invalid||gender.dirty) " class="text-danger" id="Abbval">*Gender is required</span>
+                <span *ngIf="gender.hasError('required') && gender.touched && (gender.invalid||gender.dirty) " class="text-danger" >*Gender is required</span>
          </div> 
                          
      <!----   <div class="mb-3">
@@ -42,14 +42,14 @@
                 <label for="designation"class="form-label" >Designation :</label>
           
                 <input type="text" id="designation" [(ngModel)]="newMember.designation" name="designation" class="form-control" required #designation="ngModel" >
-                <span *ngIf="designation.hasError('required') && designation.touched && (designation.invalid||designation.dirty) " class="text-danger" id="Abbval">*Designation is required</span>
+                <span *ngIf="designation.hasError('required') && designation.touched && (designation.invalid||designation.dirty) " class="text-danger" >*Designation is required</span>
                 <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel2"   (PopUpSelected)="DesignationSelected($event)"  ></app-kidu-data-picker>
                   </div>
               <div class="mb-3 form-check">
                 <input type="checkbox" id="isActive" [(ngModel)]="newMember.status" name="isActive" class="form-check-input">
                 <label for="isActive" class="form-check-label" >Active</label>
               </div>    
-              <button type="submit"  class="btn btn-primary" [disabled]="myform.invalid">UPDATE</button>
+              <button type="submit"  class="btn btn-primary" >UPDATE</button>
 
     </form>   
 </div>
