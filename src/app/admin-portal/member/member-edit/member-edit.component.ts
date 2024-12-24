@@ -130,7 +130,7 @@ export class MemberEditComponent {
    // }
     DesignationSelected(obj: any) {
       if (obj[1] != null) {
-        this.newMember.designation= obj[1].label
+        this.newMember.Designation= obj[1].label
       }
       
     }

@@ -41,14 +41,14 @@
               <div class="mb-3">
                 <label for="designation"class="form-label" >Designation :</label>
           
-                <input type="text" id="designation" [(ngModel)]="newMember.designation" name="designation" class="form-control" required #designation="ngModel" >
-                <span *ngIf="designation.hasError('required') && designation.touched && (designation.invalid||designation.dirty) " class="text-danger" >*Designation is required</span>
+                <input type="text" id="designation" [(ngModel)]="newMember.Designation" name="Designation" class="form-control" required #Designation="ngModel" >
+                <span *ngIf="Designation.hasError('required') && Designation.touched && (Designation.invalid||Designation.dirty) " class="text-danger" >*Designation is required</span>
                 <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel2"   (PopUpSelected)="DesignationSelected($event)"  ></app-kidu-data-picker>
                   </div>
-              <div class="mb-3 form-check">
+             <!---- <div class="mb-3 form-check">
                 <input type="checkbox" id="isActive" [(ngModel)]="newMember.status" name="isActive" class="form-check-input">
                 <label for="isActive" class="form-check-label" >Active</label>
-              </div>    
+              </div>  -->  
               <button type="submit"  class="btn btn-primary" >UPDATE</button>
 
     </form>   

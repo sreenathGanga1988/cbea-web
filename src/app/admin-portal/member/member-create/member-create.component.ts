@@ -11,6 +11,7 @@ import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/ki
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-member-create',
   standalone: true,
@@ -25,10 +26,25 @@ export class MemberCreateComponent {
     tableColumns: [
       { columnDef: 'code', header: ' #', colType: CellType.Text },
       { columnDef: 'label', header: 'Designation Name ', colType: CellType.Text },
+     
     ],
     rows: [],
     TopTittle: 'Select Designation',
     reporttype: "DESIGNATION",
+    pageSize: 25,
+    pageNumber: 0
+
+  }
+   
+  _kiduDataPickerModel1: KiduDataPickerModel= {
+    tableColumns: [
+      { columnDef: 'code', header: ' #', colType: CellType.Text },
+      { columnDef: 'label', header: 'Branch Name ', colType: CellType.Text },
+     
+    ],
+    rows: [],
+    TopTittle: 'Select Branch',
+    reporttype: "BRANCH",
     pageSize: 25,
     pageNumber: 0
 
@@ -38,14 +54,15 @@ export class MemberCreateComponent {
     id: 0,
     staffNo: 0,
     name: '',
+   
     gender: '',
     dob: null,
     doj: null,
     dojtoscheme: null,
     nominee: '',
-    status: '',
+   // status:true,
     branchname: '',
-    designation: '',
+    Designation: '',
     isActive: false,
     createdByUserId: null,
     addedUser: '',
@@ -66,7 +83,9 @@ text!:String;
 isAlive = true;
   constructor(private router: Router, private memberService: MemberService, private notificationService: NotificationService ,private createmember:FormBuilder){
     this.myform=this.createmember.group({
-      text: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
+      name: ['', Validators.required]
+      
+     // text: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
      
      });
      
@@ -86,7 +105,13 @@ isAlive = true;
   }
   DesignationSelected(obj: any) {
     if (obj[1] != null) {
-      this.newMember.designation= obj[1].label
+     this.newMember.Designation= obj[1].label
+     //this.newMember.Designation=JSON.parse(obj[1].label)
+    }
+  }
+  BranchSelected(obj: any) {
+    if (obj[1] != null) {
+      this.newMember.branchname= obj[1].label
     }
   }
   onSubmit(myform: object) {
@@ -97,15 +122,15 @@ isAlive = true;
     this.newMember.dob=new Date().toISOString();
     this.newMember.doj=new Date().toISOString();
     this.newMember.dojtoscheme=new Date().toISOString();
-    this.newMember.modifiedByUserId=3;
-  
+    this.newMember.createdByUserId=2;
+    
     
   
     this.memberService.postMember(this.newMember).subscribe({
       next: (res) => {
         this.notificationService.showSuccess("member Added Successfully", "Added")
         this.router.navigate(['/admin/member']);
-       console.log(this.myform)
+       
         
          },
     

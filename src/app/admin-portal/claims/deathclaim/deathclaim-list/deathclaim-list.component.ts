@@ -31,7 +31,7 @@ export class DeathclaimListComponent {
   _kiduTableModel: KiduTableModel = {
   tableColumns:  [
     {columnDef:'Id',header:'Serial#',colType:CellType.Text},
-    {columnDef:'StaffNoNavigationStaffNo',header:'StaffNo',colType:CellType.Text},
+    {columnDef:'StaffNo',header:'Staff Number',colType:CellType.Text},
     {columnDef:'Name',header:'Name',colType:CellType.Text}
     ,{columnDef:'Nominee',header:'Nominee',colType:CellType.Text},
     {columnDef:'NomineeRelation',header:'Nominee Relation',colType:CellType.Text},

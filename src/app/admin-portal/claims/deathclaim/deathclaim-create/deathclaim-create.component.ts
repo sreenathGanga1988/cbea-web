@@ -52,7 +52,7 @@ export class DeathclaimCreateComponent {
     deletedByByUserId: null,
     nomineeRelation: '',
     nomineeidentity: '',
-    staffno: null,
+    StaffNo: null,
     addedUser: '',
     modifiedUser: '',
     deletedUser: '',
@@ -104,7 +104,7 @@ export class DeathclaimCreateComponent {
 
   StaffSelected(obj: any) {
     if (obj[1] != null) {
-      this.newDeathClaim.staffno = obj[1].label
+      this.newDeathClaim.StaffNo = obj[1].label
     }
   }
 }

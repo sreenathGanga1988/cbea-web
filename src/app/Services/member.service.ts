@@ -33,7 +33,7 @@ getMembers(searchtext: string, pageNumber: number = 0, pageSize: number = 0) {
 
 }
 postMember(obj:Member) {
-  obj.createdByUserId=1;
+  //obj.createdByUserId=1;
   return this.httphelper.POST(this.url, obj);
 }
 getMemberById(ID: number) {

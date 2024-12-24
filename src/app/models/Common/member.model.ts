@@ -4,14 +4,15 @@ export interface Member extends AuditEntity {
     id: number;
     staffNo: number|null;
     name: string;
+    
     gender:string;
     dob:string|null;
     doj:string|null;
     dojtoscheme:string|null;
     nominee:string;
-    status:string;
+   // status:boolean;
      branchname:string;
-    designation:string;
+     Designation:string;
     
 //audit entity
    isActive: boolean;

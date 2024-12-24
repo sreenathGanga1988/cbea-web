@@ -47,6 +47,7 @@ import { DeathclaimEditComponent } from './claims/deathclaim/deathclaim-edit/dea
 import { UsertypeEditComponent } from './usertype/usertype-edit/usertype-edit.component';
 import { MemberEditComponent } from './member/member-edit/member-edit.component';
 import { ManagingcommiteeEditComponent } from './cms/managingcommitee/managingcommitee-edit/managingcommitee-edit.component';
+import { RefundEditComponent } from './claims/refund/refund-edit/refund-edit.component';
 
 
 
@@ -105,6 +106,7 @@ const adminRoutes: Routes = [
       { path: 'deathclaims-edit/:id',    component: DeathclaimEditComponent,},
       { path: 'usertypes-edit/:id',    component: UsertypeEditComponent,},
        {path: 'managingcommitee-edit/:id',  component:ManagingcommiteeEditComponent,},
+       {path: 'refunds-edit/:id',component:RefundEditComponent,},
 
     ] },
 

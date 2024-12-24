@@ -1,1 +1,73 @@
-<p>refund-create works!</p>
+
+<app-title-bar [headingText]='headingText'   (gotoPreviousPage)="gotoPreviousPage()"
+[isListMode]=0></app-title-bar>
+<div class="container mt-4">
+    <h2></h2>
+    <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
+        <div class="mb-6">
+            <label for="Member" class="form-label" >Member:</label>
+            <div class="input-group">
+  
+              <input type="text" id="Member" [(ngModel)]="newRefund.Member" name="Member" class="form-control"  required #Member="ngModel" minlength="2" >
+              <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel"   (PopUpSelected)="StaffSelected($event)"  ></app-kidu-data-picker>
+           </div> 
+            </div>
+            <div class="mb-3">
+                <label for="name" class="form-label" >Name:</label>
+                <input type="text" id="name" [(ngModel)]="newRefund.name" name="name" class="form-control"  required #name="ngModel" minlength="2" >
+      
+                  <div *ngIf="name.hasError('required') && name.touched && name.invalid" class="text-danger p-0">*Name is required</div>
+                  <div *ngIf="name.hasError('minlength')" class="alert alert-danger p-0">
+                    Name must be at least 2 characters long
+      
+                  </div></div>
+                  <div class="mb-3">
+                    <label for="Nominee" class="form-label" >Nominee:</label>
+                    <input type="text" id="Nominee" [(ngModel)]="newRefund.Nominee" name="Nominee" class="form-control"  required #Nominee="ngModel" minlength="2" >
+    
+                      <div *ngIf="Nominee.hasError('required') && Nominee.touched && Nominee.invalid" class="text-danger ">*Nominee is required</div>
+                      <div *ngIf="Nominee.hasError('minlength')" class="text-danger">
+                        Nominee must be at least 2 characters long
+    
+                      </div>
+    
+                   </div> 
+                   <div class="mb-3">
+                    <label for="RefundDate" class="form-label" >Date of Refund</label>
+                    <input type="date" id="RefundDate" [(ngModel)]="newRefund.RefundDate" name="RefundDate" class="form-control"  required #RefundDate="ngModel" minlength="2" >
+    
+                      <div *ngIf="RefundDate.hasError('required') && RefundDate.touched && RefundDate.invalid" class="text-danger">*Date of Refund is required</div>
+                      <div *ngIf="RefundDate.hasError('minlength')" class="text-danger">
+                        Date of refund must be at least 2 characters long
+    
+                      </div> </div>  
+                      
+                         
+                          <div class="mb-3">
+                            <label for="Amount"class="form-label" >Amount:</label>
+                            <input type="text" id="Amount" [(ngModel)]="newRefund.Amount" name="Amount" class="form-control"  required #Amount="ngModel" minlength="2" >
+            
+                              <div *ngIf="Amount.hasError('required') && Amount.touched && Amount.invalid" class="text-danger p-0">*Amount is required</div>
+                              <div *ngIf="Amount.hasError('minlength')" class="text-danger ">
+                                Amount must be at least 2 characters long
+            
+                              </div></div>
+                          
+                              <div class="mb-3">
+                                <label for="LastContribution"class="form-label" >Last Contribution:</label>
+                                <input type="text" id="LastContribution" [(ngModel)]="newRefund.LastContribution" name="LastContribution" class="form-control"  required #LastContribution="ngModel" minlength="2" >
+                
+                                  <div *ngIf="LastContribution.hasError('required') && LastContribution.touched && LastContribution.invalid" class="text-danger p-0">*LastContribution is required</div>
+                                  <div *ngIf="LastContribution.hasError('minlength')" class="text-danger">
+                                    LastContribution must be at least 2 characters long
+                
+                                  </div></div>
+                                  <div class="mb-3 form-check">
+                                    <input type="checkbox" id="isActive" [(ngModel)]="newRefund.isActive" name="isActive" class="form-check-input">
+                                    <label for="isActive" class="form-check-label">Active</label>
+                                  </div>
+                    
+                        <button type="submit"  class="btn btn-primary" >Create</button>      
+             
+    </form>
+    </div>
