@@ -31,7 +31,7 @@ export class RefundListComponent {
   _kiduTableModel: KiduTableModel = {
   tableColumns:  [
     {columnDef:'Id',header:'Serial#',colType:CellType.Text},
-    {columnDef:'Member',header:'Staff Number',colType:CellType.Text},
+    {columnDef:'StaffNoNavigationStaffNo',header:'Staff Number',colType:CellType.Text},
     {columnDef:'Name',header:'Name',colType:CellType.Text}
     ,{columnDef:'Nominee',header:'Nominee',colType:CellType.Text},
     {columnDef:'RefundDate',header:'Refund Date',colType:CellType.Text},
@@ -83,6 +83,46 @@ export class RefundListComponent {
         alert("Error while Adding")
       }
     })
+  }
+  DeleteItem(id: number) {
+
+    this.refundService.deleteItem(id).subscribe({
+      next: (res) => {
+        if (res.isSucess) {
+          this.notification.showSuccess('Successfully deleted Refund!!',"Deleted");
+          this.GetItems("");
+        }
+        else {
+
+          this.notification.showError('Failed to Delete Refund :' + res.error,"Error")
+
+        }
+
+      },
+      error: (res) => {
+
+      }
+    })
+  }
+  
+  openModal() {
+    this.show = true;
+  }
+
+  closeModal() {
+    this.show = false;
+  }
+
+  handleConfirmation(obj: any) {
+
+    if (obj[0]==true) {
+
+      this. DeleteItem(obj[1].Id)
+      // Handle confirmation logic here
+    } else {
+      console.log('Cancelled!');
+      // Handle cancellation logic here
+    }
   }
 
 }

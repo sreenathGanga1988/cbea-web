@@ -29,4 +29,14 @@ postRefundclaim(obj: Refund) {
   obj.createdByUserId=2;
   return this.httphelper.POST(this.url,obj);
 }
+getRefundById(Id: number) {
+  return this.httphelper.GetData(this.url + "/" + Id);
+  // return this.httphelper.GetData(this.url).pipe(map((val) => val.isSucess ? val.value : []));
+}
+putRefund(id: number, obj: any) {
+  return this.httphelper.PUT(this.url + "/" + id, obj);
+}
+deleteItem(id: number) {
+  return this.httphelper.Delete(this.url + "/" + id);
+}
 }

@@ -40,7 +40,7 @@ export class RefundCreateComponent {
     deletedByByUserId: null,
     //nomineeRelation: '',
    // nomineeidentity: '',
-    Member: null,
+   StaffNoNavigationStaffNo: null,
     addedUser: '',
     modifiedUser: '',
     deletedUser: '',
@@ -78,7 +78,7 @@ export class RefundCreateComponent {
     }
     StaffSelected(obj: any) {
       if (obj[1] != null) {
-        this.newRefund.Member = obj[1].label
+        this.newRefund.StaffNoNavigationStaffNo = obj[1].label
       }
     }
     onSubmit(myform:any) {
