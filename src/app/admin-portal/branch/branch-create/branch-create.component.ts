@@ -9,10 +9,12 @@ import { FormsModule } from '@angular/forms';
 import { CellType, KiduDataPickerModel } from '../../shared/kidu-table/columns';
 
 import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/kidu-data-picker.component';
+import { StateSelectionComponent } from "../../shared/Pickers/state-selection/state-selection.component";
+import { CircleSelectionComponent } from "../../shared/Pickers/circle-selection/circle-selection.component";
 @Component({
   selector: 'app-branch-create',
   standalone: true,
-  imports: [TitleBarComponent,CommonModule,FormsModule,KiduDataPickerComponent],
+  imports: [TitleBarComponent, CommonModule, FormsModule, KiduDataPickerComponent, StateSelectionComponent, CircleSelectionComponent],
   templateUrl: './branch-create.component.html',
   styleUrl: './branch-create.component.css'
 })
@@ -89,17 +91,17 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
     this.router.navigate(['/Branches-create']);
   }
   onSubmit(form:any) {
-   
-  
+
+
       this.newBranch.createdDate=new Date().toISOString();
       this.newBranch.modifiedDate=new Date().toISOString();
-  
+
       this.newBranch.modifiedByUserId=1;
-      
+
       this.branchservice.postBranch(this.newBranch).subscribe({
         next: (res) => {
-  
-  
+
+
           this.notificationService.showSuccess("Branch Added Successfully", "Added")
           this.router.navigate(['/admin/Branches']);
         },
@@ -110,6 +112,7 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
     }
     StateSelected(obj: any) {
       if (obj[1] != null) {
+        alert("Hi");
         this.newBranch.state= obj[1].label
       }
       }

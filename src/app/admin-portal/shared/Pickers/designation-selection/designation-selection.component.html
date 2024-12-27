@@ -1,0 +1,24 @@
+<label for="designation" class="form-label">{{labelText}} :</label>
+<div class="d-flex align-items-center">
+  <input
+    type="text"
+    id="designation"
+    [(ngModel)]="selectedDesignation"
+    (ngModelChange)="onDesignationChange($event)"
+    name="designation"
+    class="form-control"
+    required
+    #designationField="ngModel"
+  />
+
+  <app-kidu-data-picker
+    [_kiduDataPickerModel]="kiduDataPickerModel"
+    (PopUpSelected)="onDesignationSelected($event)">
+  </app-kidu-data-picker>
+</div>
+
+<span
+  *ngIf="designationField.hasError('required') && designationField.touched && (designationField.invalid || designationField.dirty)"
+  class="text-danger">
+  *Designation is required
+</span>

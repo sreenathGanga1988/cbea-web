@@ -1,0 +1,27 @@
+
+  <label for="state" class="form-label">{{labeltext}}:</label>
+  <div class="d-flex align-items-center">
+  <input
+    type="text"
+    id="state"
+    [(ngModel)]="selectedState"
+    (ngModelChange)="onStateChange($event)"
+    name="state"
+    class="form-control"
+    required
+    #stateField="ngModel"
+  />
+
+  <app-kidu-data-picker
+    [_kiduDataPickerModel]="kiduDataPickerModelState"
+    (PopUpSelected)="onStateSelected($event)">
+  </app-kidu-data-picker>
+
+</div>
+
+  <span
+  *ngIf="stateField.hasError('required') && stateField.touched && (stateField.invalid || stateField.dirty)"
+  class="text-danger">
+  *State is required
+</span>
+

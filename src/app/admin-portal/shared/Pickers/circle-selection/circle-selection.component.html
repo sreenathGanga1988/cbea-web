@@ -1,0 +1,24 @@
+
+  <label for="state" class="form-label">{{labeltext}}:</label>
+  <div class="d-flex align-items-center">
+  <input
+    type="text"
+    id="circle"
+    [(ngModel)]="selectedCircle"
+    (ngModelChange)="onCircleChange($event)"
+    name="circle"
+    class="form-control"
+    required
+    #circleField="ngModel"
+  />
+
+  <app-kidu-data-picker
+    [_kiduDataPickerModel]="kiduDataPickerModel"
+    (PopUpSelected)="onCircleSelected($event)">
+  </app-kidu-data-picker>
+</div>
+  <span
+    *ngIf="circleField.hasError('required') && circleField.touched && (circleField.invalid || circleField.dirty)"
+    class="text-danger">
+    *Circle is required
+  </span>

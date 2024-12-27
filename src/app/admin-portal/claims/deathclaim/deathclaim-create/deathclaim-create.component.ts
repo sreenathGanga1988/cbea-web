@@ -9,12 +9,13 @@ import { CommonModule } from '@angular/common';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { KiduDataPickerComponent } from "../../../shared/Modals/kidu-data-picker/kidu-data-picker.component";
 import { CellType, KiduDataPickerModel } from '../../../shared/kidu-table/columns';
+import { StaffSelectionComponent } from "../../../shared/Pickers/staff-selection/staff-selection.component";
 
 
 @Component({
   selector: 'app-deathclaim-create',
   standalone: true,
-  imports: [TitleBarComponent, FormsModule, CommonModule, KiduDataPickerComponent],
+  imports: [TitleBarComponent, FormsModule, CommonModule, KiduDataPickerComponent, StaffSelectionComponent],
   templateUrl: './deathclaim-create.component.html',
   styleUrl: './deathclaim-create.component.css'
 })
@@ -52,7 +53,7 @@ export class DeathclaimCreateComponent {
     deletedByByUserId: null,
     nomineeRelation: '',
     nomineeidentity: '',
-    StaffNo: null,
+    StaffNo: '',
     addedUser: '',
     modifiedUser: '',
     deletedUser: '',

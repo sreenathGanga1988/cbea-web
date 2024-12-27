@@ -1,73 +1,94 @@
-<app-title-bar [headingText]='headingText'   (gotoPreviousPage)="gotoPreviousPage()"
-[isListMode]=0></app-title-bar>
+<app-title-bar [headingText]='headingText' (gotoPreviousPage)="gotoPreviousPage()" [isListMode]=0></app-title-bar>
 <div class="container mt-4">
-    <h2>Create member</h2>
+  <h2>Create member</h2>
 
-    <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
-      <div class="mb-3">
-        <label for="staffNo" class="form-label" >Staff Number :</label>
-  
-        <input type="text" id="staffNo" [(ngModel)]="newMember.staffNo" name="staffNo" class="form-control" maxlength="8" ngModel required  #staffNo="ngModel" minlength="1" >
-         
-     <!---- <span *ngIf="staffNo.hasError('required') && staffNo.touched && (staffNo.invalid||staffNo.dirty) " class="text-danger" >*Staff Number is required</span>-->
-       <span *ngIf="staffNo.hasError('minlength')" class="text-danger">
-        Staff Number  must be at least 2 characters long
-       </span>
-          </div>
-          <div class="mb-3">
-            <label for="name"class="form-label" >Name :</label>
-      
-            <input type="text" id="name" [(ngModel)]="newMember.name" name="name" class="form-control"   ngModel required  #name="ngModel" minlength="2" >
-            <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty) " class="text-danger" >*Name is required</span>
-            <span *ngIf="name.hasError('minlength')" class="text-danger">
-            Name  must be at least 2 characters long
-           </span>
-              </div>
-          <!---- <div class="mb-3">
+  <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
+    <div class="mb-3">
+      <label for="staffNo" class="form-label">Staff Number :</label>
+
+      <input type="text" id="staffNo" [(ngModel)]="newMember.staffNo" name="staffNo" class="form-control" maxlength="8"
+        ngModel required #staffNo="ngModel" minlength="1">
+
+      <!---- <span *ngIf="staffNo.hasError('required') && staffNo.touched && (staffNo.invalid||staffNo.dirty) " class="text-danger" >*Staff Number is required</span>-->
+      <span *ngIf="staffNo.hasError('minlength')" class="text-danger">
+        Staff Number must be at least 2 characters long
+      </span>
+    </div>
+    <div class="mb-3">
+      <label for="name" class="form-label">Name :</label>
+
+      <input type="text" id="name" [(ngModel)]="newMember.name" name="name" class="form-control" ngModel required
+        #name="ngModel" minlength="2">
+      <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty) " class="text-danger">*Name
+        is required</span>
+      <span *ngIf="name.hasError('minlength')" class="text-danger">
+        Name must be at least 2 characters long
+      </span>
+    </div>
+    <!---- <div class="mb-3">
                 <label for="member"class="form-label" >Member :</label>
-          
+
                 <input type="text" id="member" [(ngModel)]="newMember.member" name="member" class="form-control" maxlength="4"  ngModel required  #member="ngModel" minlength="2" >
                 <span *ngIf="member.hasError('required') && member.touched && (member.invalid||member.dirty) " class="text-danger" >*member is required</span>
                 <span *ngIf="member.hasError('minlength')" class="text-danger">
                   member  must be at least 2 characters long
                </span>
                   </div>-->
-              <div class="mb-3">
-                <p>Gender</p>
-               <label for="male">male</label>
-               <input type="radio" id="male" name="gender" value="Male" [(ngModel)]="newMember.gender" ngmodel required #gender="ngModel">
-               <label for="female">female</label>
-               <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newMember.gender" ngmodel required  #gender="ngModel">
-                <span *ngIf="gender.hasError('required') && gender.touched && (gender.invalid||gender.dirty) " class="text-danger" >*Gender is required</span>
-         </div> 
-                     
-                        <div class="mb-3">
-                            <label for="branchname"class="form-label" >Branch Name :</label>
-                      
+    <div class="mb-3">
+      <p>Gender</p>
+      <label for="male">male</label>
+      <input type="radio" id="male" name="gender" value="Male" [(ngModel)]="newMember.gender" ngmodel required
+        #gender="ngModel">
+      <label for="female">female</label>
+      <input type="radio" id="female" name="gender" value="female" [(ngModel)]="newMember.gender" ngmodel required
+        #gender="ngModel">
+       <span *ngIf="gender.hasError('required') && gender.touched && (gender.invalid||gender.dirty) "
+        class="text-danger">*Gender is required</span>
+    </div>
+
+    <div class="mb-3">
+      <app-branch-selection [labelText]="'Branch Name'" [selectedBranchName]="newMember.branchname"
+        [kiduDataPickerModel]="_kiduDataPickerModel1" (branchChange)="newMember.branchname = $event"
+        (branchSelected)="BranchSelected($event)">
+      </app-branch-selection>
+
+      <!-- <label for="branchname"class="form-label" >Branch Name :</label>
+
                             <input type="text" id="branchnamee" [(ngModel)]="newMember.branchname" name="branchname" class="form-control" required #branchname="ngModel" >
                             <span *ngIf="branchname.hasError('required') && branchname.touched && (branchname.invalid||branchname.dirty) " class="text-danger">*Branch Name is required</span>
-                            <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel1"   (PopUpSelected)="BranchSelected($event)"  ></app-kidu-data-picker>
-                              </div>
-                              <div class="mb-3">
-                                <label for="designation"class="form-label" >Designation :</label>
-                          
+                            <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel1"   (PopUpSelected)="BranchSelected($event)"  ></app-kidu-data-picker> -->
+    </div>
+    <div class="mb-3">
+
+      <app-designation-selection [labelText]="'Designation'" [selectedDesignation]="newMember.Designation"
+        [kiduDataPickerModel]="_kiduDataPickerModel2" (designationChange)="newMember.Designation = $event"
+        (designationSelected)="DesignationSelected($event)">
+      </app-designation-selection>
+
+
+      <!-- <label for="designation"class="form-label" >Designation :</label>
+
                                 <input type="text" id="designation" [(ngModel)]="newMember.Designation" name="Designation" class="form-control" ngmodel required #Designation="ngModel" >
                                 <span *ngIf="Designation.hasError('required') && Designation.touched && (Designation.invalid||Designation.dirty) " class="text-danger" >*Designation is required</span>
                                 <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel2"   (PopUpSelected)="DesignationSelected($event)" id="designation" ></app-kidu-data-picker>
-                                  </div>
+                                  -->
 
-                                  <div class="mb-3">
-                                    <label for="nominee"class="form-label" >Nominee :</label>
-                              
-                                    <input type="text" id="nominee" [(ngModel)]="newMember.nominee" name="nominee" class="form-control" required #nominee="ngModel" >
-                                    <span *ngIf="nominee.hasError('required') && nominee.touched && (nominee.invalid||nominee.dirty) " class="text-danger" >*Nominee is required</span>
-                                    </div>
-                            <!---- <div class="mb-3 form-check">
-                                
+    </div>
+
+    <div class="mb-3">
+      <label for="nominee" class="form-label">Nominee :</label>
+
+      <input type="text" id="nominee" [(ngModel)]="newMember.nominee" name="nominee" class="form-control" required
+        #nominee="ngModel">
+      <span *ngIf="nominee.hasError('required') && nominee.touched && (nominee.invalid||nominee.dirty) "
+        class="text-danger">*Nominee is required</span>
+    </div>
+    <!---- <div class="mb-3 form-check">
+
                                 <input type="checkbox" id="isActive" [(ngModel)]="newMember.status"name="status" class="form-check-input">
                                 <label for="isActive" class="form-check-label" id="isActive" >Active</label>
                               </div> -->
-                              <button type="submit"  class="btn btn-primary" [disabled]="myform.invalid " >Create</button> 
+    <button type="submit" class="btn btn-primary" [disabled]="myform.invalid ">Create</button>
 
-                            </form>
-                          </div>
+  </form>
+</div>

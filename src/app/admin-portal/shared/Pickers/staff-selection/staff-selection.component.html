@@ -1,0 +1,27 @@
+<label for="StaffNo" class="form-label">{{labelText}} :</label>
+<div class="d-flex align-items-center">
+  <input
+     style="background-color:grey;"
+    type="text"
+    id="StaffNo"
+    readonly="readonly"
+    [(ngModel)]="selectedStaffNo"
+    (ngModelChange)="onStaffNoChange($event)"
+    name="StaffNo"
+    class="form-control"
+    required
+    #staffNoField="ngModel"
+    minlength="2"
+  />
+
+  <app-kidu-data-picker
+    [_kiduDataPickerModel]="kiduDataPickerModel"
+    (PopUpSelected)="onStaffNoSelected($event)">
+  </app-kidu-data-picker>
+</div>
+
+<span
+  *ngIf="staffNoField.hasError('required') && staffNoField.touched && (staffNoField.invalid || staffNoField.dirty)"
+  class="text-danger">
+  *Staff No is required
+</span>

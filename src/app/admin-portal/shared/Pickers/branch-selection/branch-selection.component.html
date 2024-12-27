@@ -1,0 +1,24 @@
+<label for="branchname" class="form-label">{{labelText}} :</label>
+<div class="d-flex align-items-center">
+  <input
+    type="text"
+    id="branchname"
+    [(ngModel)]="selectedBranchName"
+    (ngModelChange)="onBranchChange($event)"
+    name="branchname"
+    class="form-control"
+    required
+    #branchField="ngModel"
+  />
+
+  <app-kidu-data-picker
+    [_kiduDataPickerModel]="kiduDataPickerModel"
+    (PopUpSelected)="onBranchSelected($event)">
+  </app-kidu-data-picker>
+</div>
+
+<span
+  *ngIf="branchField.hasError('required') && branchField.touched && (branchField.invalid || branchField.dirty)"
+  class="text-danger">
+  *Branch Name is required
+</span>

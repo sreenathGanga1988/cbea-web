@@ -9,24 +9,26 @@ import { NotificationService } from '../../../Services/Common/notification.servi
 import { CellType, KiduDataPickerModel } from '../../shared/kidu-table/columns';
 import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/kidu-data-picker.component';
 import { Router } from '@angular/router';
+import { BranchSelectionComponent } from "../../shared/Pickers/branch-selection/branch-selection.component";
+import { DesignationSelectionComponent } from "../../shared/Pickers/designation-selection/designation-selection.component";
 
 
 
 @Component({
   selector: 'app-member-create',
   standalone: true,
-  imports: [TitleBarComponent, CommonModule, FormsModule, KiduDataPickerComponent],
+  imports: [TitleBarComponent, CommonModule, FormsModule, KiduDataPickerComponent, BranchSelectionComponent, DesignationSelectionComponent],
   templateUrl: './member-create.component.html',
   styleUrl: './member-create.component.css'
 })
 export class MemberCreateComponent {
 
-  
+
   _kiduDataPickerModel2: KiduDataPickerModel= {
     tableColumns: [
       { columnDef: 'code', header: ' #', colType: CellType.Text },
       { columnDef: 'label', header: 'Designation Name ', colType: CellType.Text },
-     
+
     ],
     rows: [],
     TopTittle: 'Select Designation',
@@ -35,12 +37,12 @@ export class MemberCreateComponent {
     pageNumber: 0
 
   }
-   
+
   _kiduDataPickerModel1: KiduDataPickerModel= {
     tableColumns: [
       { columnDef: 'code', header: ' #', colType: CellType.Text },
       { columnDef: 'label', header: 'Branch Name ', colType: CellType.Text },
-     
+
     ],
     rows: [],
     TopTittle: 'Select Branch',
@@ -54,7 +56,7 @@ export class MemberCreateComponent {
     id: 0,
     staffNo: 0,
     name: '',
-   
+
     gender: '',
     dob: null,
     doj: null,
@@ -84,13 +86,13 @@ isAlive = true;
   constructor(private router: Router, private memberService: MemberService, private notificationService: NotificationService ,private createmember:FormBuilder){
     this.myform=this.createmember.group({
       name: ['', Validators.required]
-      
+
      // text: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
-     
+
      });
-     
+
   }
-  
+
   noWhiteSpaceValidator(control: AbstractControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
     const isValid = !isWhitespace;
@@ -123,24 +125,24 @@ isAlive = true;
     this.newMember.doj=new Date().toISOString();
     this.newMember.dojtoscheme=new Date().toISOString();
     this.newMember.createdByUserId=2;
-    
-    
-  
+
+
+
     this.memberService.postMember(this.newMember).subscribe({
       next: (res) => {
         this.notificationService.showSuccess("member Added Successfully", "Added")
         this.router.navigate(['/admin/member']);
-       
-        
+
+
          },
-    
-  
+
+
      error: (res) => {
        alert("Error while Adding")
       }
     })
-    
-  
+
+
   }
-  
+
 }
