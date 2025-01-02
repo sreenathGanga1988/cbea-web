@@ -14,7 +14,7 @@ export class RefundService {
    _listRequest!: ListRequest;
   constructor(private httphelper: HttpHelperService) {
     this._listRequest = new ListRequest();
-    this._listRequest.ReportType = "DEATHCLAIM";
+    this._listRequest.ReportType = "REFUND";
     this._listRequest.SearchText = "";
     this._listRequest.PageSize = 25;
     this._listRequest.PageNumber = 0;

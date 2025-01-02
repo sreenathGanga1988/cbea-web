@@ -29,8 +29,8 @@
       <div class="mb-3">
 
 
-        <app-circle-selection  [labeltext]= "'Circle :'" [selectedCircle]="newBranch.circle"
-      [kiduDataPickerModel]="_kiduDataPickerModel" (circleChange)="newBranch.circle = $event"
+        <app-circle-selection  [labeltext]= "'Circle :'" [selectedCircle]="newBranch.circle_text"
+      [kiduDataPickerModel]="_kiduDataPickerModel" (circleChange)="newBranch.circle_text = $event"
       (circleSelected)="CircleSelected($event)">    </app-circle-selection>
         <!-- <label for="circle"class="form-label" >Circle:</label>
 
@@ -42,8 +42,8 @@
       </div>
 
           <div class="mb-3">
-           <app-state-selection  [labeltext]= "'State'"  [selectedState]="newBranch.state"
-              [kiduDataPickerModelState]="_kiduDataPickerModelState"  (stateChange)="newBranch.state = $event"
+           <app-state-selection  [labeltext]= "'State'"  [selectedState]="newBranch.state_text"
+              [kiduDataPickerModelState]="_kiduDataPickerModelState"  (stateChange)="newBranch.state_text = $event"
                  (stateSelected)="StateSelected($event)">    </app-state-selection>
 
 <!--
@@ -60,10 +60,35 @@
 
                   <span *ngIf="district.hasError('required') && district.touched && (district.invalid||district.dirty)" class="text-danger">*Branch name is required</span>
                   <span *ngIf="district.hasError('minlength')" class="text-danger">
-                    Branch Name must be at least 2 characters long
+                    District Name must be at least 2 characters long
 
                   </span>
               </div>
+              <div class="mb-3">
+                <label for="address1"class="form-label" >Adress 1 : </label>
+                <input type="text" id="address1" [(ngModel)]="newBranch.address1" name="adress1" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+              <div class="mb-3">
+                <label for="address2"class="form-label" >Adress 2 : </label>
+                <input type="text" id="address2" [(ngModel)]="newBranch.address2" name="address2" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+              <div class="mb-3">
+                <label for="address3"class="form-label" >Adress 3 : </label>
+                <input type="text" id="address3" [(ngModel)]="newBranch.address3" name="address3" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+              <div class="mb-3">
+                <label for="status"class="form-label" >Remark : </label>
+                <input type="text" id="status" [(ngModel)]="newBranch.status" name="status" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+
               <div class="mb-3 form-check">
                 <input type="checkbox" id="isActive" [(ngModel)]="newBranch.isActive" name="isActive" class="form-check-input">
                 <label for="isActive" class="form-check-label">Active</label>

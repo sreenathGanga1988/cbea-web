@@ -8,31 +8,33 @@ import { BranchService } from '../../../Services/branch.service ';
 import { NotificationService } from '../../../Services/Common/notification.service';
 import { CellType, KiduDataPickerModel } from '../../shared/kidu-table/columns';
 import { KiduDataPickerComponent } from '../../shared/Modals/kidu-data-picker/kidu-data-picker.component';
+import { StateSelectionComponent } from '../../shared/Pickers/state-selection/state-selection.component';
+import { CircleSelectionComponent } from '../../shared/Pickers/circle-selection/circle-selection.component';
 
 @Component({
   selector: 'app-branch-edit',
   standalone: true,
-  imports: [TitleBarComponent, CommonModule, FormsModule,KiduDataPickerComponent,],
+  imports: [TitleBarComponent, CommonModule, FormsModule, KiduDataPickerComponent, StateSelectionComponent, CircleSelectionComponent],
   templateUrl: './branch-edit.component.html',
   styleUrl: './branch-edit.component.css'
 })
 export class BranchEditComponent {
  headingText = "Edit Branch";
   id: string = '';
-  
+
   newBranch! :Branch;
   textControl!: AbstractControl;
   myform:FormGroup;
   isAlive = true;
   formSubmitted = false;
-  
+
   constructor(private route: ActivatedRoute,private router: Router, private branchservice: BranchService, private notificationService: NotificationService,private formbuilder:FormBuilder) {
 
     this.myform=this.formbuilder.group({
       name: [null, [Validators.required, Validators.minLength(2),this.noWhiteSpaceValidator]]
-     
+
      });
-    
+
   }
   noWhiteSpaceValidator(control: AbstractControl) {
     const isWhitespace = (control.value || '').trim().length === 0;
@@ -41,15 +43,15 @@ export class BranchEditComponent {
   }
   _kiduDataPickerModel: KiduDataPickerModel= {
     tableColumns: [
-      { columnDef: 'code', header: ' #', colType: CellType.Text },
+     { columnDef: 'code', header: ' #', colType: CellType.Text },
       { columnDef: 'label', header: 'Circle ', colType: CellType.Text },
     ],
     rows: [],
     TopTittle: 'Select Circle',
     reporttype: "CIRCLE",
-    pageSize: 0,
+    pageSize: 25,
     pageNumber: 0
-  
+
   }
   _kiduDataPickerModelState: KiduDataPickerModel= {
     tableColumns: [
@@ -61,7 +63,7 @@ export class BranchEditComponent {
     reporttype: "State",
     pageSize: 0,
     pageNumber: 0
-  
+
   }
 
   gotoPreviousPage() {
@@ -109,7 +111,7 @@ export class BranchEditComponent {
 
   }
   onSubmit(form:any) {
-   
+
     this.branchservice.putBranch(Number(this.id),this.newBranch).subscribe({
       next: (res) => {
 
@@ -125,14 +127,14 @@ export class BranchEditComponent {
   }
   StateSelected(obj: any) {
     if (obj[1] != null) {
-      this.newBranch.state= obj[1].label
+      this.newBranch.state_text= obj[1].label
     }
     }
 
-    
+
 CircleSelected(obj: any) {
   if (obj[1] != null) {
-    this.newBranch.circle= obj[1].label
+    this.newBranch.circle_text= obj[1].label
   }
 }
 }

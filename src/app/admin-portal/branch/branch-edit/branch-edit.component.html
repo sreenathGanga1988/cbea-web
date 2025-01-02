@@ -3,59 +3,96 @@
 [isListMode]=0></app-title-bar>
 
 <div class="container mt-3">
-    
+
     <form (ngSubmit)="onSubmit(myform)" class="col-md-6" #myform="ngForm" novalidate>
-     <!---- <div class="mb-3">
-       <label for="dpcode" class="form-label" >DPCode :</label>
-  
-        <input type="text" id="dpcode" [(ngModel)]="newBranch.dpCode" name="dpcode" class="form-control" maxlength="4" required  #dpcode="ngModel" minlength="2" >
-         
-        <span *ngIf="dpcode.hasError('required') && dpcode.touched && (dpcode.invalid||dpcode.dirty) " class="text-danger">*DPCode is required</span>
-        <span *ngIf="dpcode.hasError('minlength')" class="text-danger">
-        DPCode  must be at least 2 characters long
-       </span>
-          </div>--->
+      <div class="mb-3">
+        <label for="dpcode" class="form-label" >DPCode : </label>
+        <input type="text" id="dpcode" [(ngModel)]="newBranch.dpCode" name="dpcode" class="form-control"  maxlength="50" required  #dpcode="ngModel" minlength="2" >
+
+          <span *ngIf="dpcode.hasError('required') && dpcode.touched && (dpcode.invalid||dpcode.dirty)" class="text-danger">*DPCode is required</span>
+          <span *ngIf="dpcode.hasError('minlength')" class="text-danger">
+            DPCode must be at least 2 characters long
+
+          </span>
+      </div>
+      <div class="mb-3">
+        <label for="name"class="form-label" >BRANCH NAME : </label>
+        <input type="text" id="name" [(ngModel)]="newBranch.name" name="name" class="form-control"  maxlength="50"  ngmodel required  #name="ngModel" minlength="2" >
+
+          <span *ngIf="name.hasError('required') && name.touched && (name.invalid||name.dirty)" class="text-danger">*Branch Name is required</span>
+          <span *ngIf="name.hasError('minlength')" class="text-danger">
+            Branch Name must be at least 2 characters long
+
+          </span>
+      </div>
+
+      <div class="mb-3">
+
+
+        <app-circle-selection  [labeltext]= "'Circle :'" [selectedCircle]="newBranch.circle_text"
+      [kiduDataPickerModel]="_kiduDataPickerModel" (circleChange)="newBranch.circle_text = $event"
+      (circleSelected)="CircleSelected($event)">    </app-circle-selection>
+        <!-- <label for="circle"class="form-label" >Circle:</label>
+
+        <input type="text" id="circle" [(ngModel)]="newBranch.circle" name="circle" class="form-control" required #circle="ngModel" >
+        <span *ngIf="circle.hasError('required') && circle.touched && (circle.invalid||circle.dirty) " class="text-danger">*Circle is required</span>
+        <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel"   (PopUpSelected)="CircleSelected($event)"  ></app-kidu-data-picker>
+           -->
+
+      </div>
 
           <div class="mb-3">
-            <label for="branchname"class="form-label" >BRANCH NAME : </label>
-         <input type="text" id="branchname" [(ngModel)]="newBranch.name" name="branchname" class="form-control"  maxlength="50" required  #branchname="ngModel" minlength="2" >
-      
-              <span *ngIf="branchname.hasError('required') && branchname.touched && (branchname.invalid||branchname.dirty)" class="text-danger">*Branch Name is required</span>
-              <span *ngIf="branchname.hasError('minlength')" class="text-danger">
-                Branch Name must be at least 2 characters long
-      
-              </span>
+           <app-state-selection  [labeltext]= "'State'"  [selectedState]="newBranch.state_text"
+              [kiduDataPickerModelState]="_kiduDataPickerModelState"  (stateChange)="newBranch.state_text = $event"
+                 (stateSelected)="StateSelected($event)">    </app-state-selection>
+
+<!--
+      <input type="text" id="state" [(ngModel)]="newBranch.state" name="state" class="form-control" required #state="ngModel" >
+            <span *ngIf="state.hasError('required') && state.touched && (state.invalid||state.dirty) " class="text-danger">*State is required</span>
+            <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModelState"   (PopUpSelected)="StateSelected($event)"  ></app-kidu-data-picker> -->
+
+
+
           </div>
-          <div class="mb-3">
-            <label for="circle"class="form-label" >Circle:</label>
-      
-            <input type="text" id="circle" [(ngModel)]="newBranch.circle" name="circle" class="form-control" required #circle="ngModel" >
-            <span *ngIf="circle.hasError('required') && circle.touched && (circle.invalid||circle.dirty) " class="text-danger">*Circle is required</span>
-            <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModel"   (PopUpSelected)="CircleSelected($event)"  ></app-kidu-data-picker>
-              </div>
-    
               <div class="mb-3">
-                <label for="state"class="form-label" >State:</label>
-          
-                <input type="text" id="state" [(ngModel)]="newBranch.state" name="state" class="form-control" required #state="ngModel" >
-                <span *ngIf="state.hasError('required') && state.touched && (state.invalid||state.dirty) " class="text-danger">*State is required</span>
-                <app-kidu-data-picker [_kiduDataPickerModel]="_kiduDataPickerModelState"   (PopUpSelected)="StateSelected($event)"  ></app-kidu-data-picker>
-                  </div> 
-                  <div class="mb-3">
-                    <label for="district"class="form-label" >District : </label>
-                    <input type="text" id="district" [(ngModel)]="newBranch.district" name="district" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
-              
-                      <span *ngIf="district.hasError('required') && district.touched && (district.invalid||district.dirty)" class="text-danger">*DPCode is required</span>
-                      <span *ngIf="district.hasError('minlength')" class="text-danger">
-                        Branch Name must be at least 2 characters long
-              
-                      </span>
-                  </div> 
-                  <div class="mb-3 form-check">
-                    <input type="checkbox" id="isActive" [(ngModel)]="newBranch.isActive" name="isActive" class="form-check-input">
-                    <label for="isActive" class="form-check-label">Active</label>
-                  </div>
+                <label for="district"class="form-label" >District : </label>
+                <input type="text" id="district" [(ngModel)]="newBranch.district" name="district" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+                  <span *ngIf="district.hasError('required') && district.touched && (district.invalid||district.dirty)" class="text-danger">*Branch name is required</span>
+                  <span *ngIf="district.hasError('minlength')" class="text-danger">
+                    District Name must be at least 2 characters long
+
+                  </span>
+              </div>
+              <div class="mb-3">
+                <label for="address1"class="form-label" >Adress 1 : </label>
+                <input type="text" id="address1" [(ngModel)]="newBranch.address1" name="adress1" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+              <div class="mb-3">
+                <label for="address2"class="form-label" >Adress 2 : </label>
+                <input type="text" id="address2" [(ngModel)]="newBranch.address2" name="address2" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+              <div class="mb-3">
+                <label for="address3"class="form-label" >Adress 3 : </label>
+                <input type="text" id="address3" [(ngModel)]="newBranch.address3" name="address3" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+              <div class="mb-3">
+                <label for="status"class="form-label" >Remark : </label>
+                <input type="text" id="status" [(ngModel)]="newBranch.status" name="status" class="form-control"  maxlength="50" required  #district="ngModel" minlength="2" >
+
+
+              </div>
+
+              <div class="mb-3 form-check">
+                <input type="checkbox" id="isActive" [(ngModel)]="newBranch.isActive" name="isActive" class="form-check-input">
+                <label for="isActive" class="form-check-label">Active</label>
+              </div>
                  <button type="submit"  class="btn btn-primary" [disabled]="myform.invalid ">UPDATE</button>
-    
+
     </form></div>
- 

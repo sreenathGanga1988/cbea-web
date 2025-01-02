@@ -66,7 +66,7 @@ export class DeathclaimListComponent {
   }
   GlobalSearch(sarchtxt: string) {
     console.log("search text--->",sarchtxt);
-    
+
     this.GetItems(sarchtxt)
   }
   GetItems(searchtext: string) {
@@ -104,7 +104,7 @@ export class DeathclaimListComponent {
       }
     })
   }
- 
+
   handleConfirmation(obj: any) {
 
     if (obj[0]==true) {

@@ -20,11 +20,7 @@ import { CircleSelectionComponent } from "../../shared/Pickers/circle-selection/
 })
 export class BranchCreateComponent {
 
-CircleSelected(obj: any) {
-  if (obj[1] != null) {
-    this.newBranch.circle= obj[1].label
-  }
-}
+
 gotoPreviousPage() {
   alert("back")
   this.router.navigate(['/admin/Branches']);
@@ -58,9 +54,9 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
   newBranch: Branch = {
     id: 0,
      dpCode:0,
-     circleId:'',
+     circleId:0,
     isActive: false,
-    stateId:'',
+    stateId:0,
     name:'',
     createdByUserId: null,
     address1:'',
@@ -69,8 +65,8 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
     district:'',
     isRegCompleted:false,
     status:'',
-    circle:'',
-    state:'',
+    circle_text:'',
+    state_text:'',
     createdDate: null,
     modifiedByUserId: null,
     modifiedDate: null,
@@ -80,8 +76,8 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
     addedUser: '',
     modifiedUser: '',
     deletedUser: '',
-    deletedDate: null
-  };
+    deletedDate: null,
+    };
   constructor(private router: Router, private branchservice: BranchService, private notificationService: NotificationService) {
 
 
@@ -112,9 +108,16 @@ _kiduDataPickerModelState: KiduDataPickerModel= {
     }
     StateSelected(obj: any) {
       if (obj[1] != null) {
-        alert("Hi");
-        this.newBranch.state= obj[1].label
+
+        this.newBranch.state_text= obj[1].label
+        this.newBranch.stateId=obj[1].code;
       }
+      }
+      CircleSelected(obj: any) {
+        if (obj[1] != null) {
+          this.newBranch.circle_text= obj[1].label
+          this.newBranch.circleId= obj[1].code
+        }
       }
 
 }
