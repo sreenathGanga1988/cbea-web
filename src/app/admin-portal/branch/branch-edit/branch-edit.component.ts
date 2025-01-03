@@ -14,7 +14,7 @@ import { CircleSelectionComponent } from '../../shared/Pickers/circle-selection/
 @Component({
   selector: 'app-branch-edit',
   standalone: true,
-  imports: [TitleBarComponent, CommonModule, FormsModule, KiduDataPickerComponent, StateSelectionComponent, CircleSelectionComponent],
+  imports: [TitleBarComponent, CommonModule, FormsModule, StateSelectionComponent, CircleSelectionComponent],
   templateUrl: './branch-edit.component.html',
   styleUrl: './branch-edit.component.css'
 })

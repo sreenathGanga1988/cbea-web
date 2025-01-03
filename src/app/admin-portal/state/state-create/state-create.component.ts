@@ -56,7 +56,7 @@ export class StateCreateComponent {
    }
   
 
-  onSubmit(form:any) {
+  onSubmit(myform:any) {
   
 
     this.newState.createdDate=new Date().toISOString();
@@ -70,6 +70,7 @@ export class StateCreateComponent {
 
         this.notificationService.showSuccess("state Added Successfully", "Added")
         this.router.navigate(['/admin/states']);
+        console.log(this.myform)
       },
       error: (res) => {
         alert("Error while Adding")
